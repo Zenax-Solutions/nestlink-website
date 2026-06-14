@@ -79,7 +79,7 @@ export default function Footer() {
               Building Smarter Spaces,<br />
               One Home At A Time
             </h2>
-            <p className="mt-6 max-w-lg font-sans text-base leading-relaxed text-white/70 md:text-lg">
+            <p className="mt-6 max-w-lg font-sans text-base leading-relaxed text-white md:text-lg">
               We don't just install technology — we engineer intelligent environments
               where comfort, security, and control work together effortlessly.
             </p>
@@ -121,8 +121,8 @@ export default function Footer() {
                 />
               </svg>
               <span className="font-sans text-xl font-bold">NestLink</span>
-              <sup className="ml-0.5 font-sans text-[10px] text-white/60">®</sup>
-              <span className="ml-2 font-sans text-xs font-medium text-white/60">Part of Innovation</span>
+              <sup className="ml-0.5 font-sans text-[10px] text-white">®</sup>
+              <span className="ml-2 font-sans text-xs font-medium text-white">Part of Innovation</span>
             </Link>
 
             <div className="mt-6 flex items-center gap-3">
@@ -131,7 +131,7 @@ export default function Footer() {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/60 transition-all duration-200 hover:border-[#0000FF] hover:bg-[#0000FF] hover:text-white"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white transition-all duration-200 hover:border-[#0000FF] hover:bg-[#0000FF] hover:text-white"
                 >
                   {social.icon}
                 </a>
@@ -149,7 +149,7 @@ export default function Footer() {
                 <input
                   type="email"
                   placeholder="Enter e-mail address"
-                  className="flex-1 rounded-full border border-white/10 bg-transparent px-5 py-3 font-sans text-sm text-white placeholder-white/40 outline-none transition-colors focus:border-[#0000FF]"
+                  className="flex-1 rounded-full border border-white/10 bg-transparent px-5 py-3 font-sans text-sm text-white placeholder-white outline-none transition-colors focus:border-[#0000FF]"
                 />
                 <button
                   type="submit"
@@ -159,7 +159,7 @@ export default function Footer() {
                   <ArrowUpRight size={18} />
                 </button>
               </form>
-              <p className="mt-3 font-sans text-xs text-white/40">
+              <p className="mt-3 font-sans text-xs text-white">
                 Your information is never disclosed to third parties.
               </p>
             </div>
@@ -174,7 +174,7 @@ export default function Footer() {
                   <li key={link.path + link.label}>
                     <Link
                       to={link.path}
-                      className="font-sans text-sm text-white/60 transition-colors duration-200 hover:text-[#0000FF]"
+                      className="font-sans text-sm text-white transition-colors duration-200 hover:text-[#0000FF]"
                     >
                       {link.label}
                     </Link>
@@ -190,7 +190,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <Link
                       to={link.path}
-                      className="font-sans text-sm text-white/60 transition-colors duration-200 hover:text-[#0000FF]"
+                      className="font-sans text-sm text-white transition-colors duration-200 hover:text-[#0000FF]"
                     >
                       {link.label}
                     </Link>
@@ -206,7 +206,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <Link
                       to={link.path}
-                      className="font-sans text-sm text-white/60 transition-colors duration-200 hover:text-[#0000FF]"
+                      className="font-sans text-sm text-white transition-colors duration-200 hover:text-[#0000FF]"
                     >
                       {link.label}
                     </Link>
@@ -224,12 +224,12 @@ export default function Footer() {
           {[...Array(4)].map((_, i) => (
             <span
               key={i}
-              className="mx-8 flex items-center gap-4 font-sans text-5xl font-bold text-white/10 md:text-7xl lg:text-8xl"
+              className="mx-8 flex items-center gap-4 font-sans text-5xl font-bold text-white/30 md:text-7xl lg:text-8xl"
             >
               NestLink
               <sup className="text-2xl md:text-3xl">®</sup>
-              <span className="text-lg font-medium text-white/20 md:text-xl">Part of Innovation</span>
-              <span className="mx-8 text-white/10">|</span>
+              <span className="text-lg font-medium text-white/50 md:text-xl">Part of Innovation</span>
+              <span className="mx-8 text-white/30">|</span>
             </span>
           ))}
         </div>
@@ -238,10 +238,10 @@ export default function Footer() {
       {/* Copyright */}
       <div className="mx-auto max-w-7xl px-6 py-6 md:px-12">
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-          <p className="font-sans text-xs text-white/40">
+          <p className="font-sans text-xs text-white">
             © {new Date().getFullYear()} NestLink Technologies. All rights reserved.
           </p>
-          <p className="font-sans text-xs text-white/40">
+          <p className="font-sans text-xs text-white">
             Smart Home • ELV • AV • Networking Solutions
           </p>
         </div>
