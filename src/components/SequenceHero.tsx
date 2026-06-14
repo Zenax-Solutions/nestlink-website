@@ -286,6 +286,7 @@ export default function SequenceHero() {
   const [ready, setReady] = useState(false)
   const [videoOpacity, setVideoOpacity] = useState(1)
   const [canvasOpacity, setCanvasOpacity] = useState(0)
+  const [scrollOpacity, setScrollOpacity] = useState(1)
 
   // Preload frames
   useEffect(() => {
@@ -381,6 +382,9 @@ export default function SequenceHero() {
         const idx = Math.min(Math.round(frameProgress * (TOTAL - 1)), TOTAL - 1)
         drawFrame(idx)
 
+        // Scroll indicator fade out over first 20%
+        setScrollOpacity(Math.max(0, 1 - p / 0.2))
+
         setProgress(p)
       },
     })
@@ -430,6 +434,19 @@ export default function SequenceHero() {
               {o.content()}
             </div>
           ))}
+        </div>
+
+        {/* Scroll indicator */}
+        <div
+          className="absolute bottom-8 left-1/2 z-30 flex -translate-x-1/2 flex-col items-center gap-2 transition-opacity duration-100"
+          style={{ opacity: scrollOpacity }}
+        >
+          <span className="animate-bounce text-white">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 5v14M19 12l-7 7-7-7" />
+            </svg>
+          </span>
+          <span className="font-sans text-xs tracking-widest text-white/60 uppercase">Scroll</span>
         </div>
       </div>
     </section>
