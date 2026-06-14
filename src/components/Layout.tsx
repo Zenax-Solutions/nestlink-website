@@ -136,7 +136,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </AnimatePresence>
 
       {/* Main content */}
-      <main className="pt-[72px]">{children}</main>
+      <main>{children}</main>
     </div>
   )
 }

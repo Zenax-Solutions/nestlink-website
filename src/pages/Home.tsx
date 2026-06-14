@@ -10,7 +10,7 @@ import {
   CheckCircle,
   Settings,
 } from 'lucide-react'
-import HomeHero from '../components/HomeHero'
+import SequenceHero from '../components/SequenceHero'
 import AnimatedSection, {
   StaggerContainer,
   StaggerItem,
@@ -67,10 +67,10 @@ const whyUs = [
 export default function Home() {
   return (
     <div>
-      <HomeHero />
+      <SequenceHero />
 
       {/* Services Preview */}
-      <section className="relative bg-[#070b0a] py-24">
+      <section className="relative bg-[#070b0a] pt-12 pb-24">
         <div className="mx-auto max-w-7xl px-6 md:px-12">
           <AnimatedSection className="mb-14 text-center">
             <span className="font-jakarta text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">

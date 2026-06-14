@@ -61,7 +61,7 @@ export default function About() {
   return (
     <div>
       {/* Page Hero */}
-      <section className="relative overflow-hidden bg-[#070b0a] pb-20 pt-32">
+      <section className="relative overflow-hidden bg-[#070b0a] pb-20 pt-40">
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0000FF]/5 to-transparent" />
         <div className="relative mx-auto max-w-7xl px-6 md:px-12">
           <AnimatedSection>
