@@ -95,13 +95,15 @@ function frameSrc(i: number) {
 function GlassCard({ children, className = '' }: { children: ReactNode; className?: string }) {
   return (
     <div
-      className={`rounded-2xl md:rounded-[1.75rem] border border-white/[0.12] p-5 md:p-7 lg:p-9 ${className}`}
+      className={`rounded-2xl md:rounded-[1.75rem] border border-white/[0.12] p-6 md:p-7 lg:p-9 ${className}`}
       style={{
         background: 'rgba(255,255,255,0.08)',
         backgroundBlendMode: 'luminosity',
-        backdropFilter: 'blur(40px) saturate(150%)',
-        WebkitBackdropFilter: 'blur(40px) saturate(150%)',
+        backdropFilter: 'blur(60px) saturate(150%)',
+        WebkitBackdropFilter: 'blur(60px) saturate(150%)',
         boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.15), 0 16px 48px rgba(0,0,0,0.4)',
+        transform: 'translateZ(0)',
+        backfaceVisibility: 'hidden',
       }}
     >
       {children}
@@ -126,14 +128,14 @@ function DetailCard({
 }) {
   const positionClasses =
     align === 'right'
-      ? 'mr-4 md:mr-12 lg:mr-16 ml-auto'
-      : 'ml-4 md:ml-12 lg:ml-16 mr-auto'
+      ? 'mx-4 md:mr-12 md:ml-auto lg:mr-16'
+      : 'mx-4 md:ml-12 md:mr-auto lg:ml-16'
 
   return (
     <GlassCard className={`w-full max-w-sm md:max-w-md lg:max-w-lg ${positionClasses}`}>
       {/* Header */}
       <div className="flex items-start justify-between gap-4">
-        <h3 className="font-sans text-[clamp(1.5rem,min(3.5vw,5vh),2.5rem)] font-medium leading-[1.05] text-white">
+        <h3 className="font-sans text-[clamp(1.25rem,6vw,1.75rem)] font-medium leading-[1.05] text-white md:text-[clamp(1.5rem,min(3.5vw,5vh),2.5rem)]">
           {title}
         </h3>
         <ChevronUp size={24} className="shrink-0 text-white md:size-7" />
@@ -174,23 +176,23 @@ const overlays = [
   {
     start: 0, end: 0.22, align: 'left',
     content: () => (
-      <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
+      <div className="mx-auto w-full max-w-7xl px-5 pt-20 md:px-6 md:pt-0">
         <div className="max-w-4xl">
 
-          <h1 className="mt-4 font-sans font-extrabold leading-[1.15] tracking-tight text-white text-[clamp(4rem,min(8.5vw,10vh),7rem)]">
+          <h1 className="font-sans text-[clamp(2.5rem,11vw,3.75rem)] font-extrabold leading-[1.05] tracking-tight text-white md:text-[clamp(3.5rem,7vw,5rem)] lg:text-[clamp(4rem,8.5vw,7rem)]">
             Next Gen<br />
             Smart Living<br />
             <Typewriter words={ROTATING_WORDS} />
           </h1>
 
-          <p className="mt-4 max-w-xl font-sans text-base leading-relaxed text-white/80 md:text-lg md:mt-5">
+          <p className="mt-4 max-w-xl font-sans text-sm leading-relaxed text-white/80 md:text-base md:text-lg md:mt-5">
             We engineer intelligent spaces where technology disappears into the background, so you can live, work, and relax with effortless control, security, and comfort.
           </p>
 
-          <div className="mt-5 flex flex-wrap items-center gap-4 md:mt-6">
+          <div className="mt-6 flex flex-col gap-3 md:mt-8 md:flex-row md:items-center md:gap-4">
             <Link
               to="/contact"
-              className="group inline-flex items-center gap-3 rounded-full bg-white px-7 py-4 font-sans text-sm font-bold text-[#070b0a] transition-all duration-200 hover:scale-105 hover:shadow-xl"
+              className="group inline-flex items-center justify-center gap-3 rounded-full bg-white px-7 py-4 font-sans text-sm font-bold text-[#070b0a] transition-all duration-200 hover:scale-105 hover:shadow-xl"
             >
               Start your project
               <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#070b0a]">
@@ -199,7 +201,7 @@ const overlays = [
             </Link>
             <Link
               to="/services"
-              className="inline-flex items-center gap-2 font-sans text-sm font-semibold text-white underline-offset-4 transition-all hover:text-[#0000FF] hover:underline"
+              className="inline-flex items-center justify-center gap-2 py-3 font-sans text-sm font-semibold text-white underline-offset-4 transition-all hover:text-[#0000FF] hover:underline md:py-4"
             >
               Explore services
             </Link>
@@ -258,6 +260,18 @@ function overlayOpacity(p: number, start: number, end: number): number {
   if (p < start + 0.05) return (p - (start - 0.02)) / 0.07
   if (p < end - 0.05) return 1
   return Math.max(0, 1 - (p - (end - 0.05)) / 0.07)
+}
+
+function overlayTransform(p: number, start: number): number {
+  if (start === 0) return 0
+  const isMobile = window.innerWidth < 768
+  const distance = isMobile ? 50 : 12
+  if (p < start - 0.02) return distance
+  if (p < start + 0.05) {
+    const t = (p - (start - 0.02)) / 0.07
+    return (1 - t) * distance
+  }
+  return 0
 }
 
 function drawCover(ctx: CanvasRenderingContext2D, img: HTMLImageElement, w: number, h: number) {
@@ -429,7 +443,11 @@ export default function SequenceHero() {
             <div
               key={o.start}
               className="absolute inset-0 flex items-center"
-              style={{ opacity: overlayOpacity(progress, o.start, o.end) }}
+              style={{
+                opacity: overlayOpacity(progress, o.start, o.end),
+                transform: `translateY(${overlayTransform(progress, o.start)}px)`,
+                willChange: 'opacity, transform',
+              }}
             >
               {o.content()}
             </div>
