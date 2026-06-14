@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Clock, CheckCircle2, MapPin, Headphones } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -49,9 +50,17 @@ const cards = [
   },
 ]
 
+const summaryTiles = [
+  { label: 'Years Experience', value: '10+', icon: Clock },
+  { label: 'Projects Delivered', value: '500+', icon: CheckCircle2 },
+  { label: 'UAE Coverage', value: 'Dubai', icon: MapPin },
+  { label: 'Support', value: '24/7', icon: Headphones },
+]
+
 export default function WhatWeDo() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
+  const summaryRef = useRef<HTMLDivElement>(null)
   const triggersRef = useRef<ScrollTrigger[]>([])
 
   useEffect(() => {
@@ -84,13 +93,42 @@ export default function WhatWeDo() {
     }
   }, [])
 
+  // Fade in summary panel when it scrolls into view
+  useEffect(() => {
+    const summary = summaryRef.current
+    if (!summary) return
+
+    const content = summary.querySelectorAll('.summary-fade')
+    gsap.set(content, { opacity: 0, y: 30 })
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            gsap.to(content, {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              stagger: 0.1,
+              ease: 'power3.out',
+            })
+            observer.disconnect()
+          }
+        })
+      },
+      { threshold: 0.3 }
+    )
+
+    observer.observe(summary)
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section
       ref={sectionRef}
       className="relative h-screen w-full overflow-hidden bg-[#f2f2f2]"
     >
-      <div className="pointer-events-none absolute inset-0 z-0" />
-
       {/* Header */}
       <div className="relative z-10 mx-auto flex h-[30%] max-w-7xl flex-col items-center justify-center px-6 text-center md:px-12">
         <span className="rounded-full border border-black/10 bg-white px-4 py-1.5 font-sans text-[11px] font-bold uppercase tracking-[0.15em] text-black/70">
@@ -138,6 +176,52 @@ export default function WhatWeDo() {
             </div>
           </div>
         ))}
+
+        {/* Summary panel */}
+        <div
+          ref={summaryRef}
+          className="relative h-[62vh] w-[90vw] flex-shrink-0 overflow-hidden rounded-3xl bg-[#0a0a0a] md:w-[60vw] lg:w-[40vw]"
+        >
+          <img
+            src="/smart-home.jpg"
+            alt="Smart home interior"
+            className="absolute inset-0 h-full w-full object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-black/50" />
+
+          <div className="relative z-10 flex h-full flex-col justify-between p-8 md:p-10">
+            <div className="summary-fade">
+              <span className="rounded-full border border-white/10 bg-white/5 px-4 py-1.5 font-sans text-[11px] font-bold uppercase tracking-[0.15em] text-white/70">
+                Why NestLink
+              </span>
+              <h3 className="mt-5 max-w-md font-sans text-2xl font-bold leading-tight text-white md:text-3xl">
+                Your Trusted Technology Partner
+              </h3>
+              <p className="mt-4 max-w-md font-sans text-sm leading-relaxed text-white/70 md:text-base">
+                From concept to completion, we deliver smart solutions that
+                elevate comfort, security, and efficiency for every space.
+              </p>
+            </div>
+
+            <div className="summary-fade grid grid-cols-2 gap-3 md:gap-4">
+              {summaryTiles.map((tile) => (
+                <div
+                  key={tile.label}
+                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 backdrop-blur-sm md:p-5"
+                >
+                  <tile.icon size={22} className="text-[#0000FF]" />
+                  <div className="mt-3 font-sans text-2xl font-bold text-white md:text-3xl">
+                    {tile.value}
+                  </div>
+                  <div className="mt-1 font-sans text-xs uppercase tracking-wider text-white/50 md:text-sm">
+                    {tile.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )
