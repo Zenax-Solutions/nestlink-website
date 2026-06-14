@@ -95,7 +95,7 @@ function frameSrc(i: number) {
 function GlassCard({ children, className = '' }: { children: ReactNode; className?: string }) {
   return (
     <div
-      className={`rounded-[1.75rem] border border-white/[0.12] p-7 md:p-9 ${className}`}
+      className={`rounded-2xl md:rounded-[1.75rem] border border-white/[0.12] p-5 md:p-7 lg:p-9 ${className}`}
       style={{
         background: 'rgba(255,255,255,0.08)',
         backgroundBlendMode: 'luminosity',
@@ -126,44 +126,44 @@ function DetailCard({
 }) {
   const positionClasses =
     align === 'right'
-      ? 'mr-0 md:mr-16 lg:mr-24 ml-auto'
-      : 'ml-6 md:ml-16 lg:ml-24 mr-auto'
+      ? 'mr-4 md:mr-12 lg:mr-16 ml-auto'
+      : 'ml-4 md:ml-12 lg:ml-16 mr-auto'
 
   return (
-    <GlassCard className={`w-full max-w-md md:max-w-lg ${positionClasses}`}>
+    <GlassCard className={`w-full max-w-sm md:max-w-md lg:max-w-lg ${positionClasses}`}>
       {/* Header */}
       <div className="flex items-start justify-between gap-4">
-        <h3 className="font-sans text-3xl font-medium leading-[1.05] text-white md:text-4xl lg:text-[2.75rem]">
+        <h3 className="font-sans text-[clamp(1.5rem,min(3.5vw,5vh),2.5rem)] font-medium leading-[1.05] text-white">
           {title}
         </h3>
-        <ChevronUp size={28} className="shrink-0 text-white" />
+        <ChevronUp size={24} className="shrink-0 text-white md:size-7" />
       </div>
 
       {/* Divider */}
-      <div className="my-6 h-px bg-white/20" />
+      <div className="my-4 h-px bg-white/20 md:my-5 lg:my-6" />
 
       {/* Subtitle */}
-      <p className="font-sans text-lg md:text-xl text-white">{subtitle}</p>
+      <p className="font-sans text-base text-white md:text-lg">{subtitle}</p>
 
       {/* Divider */}
-      <div className="my-6 h-px bg-white/20" />
+      <div className="my-4 h-px bg-white/20 md:my-5 lg:my-6" />
 
       {/* Description */}
-      <p className="font-sans text-base md:text-lg leading-relaxed text-white/95">
+      <p className="font-sans text-sm md:text-base leading-relaxed text-white/95">
         {description}
       </p>
 
       {/* Divider */}
-      <div className="my-6 h-px bg-white/20" />
+      <div className="my-4 h-px bg-white/20 md:my-5 lg:my-6" />
 
       {/* Footer CTA */}
       <Link
         to={href}
-        className="group inline-flex items-center gap-3 font-sans text-base md:text-lg font-semibold text-white transition-opacity hover:opacity-80"
+        className="group inline-flex items-center gap-2 md:gap-3 font-sans text-sm md:text-base font-semibold text-white transition-opacity hover:opacity-80"
       >
         {cta}
-        <span className="flex h-7 w-7 md:h-8 md:w-8 items-center justify-center rounded-full bg-white">
-          <ArrowUpRight size={16} className="text-[#070b0a]" />
+        <span className="flex h-6 w-6 md:h-7 md:w-7 items-center justify-center rounded-full bg-white">
+          <ArrowUpRight size={14} className="text-[#070b0a] md:size-4" />
         </span>
       </Link>
     </GlassCard>
@@ -176,22 +176,18 @@ const overlays = [
     content: () => (
       <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
         <div className="max-w-4xl">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 font-sans text-xs font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
-            <span className="h-2 w-2 rounded-full bg-[#0000FF]" />
-            Smart Home • ELV • AV • Networking
-          </span>
 
-          <h1 className="mt-6 font-sans text-5xl font-extrabold uppercase leading-[0.9] tracking-tight text-white md:text-6xl lg:text-7xl xl:text-8xl">
-            Next—Gen<br />
+          <h1 className="mt-4 font-sans font-extrabold  leading-[0.9] tracking-tight text-white text-[clamp(2.5rem,min(6vw,8.5vh),5.5rem)] md:leading-[0.88]">
+            Next Gen<br />
             Smart Living<br />
             <Typewriter words={ROTATING_WORDS} />
           </h1>
 
-          <p className="mt-6 max-w-xl font-sans text-base leading-relaxed text-white/80 md:text-lg">
-            We engineer intelligent spaces where technology disappears into the background — so you can live, work, and relax with effortless control, security, and comfort.
+          <p className="mt-4 max-w-xl font-sans text-base leading-relaxed text-white/80 md:text-lg md:mt-5">
+            We engineer intelligent spaces where technology disappears into the background, so you can live, work, and relax with effortless control, security, and comfort.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <div className="mt-5 flex flex-wrap items-center gap-4 md:mt-6">
             <Link
               to="/contact"
               className="group inline-flex items-center gap-3 rounded-full bg-white px-7 py-4 font-sans text-sm font-bold text-[#070b0a] transition-all duration-200 hover:scale-105 hover:shadow-xl"
