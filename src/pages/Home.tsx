@@ -1,59 +1,8 @@
 import { Link } from 'react-router-dom'
-import {
-  Home as HomeIcon,
-  Shield,
-  Lock,
-  Wifi,
-  Monitor,
-  Lightbulb,
-  ArrowRight,
-  CheckCircle,
-  Settings,
-} from 'lucide-react'
+import { ArrowRight, CheckCircle, Settings } from 'lucide-react'
 import SequenceHero from '../components/SequenceHero'
-import AnimatedSection, {
-  StaggerContainer,
-  StaggerItem,
-} from '../components/AnimatedSection'
-
-const services = [
-  {
-    icon: HomeIcon,
-    title: 'Smart Home Automation',
-    description:
-      'Lighting, climate, curtain, and scene control through apps and voice assistants.',
-  },
-  {
-    icon: Shield,
-    title: 'Security & CCTV Systems',
-    description:
-      'Advanced surveillance, smart alerts, and 24/7 remote monitoring.',
-  },
-  {
-    icon: Lock,
-    title: 'Access Control & Intercom',
-    description:
-      'Smart locks, video intercoms, and secure visitor management.',
-  },
-  {
-    icon: Wifi,
-    title: 'Networking Solutions',
-    description:
-      'Structured cabling, Wi-Fi systems, access points, and network racks.',
-  },
-  {
-    icon: Monitor,
-    title: 'Audio, Video & Home Cinema',
-    description:
-      'Immersive home cinemas, multi-room audio, and conference room AV.',
-  },
-  {
-    icon: Lightbulb,
-    title: 'Lighting & ELV Solutions',
-    description:
-      'Indoor, outdoor, and garden lighting with complete ELV infrastructure.',
-  },
-]
+import WhatWeDo from '../components/WhatWeDo'
+import AnimatedSection from '../components/AnimatedSection'
 
 const whyUs = [
   'Customized solutions for every space',
@@ -69,47 +18,8 @@ export default function Home() {
     <div>
       <SequenceHero />
 
-      {/* Services Preview */}
-      <section className="relative bg-[#070b0a] pt-12 pb-24">
-        <div className="mx-auto max-w-7xl px-6 md:px-12">
-          <AnimatedSection className="mb-14 text-center">
-            <span className="font-sans text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">
-              What We Do
-            </span>
-            <h2 className="mx-auto mt-3 max-w-2xl font-sans text-3xl font-bold leading-tight text-white md:text-4xl">
-              End-to-end smart technology solutions for every space
-            </h2>
-          </AnimatedSection>
-
-          <StaggerContainer className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <StaggerItem key={service.title}>
-                <Link
-                  to="/services"
-                  className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.02] p-7 transition-all duration-300 hover:border-[#0000FF]/30 hover:bg-white/[0.04]"
-                >
-                  <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[#0000FF]/10 text-[#0000FF] transition-colors duration-300 group-hover:bg-[#0000FF] group-hover:text-white">
-                    <service.icon size={24} />
-                  </div>
-                  <h3 className="font-sans text-lg font-bold text-white">
-                    {service.title}
-                  </h3>
-                  <p className="mt-2 flex-1 font-sans text-sm leading-relaxed text-white/60">
-                    {service.description}
-                  </p>
-                  <span className="mt-5 inline-flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-wider text-[#0000FF]">
-                    Learn More
-                    <ArrowRight
-                      size={14}
-                      className="transition-transform duration-200 group-hover:translate-x-1"
-                    />
-                  </span>
-                </Link>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
+      {/* What We Do */}
+      <WhatWeDo />
 
       {/* Why Choose Us */}
       <section className="relative overflow-hidden bg-[#0a100e] py-24">
