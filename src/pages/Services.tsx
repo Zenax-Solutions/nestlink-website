@@ -156,14 +156,14 @@ export default function Services() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0000FF]/5 to-transparent" />
         <div className="relative mx-auto max-w-7xl px-6 md:px-12">
           <AnimatedSection>
-            <span className="font-jakarta text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">
+            <span className="font-sans text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">
               Our Services
             </span>
-            <h1 className="mt-4 max-w-3xl font-inter text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-white md:text-5xl lg:text-6xl">
+            <h1 className="mt-4 max-w-3xl font-sans text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-white md:text-5xl lg:text-6xl">
               Complete smart technology solutions
               <span className="text-[#0000FF]">.</span>
             </h1>
-            <p className="mt-6 max-w-2xl font-inter text-base leading-relaxed text-white/60">
+            <p className="mt-6 max-w-2xl font-sans text-base leading-relaxed text-white/60">
               From smart homes to commercial buildings, NestLink Technologies
               delivers integrated automation, security, networking, and AV
               systems tailored to your space.
@@ -182,17 +182,17 @@ export default function Services() {
                   <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#0000FF]/10 text-[#0000FF]">
                     <service.icon size={28} />
                   </div>
-                  <h3 className="font-inter text-xl font-bold text-white">
+                  <h3 className="font-sans text-xl font-bold text-white">
                     {service.title}
                   </h3>
-                  <p className="mt-3 font-inter text-sm leading-relaxed text-white/60">
+                  <p className="mt-3 font-sans text-sm leading-relaxed text-white/60">
                     {service.description}
                   </p>
                   <ul className="mt-6 grid gap-2 sm:grid-cols-2">
                     {service.features.map((feature) => (
                       <li
                         key={feature}
-                        className="flex items-center gap-2 font-inter text-sm text-white/70"
+                        className="flex items-center gap-2 font-sans text-sm text-white/70"
                       >
                         <CheckCircle size={14} className="text-[#0000FF]" />
                         {feature}
@@ -210,13 +210,13 @@ export default function Services() {
       <section className="bg-[#070b0a] py-24">
         <div className="mx-auto max-w-7xl px-6 md:px-12">
           <AnimatedSection className="mb-14 text-center">
-            <span className="font-jakarta text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">
+            <span className="font-sans text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">
               Specialty Solutions
             </span>
-            <h2 className="mt-3 font-inter text-3xl font-bold text-white md:text-4xl">
+            <h2 className="mt-3 font-sans text-3xl font-bold text-white md:text-4xl">
               Smart automation, security & AV
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl font-inter text-base text-white/60">
+            <p className="mx-auto mt-4 max-w-2xl font-sans text-base text-white/60">
               Best suited for villas, apartments, offices, and retail spaces.
             </p>
           </AnimatedSection>
@@ -229,10 +229,10 @@ export default function Services() {
                     size={24}
                     className="mb-4 text-[#0000FF]"
                   />
-                  <h4 className="font-inter text-base font-bold text-white">
+                  <h4 className="font-sans text-base font-bold text-white">
                     {item.title}
                   </h4>
-                  <p className="mt-2 font-inter text-sm leading-relaxed text-white/60">
+                  <p className="mt-2 font-sans text-sm leading-relaxed text-white/60">
                     {item.text}
                   </p>
                 </div>
@@ -246,10 +246,10 @@ export default function Services() {
       <section className="bg-[#0a100e] py-24">
         <div className="mx-auto max-w-7xl px-6 md:px-12">
           <AnimatedSection className="mb-12 text-center">
-            <span className="font-jakarta text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">
+            <span className="font-sans text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">
               Technology Platforms
             </span>
-            <h2 className="mt-3 font-inter text-3xl font-bold text-white md:text-4xl">
+            <h2 className="mt-3 font-sans text-3xl font-bold text-white md:text-4xl">
               Trusted brands we work with
             </h2>
           </AnimatedSection>
@@ -262,7 +262,7 @@ export default function Services() {
                     key={platform}
                     className="rounded-full border border-white/10 bg-white/[0.03] px-8 py-4"
                   >
-                    <span className="font-inter text-sm font-semibold text-white/90">
+                    <span className="font-sans text-sm font-semibold text-white/90">
                       {platform}
                     </span>
                   </div>
@@ -277,16 +277,16 @@ export default function Services() {
       <section className="bg-[#070b0a] py-24">
         <div className="mx-auto max-w-4xl px-6 text-center md:px-12">
           <AnimatedSection>
-            <h2 className="font-inter text-3xl font-bold leading-tight text-white md:text-4xl">
+            <h2 className="font-sans text-3xl font-bold leading-tight text-white md:text-4xl">
               Not sure which solution fits your project?
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl font-inter text-base text-white/60">
+            <p className="mx-auto mt-4 max-w-2xl font-sans text-base text-white/60">
               Our team will assess your space and recommend the right mix of
               technology, products, and budget.
             </p>
             <Link
               to="/contact"
-              className="group mt-8 inline-flex items-center gap-3 rounded-full bg-[#0000FF] px-8 py-4 font-inter text-sm font-bold uppercase text-white transition-transform duration-200 hover:scale-105"
+              className="group mt-8 inline-flex items-center gap-3 rounded-full bg-[#0000FF] px-8 py-4 font-sans text-sm font-bold uppercase text-white transition-transform duration-200 hover:scale-105"
             >
               Request a Free Consultation
               <ArrowRight

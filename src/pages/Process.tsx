@@ -75,14 +75,14 @@ export default function Process() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0000FF]/5 to-transparent" />
         <div className="relative mx-auto max-w-7xl px-6 md:px-12">
           <AnimatedSection>
-            <span className="font-jakarta text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">
+            <span className="font-sans text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">
               How We Work
             </span>
-            <h1 className="mt-4 max-w-3xl font-inter text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-white md:text-5xl lg:text-6xl">
+            <h1 className="mt-4 max-w-3xl font-sans text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-white md:text-5xl lg:text-6xl">
               From concept to completion
               <span className="text-[#0000FF]">.</span>
             </h1>
-            <p className="mt-6 max-w-2xl font-inter text-base leading-relaxed text-white/60">
+            <p className="mt-6 max-w-2xl font-sans text-base leading-relaxed text-white/60">
               Our proven project delivery process ensures every system is
               designed, installed, tested, and supported with precision.
             </p>
@@ -97,16 +97,16 @@ export default function Process() {
             {steps.map((step, index) => (
               <StaggerItem key={step.title}>
                 <div className="relative h-full rounded-3xl border border-white/10 bg-white/[0.02] p-8 transition-colors duration-300 hover:border-[#0000FF]/30 md:p-10">
-                  <span className="absolute right-6 top-6 font-inter text-5xl font-extrabold text-white/5">
+                  <span className="absolute right-6 top-6 font-sans text-5xl font-extrabold text-white/5">
                     {step.number}
                   </span>
                   <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#0000FF]/10 text-[#0000FF]">
                     <step.icon size={28} />
                   </div>
-                  <h3 className="font-inter text-xl font-bold text-white">
+                  <h3 className="font-sans text-xl font-bold text-white">
                     {step.title}
                   </h3>
-                  <p className="mt-3 font-inter text-sm leading-relaxed text-white/60">
+                  <p className="mt-3 font-sans text-sm leading-relaxed text-white/60">
                     {step.description}
                   </p>
                   {index < steps.length - 1 && (
@@ -125,10 +125,10 @@ export default function Process() {
       <section className="bg-[#070b0a] py-24">
         <div className="mx-auto max-w-7xl px-6 md:px-12">
           <AnimatedSection className="mb-14 text-center">
-            <span className="font-jakarta text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">
+            <span className="font-sans text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">
               Simple Workflow
             </span>
-            <h2 className="mt-3 font-inter text-3xl font-bold text-white md:text-4xl">
+            <h2 className="mt-3 font-sans text-3xl font-bold text-white md:text-4xl">
               Five stages. One seamless experience.
             </h2>
           </AnimatedSection>
@@ -141,7 +141,7 @@ export default function Process() {
                     <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#0000FF]/10 text-xs font-bold text-[#0000FF]">
                       {index + 1}
                     </span>
-                    <span className="font-inter text-sm font-semibold text-white/90">
+                    <span className="font-sans text-sm font-semibold text-white/90">
                       {item}
                     </span>
                   </div>
@@ -160,13 +160,13 @@ export default function Process() {
         <div className="mx-auto max-w-7xl px-6 md:px-12">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <AnimatedSection>
-              <span className="font-jakarta text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">
+              <span className="font-sans text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">
                 After-Sales Support
               </span>
-              <h2 className="mt-3 font-inter text-3xl font-bold leading-tight text-white md:text-4xl">
+              <h2 className="mt-3 font-sans text-3xl font-bold leading-tight text-white md:text-4xl">
                 We stay with you after handover
               </h2>
-              <p className="mt-5 font-inter text-base leading-relaxed text-white/60">
+              <p className="mt-5 font-sans text-base leading-relaxed text-white/60">
                 Technology should keep working. Our team provides dependable
                 after-sales service including maintenance, system upgrades,
                 troubleshooting, and remote assistance whenever you need it.
@@ -183,7 +183,7 @@ export default function Process() {
                       size={20}
                       className="mt-0.5 shrink-0 text-[#0000FF]"
                     />
-                    <span className="font-inter text-sm text-white/80">
+                    <span className="font-sans text-sm text-white/80">
                       {item}
                     </span>
                   </li>
@@ -193,17 +193,17 @@ export default function Process() {
 
             <AnimatedSection delay={0.15}>
               <div className="rounded-3xl border border-[#0000FF]/20 bg-[#0000FF]/5 p-8 md:p-10">
-                <h3 className="font-inter text-2xl font-bold text-white">
+                <h3 className="font-sans text-2xl font-bold text-white">
                   Start your project today
                 </h3>
-                <p className="mt-3 font-inter text-base text-white/60">
+                <p className="mt-3 font-sans text-base text-white/60">
                   Book a free consultation and site survey. We’ll recommend the
                   right technology plan for your space.
                 </p>
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                   <Link
                     to="/contact"
-                    className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#0000FF] px-8 py-4 font-inter text-sm font-bold uppercase text-white transition-transform duration-200 hover:scale-105"
+                    className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#0000FF] px-8 py-4 font-sans text-sm font-bold uppercase text-white transition-transform duration-200 hover:scale-105"
                   >
                     Book Consultation
                     <ArrowRight
@@ -213,7 +213,7 @@ export default function Process() {
                   </Link>
                   <a
                     href="tel:+971504429734"
-                    className="inline-flex items-center justify-center gap-3 rounded-full border border-white/15 bg-white/5 px-8 py-4 font-inter text-sm font-bold uppercase text-white transition-colors duration-200 hover:border-[#0000FF]/50 hover:text-[#0000FF]"
+                    className="inline-flex items-center justify-center gap-3 rounded-full border border-white/15 bg-white/5 px-8 py-4 font-sans text-sm font-bold uppercase text-white transition-colors duration-200 hover:border-[#0000FF]/50 hover:text-[#0000FF]"
                   >
                     <Phone size={18} />
                     Call Us

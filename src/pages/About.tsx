@@ -65,14 +65,14 @@ export default function About() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0000FF]/5 to-transparent" />
         <div className="relative mx-auto max-w-7xl px-6 md:px-12">
           <AnimatedSection>
-            <span className="font-jakarta text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">
+            <span className="font-sans text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">
               About Us
             </span>
-            <h1 className="mt-4 max-w-3xl font-inter text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-white md:text-5xl lg:text-6xl">
+            <h1 className="mt-4 max-w-3xl font-sans text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-white md:text-5xl lg:text-6xl">
               Technology that fits your space
               <span className="text-[#0000FF]">.</span>
             </h1>
-            <p className="mt-6 max-w-2xl font-inter text-base leading-relaxed text-white/60">
+            <p className="mt-6 max-w-2xl font-sans text-base leading-relaxed text-white/60">
               NestLink Technologies is a Dubai-based technology solutions provider
               specializing in smart home automation, ELV systems, networking,
               security, lighting, and audio-visual integration for villas, homes,
@@ -91,10 +91,10 @@ export default function About() {
                 <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#0000FF]/10 text-[#0000FF]">
                   <Target size={28} />
                 </div>
-                <h2 className="font-inter text-2xl font-bold text-white md:text-3xl">
+                <h2 className="font-sans text-2xl font-bold text-white md:text-3xl">
                   Our Mission
                 </h2>
-                <p className="mt-4 font-inter text-base leading-relaxed text-white/60">
+                <p className="mt-4 font-sans text-base leading-relaxed text-white/60">
                   To design, supply, install, and support intelligent technology
                   systems that make spaces smarter, safer, more connected, and
                   easier to manage.
@@ -108,7 +108,7 @@ export default function About() {
                   ].map((item) => (
                     <li key={item} className="flex items-center gap-3">
                       <span className="h-1.5 w-1.5 rounded-full bg-[#0000FF]" />
-                      <span className="font-inter text-sm text-white/70">{item}</span>
+                      <span className="font-sans text-sm text-white/70">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -120,10 +120,10 @@ export default function About() {
                 <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#0000FF]/10 text-[#0000FF]">
                   <Eye size={28} />
                 </div>
-                <h2 className="font-inter text-2xl font-bold text-white md:text-3xl">
+                <h2 className="font-sans text-2xl font-bold text-white md:text-3xl">
                   Our Vision
                 </h2>
-                <p className="mt-4 font-inter text-base leading-relaxed text-white/60">
+                <p className="mt-4 font-sans text-base leading-relaxed text-white/60">
                   To become a trusted technology partner in the UAE for smart home
                   automation, ELV, security, networking, and AV integration —
                   recognized for professional design, quality workmanship,
@@ -139,10 +139,10 @@ export default function About() {
       <section className="bg-[#070b0a] py-24">
         <div className="mx-auto max-w-7xl px-6 md:px-12">
           <AnimatedSection className="mb-14 text-center">
-            <span className="font-jakarta text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">
+            <span className="font-sans text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">
               What Drives Us
             </span>
-            <h2 className="mt-3 font-inter text-3xl font-bold text-white md:text-4xl">
+            <h2 className="mt-3 font-sans text-3xl font-bold text-white md:text-4xl">
               Core Values
             </h2>
           </AnimatedSection>
@@ -154,10 +154,10 @@ export default function About() {
                   <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#0000FF]/10 text-[#0000FF]">
                     <value.icon size={26} />
                   </div>
-                  <h3 className="font-inter text-lg font-bold text-white">
+                  <h3 className="font-sans text-lg font-bold text-white">
                     {value.title}
                   </h3>
-                  <p className="mt-2 font-inter text-sm leading-relaxed text-white/60">
+                  <p className="mt-2 font-sans text-sm leading-relaxed text-white/60">
                     {value.text}
                   </p>
                 </div>
@@ -171,10 +171,10 @@ export default function About() {
       <section className="bg-[#0a100e] py-24">
         <div className="mx-auto max-w-7xl px-6 md:px-12">
           <AnimatedSection className="mb-14 text-center">
-            <span className="font-jakarta text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">
+            <span className="font-sans text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">
               Field Objectives
             </span>
-            <h2 className="mt-3 font-inter text-3xl font-bold text-white md:text-4xl">
+            <h2 className="mt-3 font-sans text-3xl font-bold text-white md:text-4xl">
               Built around what matters most
             </h2>
           </AnimatedSection>
@@ -187,10 +187,10 @@ export default function About() {
                     <obj.icon size={22} />
                   </div>
                   <div>
-                    <h3 className="font-inter text-base font-bold text-white">
+                    <h3 className="font-sans text-base font-bold text-white">
                       {obj.title}
                     </h3>
-                    <p className="mt-1 font-inter text-sm leading-relaxed text-white/60">
+                    <p className="mt-1 font-sans text-sm leading-relaxed text-white/60">
                       {obj.text}
                     </p>
                   </div>
@@ -205,16 +205,16 @@ export default function About() {
       <section className="bg-[#070b0a] py-24">
         <div className="mx-auto max-w-4xl px-6 text-center md:px-12">
           <AnimatedSection>
-            <h2 className="font-inter text-3xl font-bold leading-tight text-white md:text-4xl">
+            <h2 className="font-sans text-3xl font-bold leading-tight text-white md:text-4xl">
               Let’s bring smart technology to your project
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl font-inter text-base text-white/60">
+            <p className="mx-auto mt-4 max-w-2xl font-sans text-base text-white/60">
               From villas to commercial buildings, we design systems that match
               your needs and scale with your future.
             </p>
             <Link
               to="/contact"
-              className="group mt-8 inline-flex items-center gap-3 rounded-full bg-[#0000FF] px-8 py-4 font-inter text-sm font-bold uppercase text-white transition-transform duration-200 hover:scale-105"
+              className="group mt-8 inline-flex items-center gap-3 rounded-full bg-[#0000FF] px-8 py-4 font-sans text-sm font-bold uppercase text-white transition-transform duration-200 hover:scale-105"
             >
               Get in Touch
               <ArrowRight

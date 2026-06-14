@@ -73,10 +73,10 @@ export default function Home() {
       <section className="relative bg-[#070b0a] pt-12 pb-24">
         <div className="mx-auto max-w-7xl px-6 md:px-12">
           <AnimatedSection className="mb-14 text-center">
-            <span className="font-jakarta text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">
+            <span className="font-sans text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">
               What We Do
             </span>
-            <h2 className="mx-auto mt-3 max-w-2xl font-inter text-3xl font-bold leading-tight text-white md:text-4xl">
+            <h2 className="mx-auto mt-3 max-w-2xl font-sans text-3xl font-bold leading-tight text-white md:text-4xl">
               End-to-end smart technology solutions for every space
             </h2>
           </AnimatedSection>
@@ -91,13 +91,13 @@ export default function Home() {
                   <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[#0000FF]/10 text-[#0000FF] transition-colors duration-300 group-hover:bg-[#0000FF] group-hover:text-white">
                     <service.icon size={24} />
                   </div>
-                  <h3 className="font-inter text-lg font-bold text-white">
+                  <h3 className="font-sans text-lg font-bold text-white">
                     {service.title}
                   </h3>
-                  <p className="mt-2 flex-1 font-inter text-sm leading-relaxed text-white/60">
+                  <p className="mt-2 flex-1 font-sans text-sm leading-relaxed text-white/60">
                     {service.description}
                   </p>
-                  <span className="mt-5 inline-flex items-center gap-2 font-inter text-xs font-bold uppercase tracking-wider text-[#0000FF]">
+                  <span className="mt-5 inline-flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-wider text-[#0000FF]">
                     Learn More
                     <ArrowRight
                       size={14}
@@ -117,13 +117,13 @@ export default function Home() {
         <div className="relative mx-auto max-w-7xl px-6 md:px-12">
           <div className="grid items-center gap-16 lg:grid-cols-2">
             <AnimatedSection>
-              <span className="font-jakarta text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">
+              <span className="font-sans text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">
                 Why NestLink
               </span>
-              <h2 className="mt-3 font-inter text-3xl font-bold leading-tight text-white md:text-4xl">
+              <h2 className="mt-3 font-sans text-3xl font-bold leading-tight text-white md:text-4xl">
                 Trusted by property owners across Dubai
               </h2>
-              <p className="mt-5 font-inter text-base leading-relaxed text-white/60">
+              <p className="mt-5 font-sans text-base leading-relaxed text-white/60">
                 From initial consultation to long-term support, we deliver
                 technology that fits your lifestyle, space, and operational
                 needs — without compromise.
@@ -136,7 +136,7 @@ export default function Home() {
                       size={20}
                       className="mt-0.5 shrink-0 text-[#0000FF]"
                     />
-                    <span className="font-inter text-sm text-white/80">
+                    <span className="font-sans text-sm text-white/80">
                       {item}
                     </span>
                   </li>
@@ -145,7 +145,7 @@ export default function Home() {
 
               <Link
                 to="/contact"
-                className="group mt-10 inline-flex items-center gap-3 rounded-full bg-[#0000FF] px-8 py-4 font-inter text-sm font-bold uppercase text-white transition-transform duration-200 hover:scale-105"
+                className="group mt-10 inline-flex items-center gap-3 rounded-full bg-[#0000FF] px-8 py-4 font-sans text-sm font-bold uppercase text-white transition-transform duration-200 hover:scale-105"
               >
                 Start Your Project
                 <ArrowRight
@@ -187,10 +187,10 @@ export default function Home() {
                       size={24}
                       className="mb-4 text-[#0000FF]"
                     />
-                    <h4 className="font-inter text-base font-bold text-white">
+                    <h4 className="font-sans text-base font-bold text-white">
                       {card.title}
                     </h4>
-                    <p className="mt-2 font-inter text-sm text-white/50">
+                    <p className="mt-2 font-sans text-sm text-white/50">
                       {card.text}
                     </p>
                   </div>
@@ -205,17 +205,17 @@ export default function Home() {
       <section className="bg-[#070b0a] py-24">
         <div className="mx-auto max-w-4xl px-6 text-center md:px-12">
           <AnimatedSection>
-            <h2 className="font-inter text-3xl font-bold leading-tight text-white md:text-5xl">
+            <h2 className="font-sans text-3xl font-bold leading-tight text-white md:text-5xl">
               Ready to make your space smarter?
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl font-inter text-base text-white/60">
+            <p className="mx-auto mt-5 max-w-2xl font-sans text-base text-white/60">
               Get a free consultation and discover how NestLink Technologies can
               transform your villa, home, office, or commercial property.
             </p>
             <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
               <Link
                 to="/contact"
-                className="group inline-flex items-center gap-3 rounded-full bg-[#0000FF] px-8 py-4 font-inter text-sm font-bold uppercase text-white transition-transform duration-200 hover:scale-105"
+                className="group inline-flex items-center gap-3 rounded-full bg-[#0000FF] px-8 py-4 font-sans text-sm font-bold uppercase text-white transition-transform duration-200 hover:scale-105"
               >
                 Book Consultation
                 <ArrowRight
@@ -225,7 +225,7 @@ export default function Home() {
               </Link>
               <Link
                 to="/process"
-                className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-8 py-4 font-inter text-sm font-bold uppercase text-white transition-colors duration-200 hover:border-[#0000FF]/50 hover:text-[#0000FF]"
+                className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-8 py-4 font-sans text-sm font-bold uppercase text-white transition-colors duration-200 hover:border-[#0000FF]/50 hover:text-[#0000FF]"
               >
                 Our Process
               </Link>

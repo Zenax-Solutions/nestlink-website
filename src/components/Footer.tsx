@@ -44,9 +44,9 @@ export default function Footer() {
                   fill="#0000FF"
                 />
               </svg>
-              <span className="font-inter text-lg font-bold">NestLink</span>
+              <span className="font-sans text-lg font-bold">NestLink</span>
             </Link>
-            <p className="mt-4 font-inter text-sm leading-relaxed text-white/50">
+            <p className="mt-4 font-sans text-sm leading-relaxed text-white/50">
               Innovative technology solutions for villas, homes, offices &
               commercial spaces across Dubai and the UAE.
             </p>
@@ -54,7 +54,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-inter text-sm font-bold uppercase tracking-widest text-white">
+            <h4 className="font-sans text-sm font-bold uppercase tracking-widest text-white">
               Quick Links
             </h4>
             <ul className="mt-4 space-y-3">
@@ -62,7 +62,7 @@ export default function Footer() {
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="font-inter text-sm text-white/60 transition-colors duration-200 hover:text-[#0000FF]"
+                    className="font-sans text-sm text-white/60 transition-colors duration-200 hover:text-[#0000FF]"
                   >
                     {link.label}
                   </Link>
@@ -73,13 +73,13 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-inter text-sm font-bold uppercase tracking-widest text-white">
+            <h4 className="font-sans text-sm font-bold uppercase tracking-widest text-white">
               Services
             </h4>
             <ul className="mt-4 space-y-3">
               {services.map((service) => (
                 <li key={service}>
-                  <span className="font-inter text-sm text-white/60">
+                  <span className="font-sans text-sm text-white/60">
                     {service}
                   </span>
                 </li>
@@ -89,13 +89,13 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-inter text-sm font-bold uppercase tracking-widest text-white">
+            <h4 className="font-sans text-sm font-bold uppercase tracking-widest text-white">
               Contact
             </h4>
             <ul className="mt-4 space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="mt-0.5 shrink-0 text-[#0000FF]" />
-                <span className="font-inter text-sm text-white/60">
+                <span className="font-sans text-sm text-white/60">
                   Dubai, UAE
                 </span>
               </li>
@@ -103,7 +103,7 @@ export default function Footer() {
                 <Phone size={18} className="shrink-0 text-[#0000FF]" />
                 <a
                   href="tel:+971504429734"
-                  className="font-inter text-sm text-white/60 transition-colors duration-200 hover:text-[#0000FF]"
+                  className="font-sans text-sm text-white/60 transition-colors duration-200 hover:text-[#0000FF]"
                 >
                   +971 50 442 9734
                 </a>
@@ -112,7 +112,7 @@ export default function Footer() {
                 <Mail size={18} className="shrink-0 text-[#0000FF]" />
                 <a
                   href="mailto:info@nestlink.ae"
-                  className="font-inter text-sm text-white/60 transition-colors duration-200 hover:text-[#0000FF]"
+                  className="font-sans text-sm text-white/60 transition-colors duration-200 hover:text-[#0000FF]"
                 >
                   info@nestlink.ae
                 </a>
@@ -122,11 +122,11 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 md:flex-row">
-          <p className="font-inter text-xs text-white/40">
+          <p className="font-sans text-xs text-white/40">
             © {new Date().getFullYear()} NestLink Technologies. All rights
             reserved.
           </p>
-          <p className="font-inter text-xs text-white/40">
+          <p className="font-sans text-xs text-white/40">
             Smart Home • ELV • AV • Networking Solutions
           </p>
         </div>

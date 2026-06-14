@@ -3,9 +3,8 @@
 @theme {
   --color-codenest-bg: #070b0a;
   --color-codenest-green: #0000FF;
-  --font-inter: "Inter", sans-serif;
-  --font-jakarta: "Plus Jakarta Sans", sans-serif;
-  --font-instrument: "Instrument Serif", serif;
+  --font-sans: "Instrument Sans", system-ui, sans-serif;
+  --font-sans: "Instrument Sans", system-ui, sans-serif;
 }
 
 html,
@@ -16,7 +15,7 @@ body,
 }
 
 body {
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: "Instrument Sans", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

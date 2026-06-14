@@ -106,7 +106,7 @@ export default function HomeHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="font-jakarta text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]"
+          className="font-sans text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]"
         >
           Smart Home • ELV • AV • Networking
         </motion.span>
@@ -115,7 +115,7 @@ export default function HomeHero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="mt-5 max-w-4xl font-inter text-[40px] font-extrabold uppercase leading-[0.95] tracking-tight text-white md:text-[58px] lg:text-[72px]"
+          className="mt-5 max-w-4xl font-sans text-[40px] font-extrabold uppercase leading-[0.95] tracking-tight text-white md:text-[58px] lg:text-[72px]"
         >
           Innovative Technology for Smarter Spaces
           <span className="text-[#0000FF]">.</span>
@@ -125,7 +125,7 @@ export default function HomeHero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="mt-6 max-w-[540px] font-inter text-base leading-relaxed text-white/70"
+          className="mt-6 max-w-[540px] font-sans text-base leading-relaxed text-white/70"
         >
           NestLink Technologies designs and delivers intelligent systems for
           villas, homes, offices, and commercial spaces across Dubai — making
@@ -140,7 +140,7 @@ export default function HomeHero() {
         >
           <Link
             to="/services"
-            className="group inline-flex items-center gap-3 rounded-full bg-[#0000FF] px-8 py-4 font-inter text-sm font-bold uppercase text-white transition-transform duration-200 hover:scale-105"
+            className="group inline-flex items-center gap-3 rounded-full bg-[#0000FF] px-8 py-4 font-sans text-sm font-bold uppercase text-white transition-transform duration-200 hover:scale-105"
           >
             Explore Services
             <ArrowRight
@@ -150,7 +150,7 @@ export default function HomeHero() {
           </Link>
           <a
             href="tel:+971504429734"
-            className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-8 py-4 font-inter text-sm font-bold uppercase text-white transition-colors duration-200 hover:border-[#0000FF]/50 hover:text-[#0000FF]"
+            className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-8 py-4 font-sans text-sm font-bold uppercase text-white transition-colors duration-200 hover:border-[#0000FF]/50 hover:text-[#0000FF]"
           >
             <Phone size={18} />
             Call Now
@@ -171,10 +171,10 @@ export default function HomeHero() {
             { value: 'UAE', label: 'Coverage' },
           ].map((stat) => (
             <div key={stat.label}>
-              <div className="font-inter text-2xl font-bold text-[#0000FF]">
+              <div className="font-sans text-2xl font-bold text-[#0000FF]">
                 {stat.value}
               </div>
-              <div className="mt-1 font-inter text-xs uppercase tracking-wider text-white/50">
+              <div className="mt-1 font-sans text-xs uppercase tracking-wider text-white/50">
                 {stat.label}
               </div>
             </div>
