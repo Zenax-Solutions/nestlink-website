@@ -92,7 +92,7 @@ export default function WhatWeDo() {
       <div className="pointer-events-none absolute inset-0 z-0" />
 
       {/* Header */}
-      <div className="relative z-10 mx-auto flex h-[35%] max-w-7xl flex-col items-center justify-center px-6 text-center md:px-12">
+      <div className="relative z-10 mx-auto flex h-[30%] max-w-7xl flex-col items-center justify-center px-6 text-center md:px-12">
         <span className="rounded-full border border-black/10 bg-white px-4 py-1.5 font-sans text-[11px] font-bold uppercase tracking-[0.15em] text-black/70">
           Our Value
         </span>
@@ -104,12 +104,12 @@ export default function WhatWeDo() {
       {/* Carousel track */}
       <div
         ref={trackRef}
-        className="relative z-10 flex h-[65%] items-stretch gap-5 px-6 md:gap-7 md:px-12"
+        className="relative z-10 flex h-[70%] items-center gap-5 px-6 md:gap-6 md:px-12"
       >
         {cards.map((card) => (
           <div
             key={card.num}
-            className="relative h-full w-[85vw] flex-shrink-0 overflow-hidden rounded-3xl md:w-[45vw] lg:w-[35vw]"
+            className="relative h-[62vh] w-[78vw] flex-shrink-0 overflow-hidden rounded-3xl md:w-[38vw] lg:w-[26vw]"
           >
             <img
               src={card.image}
@@ -119,20 +119,20 @@ export default function WhatWeDo() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10" />
 
-            <div className="relative z-10 flex h-full flex-col justify-between p-7 md:p-9">
-              <div className="flex items-start justify-between gap-4">
-                <h3 className="max-w-[70%] font-sans text-xl font-semibold leading-tight text-white md:text-2xl">
-                  {card.title}
-                </h3>
-                <div className="flex items-start font-sans text-5xl font-bold text-white md:text-6xl">
+            <div className="relative z-10 flex h-full flex-col justify-between p-8 md:p-10">
+              <div className="flex items-start gap-4">
+                <div className="flex items-start font-sans text-4xl font-bold leading-none text-white md:text-5xl">
                   {card.num}
-                  <sup className="ml-1 mt-2 text-xs font-medium text-white/70 md:text-sm">
+                  <sup className="ml-1 text-[10px] font-medium text-white/70 md:text-xs">
                     No
                   </sup>
                 </div>
+                <h3 className="flex-1 pt-1 font-sans text-lg font-semibold leading-tight text-white md:text-xl">
+                  {card.title}
+                </h3>
               </div>
 
-              <p className="max-w-md font-sans text-sm leading-relaxed text-white/80 md:text-base">
+              <p className="max-w-sm font-sans text-sm leading-relaxed text-white/80 md:text-base">
                 {card.description}
               </p>
             </div>
