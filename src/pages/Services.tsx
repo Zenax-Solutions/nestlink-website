@@ -176,12 +176,24 @@ export default function Services() {
             transition={{ duration: 0.5 }}
             className="flex flex-wrap items-center justify-center gap-4"
           >
-            {['Aqara', 'KNX', 'Ubiquiti', 'Home Assistant', 'Apple HomeKit', 'Tuya'].map((platform) => (
+            {[
+              { name: 'Aqara', logo: '/brand-logos/Aqara.png' },
+              { name: 'KNX', logo: '/brand-logos/KNX_logo.svg.png' },
+              { name: 'Ubiquiti', logo: '/brand-logos/Ubiquiti_Logo_Horizontal.png' },
+              { name: 'Home Assistant', logo: '/brand-logos/home-assistant-logo-new.png' },
+              { name: 'Apple HomeKit', logo: '/brand-logos/ios-badge-works-with-apple-homekit-e1433344613575.png' },
+              { name: 'Tuya', logo: '/brand-logos/TUYA_BIG-c185e3f1.png' },
+            ].map((platform) => (
               <div
-                key={platform}
-                className="rounded-full border border-black/10 bg-white px-8 py-4 shadow-sm"
+                key={platform.name}
+                className="flex h-20 w-40 items-center justify-center rounded-2xl border border-black/5 bg-white px-6 py-4 shadow-sm transition-colors hover:border-black/10"
               >
-                <span className="font-sans text-sm font-semibold text-black/90">{platform}</span>
+                <img
+                  src={platform.logo}
+                  alt={platform.name}
+                  className="max-h-full w-auto object-contain"
+                  loading="lazy"
+                />
               </div>
             ))}
           </motion.div>

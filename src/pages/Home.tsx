@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Settings, Headphones, ArrowUpRight } from 'lucide-react'
 import SequenceHero from '../components/SequenceHero'
 import WhatWeDo from '../components/WhatWeDo'
+import SecondSequence from '../components/SecondSequence'
 import AnimatedSection from '../components/AnimatedSection'
 import { blogPosts } from '../data/blogs'
 
@@ -13,6 +14,35 @@ export default function Home() {
       {/* What We Do */}
       <WhatWeDo />
 
+      {/* Partners */}
+      <section className="bg-[#f2f2f2] py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-6 md:px-12">
+          <AnimatedSection className="text-center">
+            <p className="font-sans text-sm font-medium text-black/50 md:text-base">
+              Partners in our ecosystem.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+              {[
+                { name: 'Aqara', logo: '/brand-logos/Aqara.png' },
+                { name: 'KNX', logo: '/brand-logos/KNX_logo.svg.png' },
+                { name: 'Ubiquiti', logo: '/brand-logos/Ubiquiti_Logo_Horizontal.png' },
+                { name: 'Home Assistant', logo: '/brand-logos/home-assistant-logo-new.png' },
+                { name: 'Apple HomeKit', logo: '/brand-logos/ios-badge-works-with-apple-homekit-e1433344613575.png' },
+                { name: 'Tuya', logo: '/brand-logos/TUYA_BIG-c185e3f1.png' },
+              ].map((partner) => (
+                <img
+                  key={partner.name}
+                  src={partner.logo}
+                  alt={partner.name}
+                  className="h-8 w-auto object-contain transition-all duration-300 hover:scale-105 md:h-10"
+                  loading="lazy"
+                />
+              ))}
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* Why NestLink */}
       <section className="bg-[#f2f2f2] py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-6 md:px-12">
@@ -20,7 +50,7 @@ export default function Home() {
             <AnimatedSection>
               <div className="relative overflow-hidden rounded-3xl">
                 <img
-                  src="/smart-home.jpg"
+                  src="/space-by-space.png"
                   alt="Smart home interior"
                   className="h-[400px] w-full object-cover md:h-[500px] lg:h-[600px]"
                   loading="lazy"
@@ -76,6 +106,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Space by Space Sequence */}
+      <SecondSequence />
 
       {/* Blog Preview */}
       <section className="bg-[#f2f2f2] py-20 md:py-28">
