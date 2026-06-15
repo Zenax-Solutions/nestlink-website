@@ -1,19 +1,27 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, ArrowUpRight, Phone } from 'lucide-react'
+import { Menu, X, ArrowUpRight, Phone, MessageCircle } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const navLinks = [
   { label: 'Home', path: '/' },
   { label: 'About', path: '/about' },
   { label: 'Services', path: '/services' },
+  { label: 'Portfolio', path: '/portfolio' },
   { label: 'Process', path: '/process' },
+  { label: 'Blog', path: '/blog' },
   { label: 'Contact', path: '/contact' },
 ]
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [showBubble, setShowBubble] = useState(true)
   const location = useLocation()
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowBubble(false), 4000)
+    return () => clearTimeout(timer)
+  }, [])
 
   return (
     <div className="relative min-h-screen bg-[#070b0a] text-white">
@@ -143,6 +151,33 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
       {/* Main content */}
       <main>{children}</main>
+
+      {/* WhatsApp Widget */}
+      <div className="fixed bottom-8 right-8 z-40 flex items-end gap-3">
+        <AnimatePresence>
+          {showBubble && (
+            <motion.div
+              initial={{ opacity: 0, x: 12 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 12 }}
+              transition={{ duration: 0.25 }}
+              className="relative rounded-2xl bg-white px-5 py-3 font-sans text-sm font-semibold text-[#0000FF] shadow-lg"
+            >
+              Chat with us
+              <div className="absolute right-[-5px] bottom-5 h-2.5 w-2.5 rotate-45 bg-white" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <a
+          href="https://wa.me/971504429734"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#0000FF] text-white shadow-lg shadow-[#0000FF]/25 transition-all duration-200 hover:scale-110 active:scale-95"
+          aria-label="Chat on WhatsApp"
+        >
+          <MessageCircle size={26} />
+        </a>
+      </div>
     </div>
   )
 }

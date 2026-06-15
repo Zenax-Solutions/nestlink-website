@@ -3,8 +3,7 @@
 @theme {
   --color-codenest-bg: #070b0a;
   --color-codenest-green: #0000FF;
-  --font-sans: "Instrument Sans", system-ui, sans-serif;
-  --font-sans: "Instrument Sans", system-ui, sans-serif;
+  --font-sans: "Bricolage Grotesque", system-ui, sans-serif;
   --animate-marquee: marquee 30s linear infinite;
 }
 
@@ -25,7 +24,8 @@ body,
 }
 
 body {
-  font-family: "Instrument Sans", system-ui, sans-serif;
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

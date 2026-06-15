@@ -1,17 +1,9 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, CheckCircle, Settings } from 'lucide-react'
+import { ArrowRight, Settings, Headphones, ArrowUpRight } from 'lucide-react'
 import SequenceHero from '../components/SequenceHero'
 import WhatWeDo from '../components/WhatWeDo'
 import AnimatedSection from '../components/AnimatedSection'
-
-const whyUs = [
-  'Customized solutions for every space',
-  'Professional, clean installation',
-  'Premium, future-ready technology',
-  'Complete end-to-end project support',
-  'Dependable after-sales service',
-  'Trusted brands: Aqara, KNX, Ubiquiti & more',
-]
+import { blogPosts } from '../data/blogs'
 
 export default function Home() {
   return (
@@ -21,93 +13,154 @@ export default function Home() {
       {/* What We Do */}
       <WhatWeDo />
 
-      {/* Why Choose Us */}
-      <section className="relative overflow-hidden bg-[#0a100e] py-24">
-        <div className="pointer-events-none absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-[#0000FF]/5 to-transparent" />
-        <div className="relative mx-auto max-w-7xl px-6 md:px-12">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
+      {/* Why NestLink */}
+      <section className="bg-[#f2f2f2] py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-6 md:px-12">
+          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
             <AnimatedSection>
-              <span className="font-sans text-[11px] font-bold uppercase tracking-[0.2em] text-[#0000FF]">
-                Why NestLink
+              <div className="relative overflow-hidden rounded-3xl">
+                <img
+                  src="/smart-home.jpg"
+                  alt="Smart home interior"
+                  className="h-[400px] w-full object-cover md:h-[500px] lg:h-[600px]"
+                  loading="lazy"
+                />
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.15}>
+              <span className="inline-block rounded-full border border-black/10 bg-white px-4 py-1.5 font-sans text-[11px] font-bold uppercase tracking-[0.15em] text-black/70">
+                Space by space
               </span>
-              <h2 className="mt-3 font-sans text-3xl font-bold leading-tight text-white md:text-4xl">
-                Trusted by property owners across Dubai
+              <h2 className="mt-5 font-sans text-3xl font-bold leading-[1.1] tracking-tight text-black md:text-4xl lg:text-5xl">
+                Smart Technology Built Around Your Lifestyle
               </h2>
-              <p className="mt-5 font-sans text-base leading-relaxed text-white/60">
-                From initial consultation to long-term support, we deliver
-                technology that fits your lifestyle, space, and operational
-                needs — without compromise.
+              <p className="mt-5 max-w-lg font-sans text-base leading-relaxed text-black/70 md:text-lg">
+                We don't just install devices — we create connected environments
+                where comfort, security, and control work together seamlessly.
+                From villas to offices, every solution is tailored to how you live
+                and work.
               </p>
 
-              <ul className="mt-8 space-y-4">
-                {whyUs.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <CheckCircle
-                      size={20}
-                      className="mt-0.5 shrink-0 text-[#0000FF]"
-                    />
-                    <span className="font-sans text-sm text-white/80">
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+              <div className="mt-8 grid gap-6 sm:grid-cols-2">
+                <div>
+                  <Settings size={28} className="text-[#0000FF]" />
+                  <h4 className="mt-4 font-sans text-lg font-semibold text-black">
+                    Customized Design
+                  </h4>
+                  <p className="mt-2 font-sans text-sm leading-relaxed text-black/60">
+                    Solutions tailored to your space, preferences, and daily routines.
+                  </p>
+                </div>
+                <div>
+                  <Headphones size={28} className="text-[#0000FF]" />
+                  <h4 className="mt-4 font-sans text-lg font-semibold text-black">
+                    End-to-End Support
+                  </h4>
+                  <p className="mt-2 font-sans text-sm leading-relaxed text-black/60">
+                    From consultation and installation to maintenance and upgrades.
+                  </p>
+                </div>
+              </div>
 
               <Link
                 to="/contact"
-                className="group mt-10 inline-flex items-center gap-3 rounded-full bg-[#0000FF] px-8 py-4 font-sans text-sm font-bold uppercase text-white transition-transform duration-200 hover:scale-105"
+                className="group mt-10 inline-flex items-center gap-3 rounded-full bg-[#070b0a] px-8 py-4 font-sans text-sm font-bold text-white transition-transform duration-200 hover:scale-105"
               >
                 Start Your Project
-                <ArrowRight
-                  size={18}
-                  className="transition-transform duration-200 group-hover:translate-x-1"
-                />
+                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white">
+                  <ArrowRight size={15} className="text-[#070b0a] transition-transform duration-200 group-hover:translate-x-0.5" />
+                </span>
               </Link>
             </AnimatedSection>
-
-            <AnimatedSection delay={0.2}>
-              <div className="grid gap-5 sm:grid-cols-2">
-                {[
-                  {
-                    icon: Settings,
-                    title: 'Design',
-                    text: 'Integrated smart home, security and AV systems.',
-                  },
-                  {
-                    icon: CheckCircle,
-                    title: 'Customize',
-                    text: 'Solutions tailored to residential and commercial spaces.',
-                  },
-                  {
-                    icon: Settings,
-                    title: 'Install',
-                    text: 'Install, configure, test and hand over systems.',
-                  },
-                  {
-                    icon: CheckCircle,
-                    title: 'Support',
-                    text: 'Maintenance, upgrades and ongoing technical support.',
-                  },
-                ].map((card) => (
-                  <div
-                    key={card.title}
-                    className="rounded-2xl border border-white/10 bg-white/[0.02] p-6"
-                  >
-                    <card.icon
-                      size={24}
-                      className="mb-4 text-[#0000FF]"
-                    />
-                    <h4 className="font-sans text-base font-bold text-white">
-                      {card.title}
-                    </h4>
-                    <p className="mt-2 font-sans text-sm text-white/50">
-                      {card.text}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </AnimatedSection>
           </div>
+        </div>
+      </section>
+
+      {/* Blog Preview */}
+      <section className="bg-[#f2f2f2] py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-6 md:px-12">
+          <AnimatedSection className="text-center">
+            <span className="inline-block rounded-full border border-black/10 bg-white px-4 py-1.5 font-sans text-[11px] font-bold uppercase tracking-[0.15em] text-black/70">
+              Our Blog
+            </span>
+            <h2 className="mx-auto mt-5 max-w-2xl font-sans text-3xl font-bold leading-[1.1] tracking-tight text-black md:text-5xl">
+              Latest Insights And Tips From Our Experts
+            </h2>
+          </AnimatedSection>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            {blogPosts.slice(0, 2).map((post, index) => (
+              <AnimatedSection key={post.id} delay={index * 0.15}>
+                <Link
+                  to={`/blog/${post.slug}`}
+                  className={`group relative flex h-[420px] flex-col justify-between overflow-hidden rounded-3xl p-8 md:p-10 ${
+                    index === 0
+                      ? 'bg-[#f3e5ab]'
+                      : ''
+                  }`}
+                >
+                  {index !== 0 && (
+                    <>
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+                    </>
+                  )}
+
+                  <span
+                    className={`relative z-10 w-fit rounded-full border px-4 py-1.5 font-sans text-[11px] font-bold uppercase tracking-[0.15em] ${
+                      index === 0
+                        ? 'border-black/10 bg-white/80 text-black/70'
+                        : 'border-white/20 bg-white/10 text-white/80'
+                    }`}
+                  >
+                    {post.category}
+                  </span>
+
+                  <div className="relative z-10">
+                    <h3
+                      className={`font-sans text-2xl font-bold leading-tight md:text-3xl ${
+                        index === 0 ? 'text-black' : 'text-white'
+                      }`}
+                    >
+                      {post.title}
+                    </h3>
+                    <div className="mt-6 flex items-center gap-3">
+                      <div
+                        className={`h-px w-10 ${
+                          index === 0 ? 'bg-black/30' : 'bg-white/40'
+                        }`}
+                      />
+                      <span
+                        className={`font-sans text-sm font-medium ${
+                          index === 0 ? 'text-black/70' : 'text-white/80'
+                        }`}
+                      >
+                        {post.author}
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          <AnimatedSection className="mt-12 text-center" delay={0.3}>
+            <Link
+              to="/blog"
+              className="group inline-flex items-center gap-3 rounded-full bg-[#070b0a] px-8 py-4 font-sans text-sm font-bold text-white transition-transform duration-200 hover:scale-105"
+            >
+              View all blogs
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white">
+                <ArrowUpRight size={15} className="text-[#070b0a] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </span>
+            </Link>
+          </AnimatedSection>
         </div>
       </section>
 

@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useEffect } from 'react'
 import Layout from './components/Layout'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -7,9 +8,16 @@ import About from './pages/About'
 import Services from './pages/Services'
 import Process from './pages/Process'
 import Contact from './pages/Contact'
+import Blog from './pages/Blog'
+import BlogDetail from './pages/BlogDetail'
+import Portfolio from './pages/Portfolio'
 
 function AnimatedRoutes() {
   const location = useLocation()
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [location.pathname])
 
   return (
     <AnimatePresence mode="wait">
@@ -26,6 +34,9 @@ function AnimatedRoutes() {
           <Route path="/services" element={<Services />} />
           <Route path="/process" element={<Process />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogDetail />} />
         </Routes>
       </motion.div>
     </AnimatePresence>
