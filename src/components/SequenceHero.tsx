@@ -418,7 +418,7 @@ export default function SequenceHero() {
           className="pointer-events-none absolute inset-0 z-10"
           style={{
             background:
-              'linear-gradient(0deg, rgba(7,11,10,0.8) 0%, rgba(7,11,10,0.4) 25%, transparent 50%, transparent 80%, rgba(7,11,10,0.4) 100%)',
+              'linear-gradient(0deg, rgba(0,0,60,0.85) 0%, rgba(0,0,80,0.5) 25%, rgba(0,0,100,0.15) 50%, rgba(0,0,80,0.2) 80%, rgba(0,0,60,0.6) 100%)',
           }}
         />
 
