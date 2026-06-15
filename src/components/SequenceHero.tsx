@@ -101,8 +101,6 @@ function GlassCard({ children, className = '' }: { children: ReactNode; classNam
         backdropFilter: 'blur(40px) saturate(180%)',
         WebkitBackdropFilter: 'blur(40px) saturate(180%)',
         boxShadow: '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.1)',
-        transform: 'translateZ(0)',
-        backfaceVisibility: 'hidden',
       }}
     >
       {children}
@@ -259,18 +257,6 @@ function overlayOpacity(p: number, start: number, end: number): number {
   if (p < start + 0.05) return (p - (start - 0.02)) / 0.07
   if (p < end - 0.05) return 1
   return Math.max(0, 1 - (p - (end - 0.05)) / 0.07)
-}
-
-function overlayTransform(p: number, start: number): number {
-  if (start === 0) return 0
-  const isMobile = window.innerWidth < 768
-  const distance = isMobile ? 50 : 12
-  if (p < start - 0.02) return distance
-  if (p < start + 0.05) {
-    const t = (p - (start - 0.02)) / 0.07
-    return (1 - t) * distance
-  }
-  return 0
 }
 
 function drawCover(ctx: CanvasRenderingContext2D, img: HTMLImageElement, w: number, h: number) {
@@ -446,14 +432,7 @@ export default function SequenceHero() {
                 opacity: overlayOpacity(progress, o.start, o.end),
               }}
             >
-              <div
-                style={{
-                  transform: `translateY(${overlayTransform(progress, o.start)}px)`,
-                }}
-                className="flex w-full items-center justify-center"
-              >
-                {o.content()}
-              </div>
+              {o.content()}
             </div>
           ))}
         </div>
