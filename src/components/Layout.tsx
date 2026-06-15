@@ -58,13 +58,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
           </Link>
 
-          {/* Desktop menu with dot separators */}
-          <nav className="hidden items-center lg:flex">
-            {navLinks.map((link, index) => (
+          {/* Desktop menu */}
+          <nav className="hidden items-center gap-8 lg:flex">
+            {navLinks.map((link) => (
               <div key={link.path} className="flex items-center">
-                {index > 0 && (
-                  <span className="mx-3.5 h-1.5 w-1.5 rounded-full bg-[#070b0a]/40" />
-                )}
                 <Link
                   to={link.path}
                   className={`font-sans text-base font-medium transition-colors duration-200 ${

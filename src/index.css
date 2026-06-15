@@ -25,6 +25,10 @@ body,
 }
 
 body {
+  overflow-x: hidden;
+}
+
+body {
   font-family: "Bricolage Grotesque", system-ui, sans-serif;
   font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
