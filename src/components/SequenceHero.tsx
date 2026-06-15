@@ -97,11 +97,10 @@ function GlassCard({ children, className = '' }: { children: ReactNode; classNam
     <div
       className={`rounded-2xl md:rounded-[1.75rem] border border-white/[0.12] p-6 md:p-7 lg:p-9 ${className}`}
       style={{
-        background: 'rgba(255,255,255,0.08)',
-        backgroundBlendMode: 'luminosity',
-        backdropFilter: 'blur(60px) saturate(150%)',
-        WebkitBackdropFilter: 'blur(60px) saturate(150%)',
-        boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.15), 0 16px 48px rgba(0,0,0,0.4)',
+        background: 'rgba(255,255,255,0.15)',
+        backdropFilter: 'blur(40px) saturate(180%)',
+        WebkitBackdropFilter: 'blur(40px) saturate(180%)',
+        boxShadow: '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.1)',
         transform: 'translateZ(0)',
         backfaceVisibility: 'hidden',
       }}
@@ -179,7 +178,7 @@ const overlays = [
       <div className="mx-auto w-full max-w-7xl px-5 pt-20 md:px-6 md:pt-0">
         <div className="max-w-4xl">
 
-          <h1 className="font-sans text-[clamp(2.5rem,11vw,3.75rem)] font-extrabold leading-[1.05] tracking-tight text-white md:text-[clamp(3.5rem,7vw,5rem)] lg:text-[clamp(4rem,8.5vw,7rem)]">
+          <h1 className="font-sans text-[clamp(2.5rem,11vw,3.75rem)] font-extrabold leading-[1.08] tracking-tight text-white md:text-[clamp(3rem,6vw,4.5rem)] lg:text-[clamp(3.5rem,6.5vw,5.5rem)]">
             Next Gen<br />
             Smart Living<br />
             <Typewriter words={ROTATING_WORDS} />
@@ -445,11 +444,16 @@ export default function SequenceHero() {
               className="absolute inset-0 flex items-center"
               style={{
                 opacity: overlayOpacity(progress, o.start, o.end),
-                transform: `translateY(${overlayTransform(progress, o.start)}px)`,
-                willChange: 'opacity, transform',
               }}
             >
-              {o.content()}
+              <div
+                style={{
+                  transform: `translateY(${overlayTransform(progress, o.start)}px)`,
+                }}
+                className="flex w-full items-center justify-center"
+              >
+                {o.content()}
+              </div>
             </div>
           ))}
         </div>
