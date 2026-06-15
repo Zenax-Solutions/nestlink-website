@@ -117,7 +117,7 @@ export default function Home() {
             <span className="inline-block rounded-full border border-black/10 bg-white px-4 py-1.5 font-sans text-[11px] font-bold uppercase tracking-[0.15em] text-black/70">
               Our Blog
             </span>
-            <h2 className="mx-auto mt-5 max-w-2xl font-sans text-3xl font-bold leading-[1.1] tracking-tight text-black md:text-5xl">
+            <h2 className="mx-auto mt-5 max-w-2xl font-sans text-3xl font-bold leading-[1.1] tracking-tight text-black md:text-4xl lg:text-5xl">
               Latest Insights And Tips From Our Experts
             </h2>
           </AnimatedSection>
@@ -201,7 +201,7 @@ export default function Home() {
       <section className="bg-[#070b0a] py-24">
         <div className="mx-auto max-w-4xl px-6 text-center md:px-12">
           <AnimatedSection>
-            <h2 className="font-sans text-3xl font-bold leading-tight text-white md:text-5xl">
+            <h2 className="font-sans text-3xl font-bold leading-tight text-white md:text-4xl lg:text-5xl">
               Ready to make your space smarter?
             </h2>
             <p className="mx-auto mt-5 max-w-2xl font-sans text-base text-white/60">

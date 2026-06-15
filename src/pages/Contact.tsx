@@ -27,7 +27,7 @@ export default function Contact() {
             <span className="rounded-full border border-white/20 bg-white/10 px-4 py-1.5 font-sans text-[11px] font-bold uppercase tracking-[0.15em] text-white/80 backdrop-blur-sm">
               Contact Us
             </span>
-            <h1 className="mt-6 max-w-3xl font-sans text-5xl font-bold leading-[1.05] tracking-tight text-white md:text-6xl lg:text-7xl">
+            <h1 className="mt-6 max-w-3xl font-sans text-4xl font-bold leading-[1.05] tracking-tight text-white md:text-5xl lg:text-6xl">
               Let's build something smart<span className="text-[#0000FF]">.</span>
             </h1>
             <p className="mt-6 max-w-2xl font-sans text-base leading-relaxed text-white/70 md:text-lg">
@@ -175,13 +175,17 @@ export default function Contact() {
       <section className="bg-[#f2f2f2] pb-24">
         <div className="mx-auto max-w-7xl px-6 md:px-12">
           <AnimatedSection className="overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm">
-            <div className="flex h-[320px] flex-col items-center justify-center md:h-[400px]">
-              <MapPin size={40} className="text-[#0000FF]" />
-              <h3 className="mt-4 font-sans text-xl font-bold text-black">Dubai, UAE</h3>
-              <p className="mt-2 max-w-md text-center font-sans text-sm text-black/60">
-                Serving clients across Dubai and the UAE with smart home,
-                security, networking, and AV solutions.
-              </p>
+            <div className="relative h-[320px] w-full overflow-hidden md:h-[400px]">
+              <iframe
+                src="https://www.openstreetmap.org/export/embed.html?bbox=55.1%2C25.0%2C55.45%2C25.35&layer=mapnik&marker=25.2048%2C55.2708"
+                width="100%"
+                height="100%"
+                style={{ border: 0, marginTop: -20, height: 'calc(100% + 40px)' }}
+                className="pointer-events-none"
+                loading="lazy"
+                title="Dubai Map"
+              />
+              <div className="pointer-events-none absolute inset-0 z-10" />
             </div>
           </AnimatedSection>
         </div>

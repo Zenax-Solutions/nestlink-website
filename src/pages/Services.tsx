@@ -61,7 +61,7 @@ export default function Services() {
             <span className="rounded-full border border-white/20 bg-white/10 px-4 py-1.5 font-sans text-[11px] font-bold uppercase tracking-[0.15em] text-white/80 backdrop-blur-sm">
               Our Services
             </span>
-            <h1 className="mt-6 max-w-3xl font-sans text-5xl font-bold leading-[1.05] tracking-tight text-white md:text-6xl lg:text-7xl">
+            <h1 className="mt-6 max-w-3xl font-sans text-4xl font-bold leading-[1.05] tracking-tight text-white md:text-5xl lg:text-6xl">
               Complete smart technology solutions<span className="text-[#0000FF]">.</span>
             </h1>
             <p className="mt-6 max-w-2xl font-sans text-base leading-relaxed text-white/70 md:text-lg">

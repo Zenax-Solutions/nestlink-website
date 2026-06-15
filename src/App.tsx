@@ -13,6 +13,10 @@ import Contact from './pages/Contact'
 import Blog from './pages/Blog'
 import BlogDetail from './pages/BlogDetail'
 import PortfolioPage from './pages/Portfolio'
+import Privacy from './pages/Privacy'
+import Terms from './pages/Terms'
+import FAQ from './pages/FAQ'
+import NotFound from './pages/NotFound'
 import AdminLayout from './components/AdminLayout'
 import AdminLogin from './pages/admin/Login'
 import Dashboard from './pages/admin/Dashboard'
@@ -74,6 +78,11 @@ function App() {
           <Route path="/portfolio" element={<PublicLayout><PortfolioPage /></PublicLayout>} />
           <Route path="/blog" element={<PublicLayout><Blog /></PublicLayout>} />
           <Route path="/blog/:slug" element={<PublicLayout><BlogDetail /></PublicLayout>} />
+          <Route path="/privacy" element={<PublicLayout><Privacy /></PublicLayout>} />
+          <Route path="/terms" element={<PublicLayout><Terms /></PublicLayout>} />
+          <Route path="/faq" element={<PublicLayout><FAQ /></PublicLayout>} />
+          <Route path="/404" element={<PublicLayout><NotFound /></PublicLayout>} />
+          <Route path="*" element={<PublicLayout><NotFound /></PublicLayout>} />
 
           {/* Admin routes */}
           <Route path="/admin" element={<AdminLogin />} />

@@ -130,7 +130,7 @@ export default function WhatWeDo() {
 
             <div className="relative z-10 flex h-full flex-col justify-between p-8 md:p-10">
               <div className="flex items-start gap-4">
-                <div className="flex items-start font-sans text-4xl font-bold leading-none text-white md:text-5xl">
+                <div className="flex items-start font-sans text-3xl font-bold leading-none text-white md:text-4xl">
                   {card.num}
                   <sup className="ml-1 text-[10px] font-medium text-white/70 md:text-xs">
                     No

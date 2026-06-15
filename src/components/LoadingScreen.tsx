@@ -8,6 +8,7 @@ export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
   const DURATION = 2000
 
   useEffect(() => {
+    document.body.style.overflow = 'hidden'
     const timer = setInterval(() => {
       const elapsed = Date.now() - startTime.current
       const pct = Math.min(Math.round((elapsed / DURATION) * 100), 100)
@@ -17,7 +18,10 @@ export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
         setTimeout(() => setDone(true), 500)
       }
     }, 30)
-    return () => clearInterval(timer)
+    return () => {
+      clearInterval(timer)
+      document.body.style.overflow = ''
+    }
   }, [])
 
   return (
@@ -26,7 +30,7 @@ export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
       animate={done ? { clipPath: 'inset(0 0 100% 0)' } : { clipPath: 'inset(0)' }}
       onAnimationComplete={() => done && onFinish()}
       transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#0000FF]"
+      className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-[#0000FF]"
     >
       <div className="flex flex-col items-center gap-2.5">
         <svg width="52" height="52" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">

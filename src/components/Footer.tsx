@@ -18,10 +18,10 @@ const serviceLinks = [
 ]
 
 const otherLinks = [
-  { label: 'FAQ', path: '/contact' },
+  { label: 'FAQ', path: '/faq' },
   { label: 'Privacy Policy', path: '/privacy' },
   { label: 'Terms of Service', path: '/terms' },
-  { label: '404', path: '/404' },
+
 ]
 
 const socialLinks = [
@@ -75,7 +75,7 @@ export default function Footer() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#050807]/95 via-[#050807]/70 to-transparent" />
         <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 md:px-12 md:py-32">
           <div className="max-w-2xl">
-            <h2 className="font-sans text-4xl font-bold leading-[1.1] tracking-tight text-white md:text-5xl lg:text-6xl">
+            <h2 className="font-sans text-3xl font-bold leading-[1.1] tracking-tight text-white md:text-4xl lg:text-5xl">
               Building Smarter Spaces,<br />
               One Home At A Time
             </h2>
@@ -245,6 +245,16 @@ export default function Footer() {
             Smart Home • ELV • AV • Networking Solutions
           </p>
         </div>
+      </div>
+      <div className="border-t border-white/10 py-4 text-center">
+        <a
+          href="https://zenax.info/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-sans text-xs text-white/50 transition-colors hover:text-white"
+        >
+          Designed & Developed by <span className="font-semibold text-white">Zenax Web Solutions</span>™
+        </a>
       </div>
     </footer>
   )

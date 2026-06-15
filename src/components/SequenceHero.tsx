@@ -176,7 +176,7 @@ const overlays = [
       <div className="mx-auto w-full max-w-7xl px-5 pt-20 md:px-6 md:pt-0">
         <div className="max-w-4xl">
 
-          <h1 className="font-sans text-[clamp(2.5rem,11vw,3.75rem)] font-extrabold leading-[1.08] tracking-tight text-white md:text-[clamp(3rem,6vw,4.5rem)] lg:text-[clamp(3.5rem,6.5vw,5.5rem)]">
+          <h1 className="font-sans text-[clamp(3rem,12vw,5rem)] font-extrabold leading-[1.08] tracking-tight text-white md:text-[clamp(2.5rem,4.5vw,3.5rem)] lg:text-[clamp(2.75rem,5vw,4rem)]">
             Next Gen<br />
             Smart Living<br />
             <Typewriter words={ROTATING_WORDS} />

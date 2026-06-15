@@ -10,7 +10,7 @@ export default function Blog() {
           <span className="inline-block rounded-full border border-black/10 bg-white px-4 py-1.5 font-sans text-[11px] font-bold uppercase tracking-[0.15em] text-black/70">
             Our Blog
           </span>
-          <h1 className="mx-auto mt-5 max-w-3xl font-sans text-3xl font-bold leading-[1.1] tracking-tight text-black md:text-6xl">
+          <h1 className="mx-auto mt-5 max-w-3xl font-sans text-3xl font-bold leading-[1.1] tracking-tight text-black md:text-5xl lg:text-6xl">
             Latest Insights And Tips From Our Experts
           </h1>
           <p className="mx-auto mt-4 max-w-2xl font-sans text-sm leading-relaxed text-black/70 md:text-lg">
