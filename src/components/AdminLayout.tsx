@@ -68,7 +68,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       </aside>
 
       {/* Main content */}
-      <div className="flex flex-1 flex-col">
+      <div className="flex min-w-0 flex-1 flex-col">
         {/* Top bar */}
         <header className="flex h-14 items-center justify-between border-b border-black/5 bg-white px-4 sm:h-16 sm:px-6">
           <div className="flex items-center gap-3">

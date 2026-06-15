@@ -31,7 +31,7 @@ export default function PortfolioList() {
         </div>
         <Link
           to="/admin/portfolio/new"
-          className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0000FF] px-5 py-2.5 font-sans text-sm font-bold text-white transition-all hover:scale-[1.02]"
+          className="flex w-full items-center justify-center gap-2 rounded-full bg-[#0000FF] px-5 py-2.5 font-sans text-sm font-bold text-white transition-all hover:scale-[1.02] sm:w-auto sm:inline-flex"
         >
           <Plus size={16} /> New Project
         </Link>
