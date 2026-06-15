@@ -86,7 +86,7 @@ function Typewriter({ words }: { words: string[] }) {
 gsap.registerPlugin(ScrollTrigger)
 
 const TOTAL = 291
-const SECTION_VH = 500
+const SECTION_VH = 700
 
 function frameSrc(i: number) {
   return `/hero/ezgif-frame-${String(i + 10).padStart(3, '0')}.jpg`
@@ -171,7 +171,7 @@ function DetailCard({
 
 const overlays = [
   {
-    start: 0, end: 0.22, align: 'left',
+    start: 0, end: 0.20,
     content: () => (
       <div className="mx-auto w-full max-w-7xl px-5 pt-20 md:px-6 md:pt-0">
         <div className="max-w-4xl">
@@ -208,7 +208,7 @@ const overlays = [
     ),
   },
   {
-    start: 0.18, end: 0.43, align: 'right',
+    start: 0.18, end: 0.42,
     content: () => (
       <DetailCard
         title="Smart Home Automation"
@@ -220,7 +220,7 @@ const overlays = [
     ),
   },
   {
-    start: 0.4, end: 0.66, align: 'right',
+    start: 0.40, end: 0.65,
     content: () => (
       <DetailCard
         title="Security & Infrastructure"
@@ -231,7 +231,7 @@ const overlays = [
     ),
   },
   {
-    start: 0.63, end: 1, align: 'right',
+    start: 0.63, end: 0.95,
     content: () => (
       <DetailCard
         title="End-to-End Service"
@@ -248,15 +248,14 @@ const overlays = [
 function overlayOpacity(p: number, start: number, end: number): number {
   if (start === 0) {
     if (p <= 0) return 1
-    if (p < 0.05) return 1 - p / 0.05
-    if (p < end - 0.05) return 0
-    if (p < end) return (end - p) / 0.05
+    if (p < 0.06) return 1 - p / 0.06
+    if (p < end) return 0
     return 0
   }
   if (p < start - 0.02) return 0
-  if (p < start + 0.05) return (p - (start - 0.02)) / 0.07
-  if (p < end - 0.05) return 1
-  return Math.max(0, 1 - (p - (end - 0.05)) / 0.07)
+  if (p < start + 0.06) return (p - (start - 0.02)) / 0.08
+  if (p < end - 0.06) return 1
+  return Math.max(0, 1 - (p - (end - 0.06)) / 0.08)
 }
 
 function drawCover(ctx: CanvasRenderingContext2D, img: HTMLImageElement, w: number, h: number) {
@@ -424,17 +423,21 @@ export default function SequenceHero() {
 
         {/* Glass card overlays */}
         <div className="absolute inset-0 z-20">
-          {overlays.map((o) => (
-            <div
-              key={o.start}
-              className="absolute inset-0 flex items-center"
-              style={{
-                opacity: overlayOpacity(progress, o.start, o.end),
-              }}
-            >
-              {o.content()}
-            </div>
-          ))}
+          {overlays.map((o) => {
+            const op = overlayOpacity(progress, o.start, o.end)
+            return (
+              <div
+                key={o.start}
+                className="absolute inset-0 flex items-center"
+                style={{
+                  opacity: op,
+                  transform: `translateY(${(1 - op) * 40}px)`,
+                }}
+              >
+                {o.content()}
+              </div>
+            )
+          })}
         </div>
 
         {/* Scroll indicator */}
