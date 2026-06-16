@@ -1,8 +1,11 @@
 import mysql from 'mysql2/promise'
 import bcrypt from 'bcryptjs'
+import path from 'path'
+import { fileURLToPath } from 'url'
 import dotenv from 'dotenv'
 
-dotenv.config()
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+dotenv.config({ path: path.resolve(__dirname, '../.env') })
 
 const DB_CONFIG = {
   host: process.env.DB_HOST || 'localhost',

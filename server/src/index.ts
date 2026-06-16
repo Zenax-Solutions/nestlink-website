@@ -8,9 +8,10 @@ import blogRoutes from './routes/blogs.js'
 import portfolioRoutes from './routes/portfolio.js'
 import uploadRoutes from './routes/upload.js'
 
-dotenv.config()
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
+dotenv.config({ path: path.resolve(__dirname, '../.env') })
 
 const app = express()
 const PORT = process.env.PORT || 4000
