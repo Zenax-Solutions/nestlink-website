@@ -1,5 +1,6 @@
-const API_URL = 'http://localhost:4000/api'
-export const UPLOADS_URL = 'http://localhost:4000'
+const API_URL = import.meta.env.VITE_API_URL || '/api'
+const baseUrl = import.meta.env.VITE_API_URL || ''
+export const UPLOADS_URL = baseUrl ? baseUrl.replace(/\/api$/, '') : ''
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const res = await fetch(`${API_URL}${path}`, {

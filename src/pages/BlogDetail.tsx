@@ -1,11 +1,30 @@
+import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { ArrowUpRight, Clock, Calendar } from 'lucide-react'
 import AnimatedSection from '../components/AnimatedSection'
-import { getBlogBySlug } from '../data/blogs'
+import { blogs, UPLOADS_URL, type Blog } from '../api'
 
 export default function BlogDetail() {
   const { slug } = useParams<{ slug: string }>()
-  const post = slug ? getBlogBySlug(slug) : undefined
+  const [post, setPost] = useState<Blog | null>(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    if (!slug) return
+    setLoading(true)
+    blogs.get(slug)
+      .then((data) => setPost(data))
+      .catch(() => setPost(null))
+      .finally(() => setLoading(false))
+  }, [slug])
+
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#f2f2f2]">
+        <p className="font-sans text-sm text-black/40">Loading post...</p>
+      </div>
+    )
+  }
 
   if (!post) {
     return (
@@ -25,12 +44,16 @@ export default function BlogDetail() {
     )
   }
 
+  const sidebarItems: string[] = (() => {
+    try { return JSON.parse(post.sidebar) } catch { return [] }
+  })()
+
   return (
     <div className="min-h-screen bg-[#f2f2f2]">
       {/* Hero */}
       <div className="relative h-[50vh] min-h-[360px] w-full sm:h-[65vh] sm:min-h-[480px]">
         <img
-          src={post.image}
+          src={post.image ? `${UPLOADS_URL}${post.image}` : '/placeholder.jpg'}
           alt={post.title}
           className="absolute inset-0 h-full w-full object-cover"
         />
@@ -62,7 +85,7 @@ export default function BlogDetail() {
                   <div className="flex items-center gap-4 font-sans text-xs text-white/70">
                     <span className="flex items-center gap-1.5">
                       <Clock size={14} />
-                      {post.readTime}
+                      {post.read_time}
                     </span>
                     <span className="flex items-center gap-1.5">
                       <Calendar size={14} />
@@ -79,38 +102,44 @@ export default function BlogDetail() {
       {/* Content */}
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:px-12 md:py-24">
         <div className="grid gap-10 lg:grid-cols-[280px_1fr] lg:gap-12">
-          <AnimatedSection>
-            <div className="lg:sticky lg:top-28">
-              <span className="font-sans text-xs font-semibold uppercase tracking-wider text-black/50 sm:text-sm">
-                {post.category}
-              </span>
-              <div className="mt-4 flex flex-wrap gap-2 sm:mt-5 lg:flex-col">
-                {post.sidebar.map((item) => (
-                  <span
-                    key={item}
-                    className="w-fit rounded-full border border-black/10 bg-white px-3 py-1.5 font-sans text-xs text-black/80 sm:px-4 sm:py-2 sm:text-sm"
-                  >
-                    {item}
-                  </span>
-                ))}
+          {sidebarItems.length > 0 && (
+            <AnimatedSection>
+              <div className="lg:sticky lg:top-28">
+                <span className="font-sans text-xs font-semibold uppercase tracking-wider text-black/50 sm:text-sm">
+                  {post.category}
+                </span>
+                <div className="mt-4 flex flex-wrap gap-2 sm:mt-5 lg:flex-col">
+                  {sidebarItems.map((item) => (
+                    <span
+                      key={item}
+                      className="w-fit rounded-full border border-black/10 bg-white px-3 py-1.5 font-sans text-xs text-black/80 sm:px-4 sm:py-2 sm:text-sm"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          </AnimatedSection>
+            </AnimatedSection>
+          )}
 
           <AnimatedSection delay={0.15} className="min-w-0">
-            <article
-              className="prose prose-base prose-slate max-w-none font-sans break-words
-                prose-headings:font-sans prose-headings:font-bold prose-headings:text-black
-                prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:leading-tight
-                prose-p:text-black/80 prose-p:leading-[1.8] prose-p:my-4
-                prose-a:text-[#0000FF] prose-a:no-underline hover:prose-a:underline
-                prose-strong:text-black prose-strong:font-semibold
-                prose-ul:my-4 prose-ul:pl-6 prose-ol:my-4 prose-ol:pl-6
-                prose-li:text-black/80 prose-li:my-1.5
-                prose-blockquote:border-l-[#0000FF] prose-blockquote:bg-[#0000FF]/5 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:my-6 prose-blockquote:text-black/70
-                sm:prose-lg"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
+            {post.content ? (
+              <article
+                className="prose prose-base prose-slate max-w-none font-sans break-words
+                  prose-headings:font-sans prose-headings:font-bold prose-headings:text-black
+                  prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:leading-tight
+                  prose-p:text-black/80 prose-p:leading-[1.8] prose-p:my-4
+                  prose-a:text-[#0000FF] prose-a:no-underline hover:prose-a:underline
+                  prose-strong:text-black prose-strong:font-semibold
+                  prose-ul:my-4 prose-ul:pl-6 prose-ol:my-4 prose-ol:pl-6
+                  prose-li:text-black/80 prose-li:my-1.5
+                  prose-blockquote:border-l-[#0000FF] prose-blockquote:bg-[#0000FF]/5 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:my-6 prose-blockquote:text-black/70
+                  sm:prose-lg"
+                dangerouslySetInnerHTML={{ __html: post.content }}
+              />
+            ) : (
+              <p className="font-sans text-sm text-black/40">No content available.</p>
+            )}
 
             <div className="mt-10 flex flex-col items-start gap-4 border-t border-black/10 pt-8 sm:mt-12 sm:flex-row sm:items-center sm:justify-between">
               <Link

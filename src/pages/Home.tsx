@@ -1,13 +1,18 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Settings, Headphones, ArrowUpRight } from 'lucide-react'
 import SequenceHero from '../components/SequenceHero'
 import WhatWeDo from '../components/WhatWeDo'
 import SecondSequence from '../components/SecondSequence'
 import AnimatedSection from '../components/AnimatedSection'
-import { blogPosts } from '../data/blogs'
+import { blogs, UPLOADS_URL, type Blog } from '../api'
 
 export default function Home() {
-  return (
+  const [blogPosts, setBlogPosts] = useState<Blog[]>([])
+
+  useEffect(() => {
+    blogs.list().then((data) => setBlogPosts(data.slice(0, 2))).catch(() => {})
+  }, [])
     <div>
       <SequenceHero />
 
@@ -122,22 +127,23 @@ export default function Home() {
             </h2>
           </AnimatedSection>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
-            {blogPosts.slice(0, 2).map((post, index) => (
-              <AnimatedSection key={post.id} delay={index * 0.15}>
-                <Link
-                  to={`/blog/${post.slug}`}
-                  className={`group relative flex h-[420px] flex-col justify-between overflow-hidden rounded-3xl p-8 md:p-10 ${
-                    index === 0
-                      ? 'bg-[#f3e5ab]'
-                      : ''
-                  }`}
-                >
-                  {index !== 0 && (
-                    <>
-                      <img
-                        src={post.image}
-                        alt={post.title}
+            {blogPosts.length > 0 && (
+            <div className="mt-12 grid gap-6 md:grid-cols-2">
+              {blogPosts.map((post, index) => (
+                <AnimatedSection key={post.id} delay={index * 0.15}>
+                  <Link
+                    to={`/blog/${post.slug}`}
+                    className={`group relative flex h-[420px] flex-col justify-between overflow-hidden rounded-3xl p-8 md:p-10 ${
+                      index === 0
+                        ? 'bg-[#f3e5ab]'
+                        : ''
+                    }`}
+                  >
+                    {index !== 0 && (
+                      <>
+                        <img
+                          src={post.image ? `${UPLOADS_URL}${post.image}` : '/placeholder.jpg'}
+                          alt={post.title}
                         className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
                       />
@@ -182,6 +188,7 @@ export default function Home() {
               </AnimatedSection>
             ))}
           </div>
+          )}
 
           <AnimatedSection className="mt-12 text-center" delay={0.3}>
             <Link

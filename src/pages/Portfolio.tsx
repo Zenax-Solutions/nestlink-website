@@ -1,60 +1,21 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../components/AnimatedSection'
-
-const projects = [
-  {
-    title: 'Villa Smart Home Automation',
-    category: 'Smart Home',
-    description: 'Full automation of lighting, climate, curtains, and security for a luxury villa in Dubai.',
-    image: '/footer.jpg',
-  },
-  {
-    title: 'Office Security & Networking',
-    category: 'Security',
-    description: 'Enterprise-grade CCTV, access control, and structured cabling for a corporate office.',
-    image: '/smart-home.jpg',
-  },
-  {
-    title: 'Home Cinema & Multi-Room Audio',
-    category: 'Audio Visual',
-    description: 'Immersive home theater and distributed audio system for a private residence.',
-    image: '/hero/ezgif-frame-090.jpg',
-  },
-  {
-    title: 'Commercial CCTV Installation',
-    category: 'Security',
-    description: 'Complete surveillance system with smart alerts and remote monitoring.',
-    image: '/hero/ezgif-frame-030.jpg',
-  },
-  {
-    title: 'Smart Lighting & ELV Infrastructure',
-    category: 'Lighting',
-    description: 'Indoor and outdoor lighting control with full ELV infrastructure design.',
-    image: '/hero/ezgif-frame-110.jpg',
-  },
-  {
-    title: 'Residential Networking & Wi-Fi',
-    category: 'Networking',
-    description: 'Whole-home mesh Wi-Fi, structured cabling, and network rack setup.',
-    image: '/hero/ezgif-frame-070.jpg',
-  },
-  {
-    title: 'Access Control for Commercial Building',
-    category: 'Access Control',
-    description: 'Smart locks, video intercom, and visitor management for a multi-tenancy building.',
-    image: '/hero/ezgif-frame-050.jpg',
-  },
-  {
-    title: 'Luxury Apartment Smart System',
-    category: 'Smart Home',
-    description: 'Integrated automation, security, and AV for a high-end apartment.',
-    image: '/footer.jpg',
-  },
-]
+import { portfolio, UPLOADS_URL, type PortfolioItem } from '../api'
 
 export default function Portfolio() {
+  const [projects, setProjects] = useState<PortfolioItem[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    portfolio.list()
+      .then((data) => setProjects(data))
+      .catch(() => setProjects([]))
+      .finally(() => setLoading(false))
+  }, [])
+
   return (
     <div>
       {/* Hero */}
@@ -82,33 +43,39 @@ export default function Portfolio() {
       {/* Project Grid */}
       <section className="bg-[#f2f2f2] py-24">
         <div className="mx-auto max-w-7xl px-6 md:px-12">
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {projects.map((project, i) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="group relative h-[320px] overflow-hidden rounded-3xl bg-white shadow-sm"
-              >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                <div className="absolute left-4 top-4 rounded-full border border-white/20 bg-white/10 px-3 py-1 font-sans text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm">
-                  {project.category}
-                </div>
-                <div className="absolute inset-x-0 bottom-0 p-6">
-                  <h3 className="font-sans text-lg font-bold text-white">{project.title}</h3>
-                  <p className="mt-1 font-sans text-sm text-white/70">{project.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          {loading ? (
+            <p className="text-center font-sans text-sm text-black/40">Loading projects...</p>
+          ) : projects.length === 0 ? (
+            <p className="text-center font-sans text-sm text-black/40">No projects found.</p>
+          ) : (
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {projects.map((project, i) => (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.06 }}
+                  className="group relative h-[320px] overflow-hidden rounded-3xl bg-white shadow-sm"
+                >
+                  <img
+                    src={project.image ? `${UPLOADS_URL}${project.image}` : '/footer.jpg'}
+                    alt={project.title}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                  <div className="absolute left-4 top-4 rounded-full border border-white/20 bg-white/10 px-3 py-1 font-sans text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm">
+                    {project.category}
+                  </div>
+                  <div className="absolute inset-x-0 bottom-0 p-6">
+                    <h3 className="font-sans text-lg font-bold text-white">{project.title}</h3>
+                    <p className="mt-1 font-sans text-sm text-white/70">{project.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
