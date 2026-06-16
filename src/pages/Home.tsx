@@ -13,6 +13,8 @@ export default function Home() {
   useEffect(() => {
     blogs.list().then((data) => setBlogPosts(data.slice(0, 2))).catch(() => {})
   }, [])
+
+  return (
     <div>
       <SequenceHero />
 
