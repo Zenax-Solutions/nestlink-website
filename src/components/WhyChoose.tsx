@@ -83,7 +83,7 @@ export default function WhyChoose() {
         className="relative z-10 flex h-[70%] items-center gap-5 px-6 md:gap-6 md:px-12"
         style={{ willChange: 'transform' }}
       >
-        {features.map((feat, i) => {
+        {features.map((feat) => {
           const Icon = feat.icon
           return (
             <div
