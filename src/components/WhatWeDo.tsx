@@ -146,7 +146,7 @@ export default function WhatWeDo() {
           start: 'top top',
           end: () => `+=${getScrollAmount()}`,
           pin: true,
-          scrub: 1.2,
+          scrub: 2.5,
           anticipatePin: 1,
           invalidateOnRefresh: true,
           fastScrollEnd: true,

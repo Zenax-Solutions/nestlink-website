@@ -358,7 +358,7 @@ export default function SequenceHero() {
         start: 'top top',
         end: 'bottom bottom',
         pin: pinRef.current,
-        scrub: 0.5,
+        scrub: 1.5,
         anticipatePin: 1,
       },
       onUpdate: () => {
