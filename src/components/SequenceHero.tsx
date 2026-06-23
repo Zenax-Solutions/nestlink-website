@@ -177,9 +177,8 @@ const overlays = [
         <div className="max-w-4xl">
 
           <h1 className="font-sans text-[clamp(3rem,12vw,5rem)] font-extrabold leading-[1.08] tracking-tight text-white md:text-[clamp(2.5rem,4.5vw,3.5rem)] lg:text-[clamp(2.75rem,5vw,4rem)]">
-            Dubai's Premier<br />
-            Smart Home & ELV<br />
-            <Typewriter words={ROTATING_WORDS} />
+            Next Gen<br />
+            Smart <Typewriter words={ROTATING_WORDS} />
           </h1>
 
           <p className="mt-4 max-w-xl font-sans text-sm leading-relaxed text-white/80 md:text-base md:text-lg md:mt-5">
