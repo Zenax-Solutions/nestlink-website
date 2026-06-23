@@ -50,9 +50,13 @@ export default function Footer() {
     <footer className="w-full bg-[#050807]">
       {/* CTA Banner */}
       <div className="relative overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(/footer.jpg)' }}
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          src="/footer-video.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#050807]/95 via-[#050807]/70 to-transparent" />
         <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 md:px-12 md:py-32">

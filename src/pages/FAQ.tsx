@@ -52,7 +52,7 @@ export default function FAQ() {
     <div>
       <section className="relative min-h-[60vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/page-header.jpg" alt="" className="h-full w-full object-cover" />
+          <video src="/footer-video.mp4" autoPlay muted loop playsInline className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-transparent" />
         </div>
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-28 md:px-12">

@@ -7,7 +7,7 @@ export default function NotFound() {
     <div>
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#070b0a]">
         <div className="absolute inset-0">
-          <img src="/page-header.jpg" alt="" className="h-full w-full object-cover opacity-20" />
+          <video src="/footer-video.mp4" autoPlay muted loop playsInline className="h-full w-full object-cover opacity-20" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#070b0a]/60 via-[#070b0a]/80 to-[#070b0a]" />
         </div>
         <div className="relative z-10 mx-auto max-w-2xl px-6 text-center">
