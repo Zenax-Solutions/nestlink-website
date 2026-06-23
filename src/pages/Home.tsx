@@ -56,11 +56,13 @@ export default function Home() {
           <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
             <AnimatedSection>
               <div className="relative overflow-hidden rounded-3xl">
-                <img
-                  src="/space-by-space.png"
-                  alt="Smart home interior"
+                <video
+                  src="/space-by-space.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   className="h-[400px] w-full object-cover md:h-[500px] lg:h-[600px]"
-                  loading="lazy"
                 />
               </div>
             </AnimatedSection>
