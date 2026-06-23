@@ -1,38 +1,93 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Home, Shield, Lock, Wifi, Monitor, Lightbulb, CheckCircle, Sun, Smartphone, Video, Speaker } from 'lucide-react'
+import { ArrowRight, Home, Shield, Lock, Wifi, Monitor, Lightbulb, CheckCircle, Sun, Smartphone, Video, Speaker, Phone, Tv, Film, Zap, Thermometer, Building, Cpu, Flame, Headphones } from 'lucide-react'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../components/AnimatedSection'
 
 const services = [
   {
-    icon: Home, title: 'Smart Home Automation', image: '/smart-home.jpg',
-    description: 'Transform how you interact with your space. We integrate lighting, climate, curtains, and daily routines into one intelligent system.',
-    features: ['Lighting control', 'Climate control', 'Curtain control', 'Scheduling', 'Voice control', 'App-based automation'],
+    icon: Home, title: 'Smart Home Automation', video: '/videos/smart-home.mp4',
+    description: 'Smart lighting, curtain control, AC control, smart switches, mobile app control, voice control, and customized automation scenes for villas, apartments, and offices.',
+    features: ['Smart lighting', 'Curtain control', 'AC control', 'Smart switches', 'Mobile app control', 'Voice control'],
   },
   {
-    icon: Shield, title: 'Security & CCTV Systems', video: '/videos/cctv.mp4',
-    description: 'Protect your property with advanced surveillance, smart alerts, and remote monitoring accessible from anywhere.',
-    features: ['Advanced surveillance', 'Smart alerts', 'Remote monitoring', '24/7 recording', 'Motion detection', 'Mobile notifications'],
+    icon: Shield, title: 'CCTV Installation', video: '/videos/cctv.mp4',
+    description: 'Wired cameras, wireless cameras, solar-powered cameras, battery-operated cameras, NVR setup, mobile viewing, and complete surveillance solutions.',
+    features: ['Wired cameras', 'Wireless cameras', 'Solar-powered cameras', 'NVR setup', 'Mobile viewing', 'Complete surveillance'],
   },
   {
-    icon: Lock, title: 'Access Control & Intercom', video: '/videos/access-intercom.mp4',
-    description: 'Manage entry with secure smart locks, video intercoms, and visitor management systems for homes and offices.',
-    features: ['Smart locks', 'Video intercoms', 'Visitor management', 'Secure entry', 'Remote unlock', 'Access logs'],
+    icon: Wifi, title: 'Wi-Fi & Networking Solutions', video: '/videos/wifi.mp4',
+    description: 'Access points, routers, structured cabling, data points, network cabinets, full villa Wi-Fi coverage, and office network setup.',
+    features: ['Access points', 'Routers', 'Structured cabling', 'Network cabinets', 'Full villa Wi-Fi', 'Office network setup'],
   },
   {
-    icon: Wifi, title: 'Networking Solutions', video: '/videos/networking.mp4',
-    description: 'Build a reliable digital backbone with structured cabling, enterprise Wi-Fi, access points, and organized network racks.',
-    features: ['Structured cabling', 'Wi-Fi systems', 'Access points', 'Network racks', 'Routers & switches', 'Coverage planning'],
+    icon: Phone, title: 'Intercom Systems', video: '/videos/intercom.mp4',
+    description: 'Video intercom, audio intercom, indoor monitor installation, outdoor station setup, mobile app integration, and door/gate release control.',
+    features: ['Video intercom', 'Audio intercom', 'Indoor monitor', 'Outdoor station', 'Mobile app integration', 'Door/gate release'],
   },
   {
-    icon: Monitor, title: 'Audio, Video & Home Cinema', video: '/videos/cinema.mp4',
-    description: 'Create immersive entertainment experiences with home cinemas, multi-room audio, conference room AV, and LED video walls.',
-    features: ['Home cinema', 'Multi-room audio', 'Conference room AV', 'Entertainment systems', 'LED screens & video walls', 'Game room integration'],
+    icon: Lock, title: 'Access Control Systems', video: '/videos/Access-Control-Systems.mp4',
+    description: 'Fingerprint access, card access, keypad access, magnetic locks, door controllers, gym access systems, and office entry control.',
+    features: ['Fingerprint access', 'Card access', 'Keypad access', 'Magnetic locks', 'Door controllers', 'Office entry control'],
   },
   {
-    icon: Lightbulb, title: 'Lighting & ELV Solutions', video: '/videos/lighting.mp4',
-    description: 'Enhance ambience and safety with indoor, outdoor, and garden lighting, plus complete ELV infrastructure support.',
-    features: ['Indoor lighting', 'Outdoor lighting', 'Garden lighting', 'ELV infrastructure', 'Scene lighting', 'MEP support'],
+    icon: Lightbulb, title: 'Indoor Lighting Solutions', video: '/videos/lighting.mp4',
+    description: 'Professional indoor lighting solutions for villas, apartments, offices, and commercial spaces. Ceiling lights, spotlights, chandeliers, LED strip lights, cove lighting, decorative lighting, smart lighting control, and maintenance.',
+    features: ['Ceiling lights', 'Spotlights & chandeliers', 'LED strip lights', 'Cove lighting', 'Smart lighting control', 'Lighting maintenance'],
+  },
+  {
+    icon: Sun, title: 'Outdoor Lighting Solutions', video: '/videos/outdoor-lighting.mp4',
+    description: 'Outdoor lighting solutions for villas, gardens, landscapes, building façades, pathways, pool areas, and parking areas. Garden lights, wall lights, façade lighting, landscape lighting, waterproof LED strips, and outdoor smart lighting control.',
+    features: ['Garden lights', 'Wall lights', 'Façade lighting', 'Landscape lighting', 'Waterproof LED strips', 'Outdoor smart control'],
+  },
+  {
+    icon: Monitor, title: 'Indoor Screens & Video Walls', video: '/videos/Indoor-Screens-Video-Walls.mp4',
+    description: 'Indoor display solutions for offices, meeting rooms, control rooms, shops, showrooms, and entertainment areas. LED screens, LCD video walls, digital signage, meeting room displays, and control room screen solutions.',
+    features: ['LED screens', 'LCD video walls', 'Digital signage', 'Meeting room displays', 'Control room solutions', 'Showroom displays'],
+  },
+  {
+    icon: Tv, title: 'Outdoor LED Screens', video: '/videos/Outdoor-LED-Screens.mp4',
+    description: 'Outdoor LED screen solutions for villas, pool areas, gardens, restaurants, cafés, events, and commercial spaces. Weather-resistant LED screens, outdoor display installation, structure support, controllers, cabling, and media input setup.',
+    features: ['Weather-resistant screens', 'Outdoor installation', 'Structure support', 'Controllers & cabling', 'Media input setup', 'Event displays'],
+  },
+  {
+    icon: Film, title: 'Home Cinema Solutions', video: '/videos/cinema.mp4',
+    description: 'Complete home cinema setup including projector installation, screen installation, AV receiver setup, surround sound speakers, acoustic planning, Apple TV/media setup and smart remote control.',
+    features: ['Projector installation', 'Screen installation', 'AV receiver setup', 'Surround sound', 'Acoustic planning', 'Smart remote control'],
+  },
+  {
+    icon: Speaker, title: 'Indoor & Outdoor Audio', video: '/videos/Indoor-&-Outdoor-Audio.mp4',
+    description: 'Audio solutions for living rooms, majlis areas, gardens, pool areas, restaurants, and commercial spaces. Ceiling speakers, outdoor speakers, amplifiers, multi-room audio, and music control systems.',
+    features: ['Ceiling speakers', 'Outdoor speakers', 'Amplifiers', 'Multi-room audio', 'Music control', 'Commercial audio'],
+  },
+  {
+    icon: Zap, title: 'Electrical Works', video: '/videos/Electrical-Works.mp4',
+    description: 'Electrical installation, maintenance, and repair services including lighting points, power sockets, DB panel works, wiring, load checking, fault finding, and general electrical maintenance.',
+    features: ['Lighting points', 'Power sockets', 'DB panel works', 'Wiring & load checking', 'Fault finding', 'Electrical maintenance'],
+  },
+  {
+    icon: Thermometer, title: 'AC Installation & Maintenance', video: '/videos/AC-Installation-Maintenance.mp4',
+    description: 'AC installation, servicing, repair and control solutions for residential and commercial spaces, including thermostat replacement and smart AC control integration.',
+    features: ['AC installation', 'AC servicing & repair', 'Thermostat replacement', 'Smart AC control', 'Commercial AC', 'Preventive maintenance'],
+  },
+  {
+    icon: Building, title: 'MEP Solutions', video: '/videos/MEP-Solutions.mp4',
+    description: 'Complete MEP support including electrical works, AC systems, pump room works, lighting, low-current systems and building support services.',
+    features: ['Electrical works', 'AC systems', 'Pump room works', 'Lighting systems', 'Low-current systems', 'Building support'],
+  },
+  {
+    icon: Cpu, title: 'Building Automation & Control Systems', video: '/videos/Building-Automation-Control-Systems.mp4',
+    description: 'Automation solutions for villas, offices and commercial buildings, including lighting control, AC control, sensor-based control, energy-saving automation and centralized system management.',
+    features: ['Lighting control', 'AC control', 'Sensor-based control', 'Energy-saving automation', 'Centralized management', 'Building automation'],
+  },
+  {
+    icon: Flame, title: 'Fire Alarm & Safety Systems', video: '/videos/fire-alams-system.mp4',
+    description: 'Fire alarm system installation and support, including smoke detectors, heat detectors, manual call points, sounders and basic system maintenance.',
+    features: ['Smoke detectors', 'Heat detectors', 'Manual call points', 'Sounders', 'System installation', 'System maintenance'],
+  },
+  {
+    icon: Headphones, title: 'IT Support & AMC Services', video: '/videos/IT-Support-AMC-Services.mp4',
+    description: 'IT support and annual maintenance services for offices and businesses, including network support, Wi-Fi troubleshooting, CCTV support, system maintenance and technical assistance.',
+    features: ['Network support', 'Wi-Fi troubleshooting', 'CCTV support', 'System maintenance', 'Technical assistance', 'AMC services'],
   },
 ]
 
