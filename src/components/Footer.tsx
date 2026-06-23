@@ -104,7 +104,6 @@ export default function Footer() {
               </svg>
               <span className="font-sans text-xl font-bold">NestLink</span>
               <sup className="ml-0.5 font-sans text-[10px] text-white">®</sup>
-              <span className="ml-2 font-sans text-xs font-medium text-white">Part of Innovation</span>
             </Link>
 
             <div className="mt-6 flex items-center gap-3">
@@ -210,7 +209,6 @@ export default function Footer() {
             >
               NestLink
               <sup className="text-2xl md:text-3xl">®</sup>
-              <span className="text-lg font-medium text-white/50 md:text-xl">Part of Innovation</span>
               <span className="mx-8 text-white/30">|</span>
             </span>
           ))}
