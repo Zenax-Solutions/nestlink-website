@@ -22,12 +22,12 @@ const process = [
 ]
 
 const features = [
-  { icon: Zap, title: 'AI-Powered Automation', desc: 'Systems that learn your habits and adapt automatically — lighting, climate, and security work together intelligently.' },
-  { icon: Shield, title: 'Enterprise Security', desc: 'Bank-grade encryption, secure access controls, and 24/7 monitoring keep your property and data safe.' },
-  { icon: Wifi, title: 'Seamless Connectivity', desc: 'Mesh Wi-Fi, structured cabling, and enterprise networking ensure every device stays connected, everywhere.' },
-  { icon: Monitor, title: 'Unified Control', desc: 'One app to control everything — lighting, AC, curtains, cameras, audio, and more from anywhere in the world.' },
-  { icon: Lightbulb, title: 'Energy Efficiency', desc: 'Smart scheduling, occupancy sensors, and automated systems reduce energy consumption by up to 30%.' },
-  { icon: Headphones, title: '24/7 Support', desc: 'Round-the-clock technical support and proactive monitoring ensure your system runs flawlessly.' },
+  { icon: Zap, title: 'Professional Installation', desc: 'Clean, safe and reliable work for villas, offices and commercial projects.' },
+  { icon: Shield, title: 'Complete Solution Provider', desc: 'From smart home automation to CCTV, Wi-Fi, lighting, electrical and MEP services.' },
+  { icon: Wifi, title: 'Affordable & Flexible Options', desc: 'We provide solutions based on your budget, requirements and site conditions.' },
+  { icon: Monitor, title: 'Unified Control', desc: 'One app to control everything from anywhere.' },
+  { icon: Lightbulb, title: 'Energy Efficiency', desc: 'Smart systems reduce energy consumption by up to 30%.' },
+  { icon: Headphones, title: 'After-Sales Support', desc: 'We support our clients even after installation to make sure the system runs smoothly.' },
 ]
 
 export default function ScrollContent() {

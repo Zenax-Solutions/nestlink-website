@@ -41,12 +41,12 @@ const stats = [
 ]
 
 const features = [
-  { icon: Zap, title: 'AI-Powered Automation', desc: 'Systems that learn your habits and adapt automatically.' },
-  { icon: Shield, title: 'Enterprise Security', desc: 'Bank-grade encryption and 24/7 monitoring keep you safe.' },
-  { icon: Wifi, title: 'Seamless Connectivity', desc: 'Mesh Wi-Fi and structured cabling everywhere.' },
+  { icon: Zap, title: 'Professional Installation', desc: 'Clean, safe and reliable work for villas, offices and commercial projects.' },
+  { icon: Shield, title: 'Complete Solution Provider', desc: 'From smart home automation to CCTV, Wi-Fi, lighting, electrical and MEP services.' },
+  { icon: Wifi, title: 'Affordable & Flexible Options', desc: 'We provide solutions based on your budget, requirements and site conditions.' },
   { icon: Monitor, title: 'Unified Control', desc: 'One app to control everything from anywhere.' },
   { icon: Lightbulb, title: 'Energy Efficiency', desc: 'Smart systems reduce energy consumption by up to 30%.' },
-  { icon: Headphones, title: '24/7 Support', desc: 'Round-the-clock technical support and monitoring.' },
+  { icon: Headphones, title: 'After-Sales Support', desc: 'We support our clients even after installation to make sure the system runs smoothly.' },
 ]
 
 function useIsMobile() {
