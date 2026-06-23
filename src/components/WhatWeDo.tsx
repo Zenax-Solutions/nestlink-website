@@ -9,43 +9,120 @@ const cards = [
     num: '01',
     title: 'Smart Home Automation',
     description:
-      'Lighting, climate, curtains, and scene control through intuitive apps and voice assistants.',
-    media: { type: 'image' as const, src: '/footer.jpg' },
+      'Smart lighting, curtain control, AC control, smart switches, mobile app control, voice control, and customized automation scenes for villas, apartments, and offices.',
+    media: { type: 'video' as const, src: '/videos/smart-home.mp4' },
   },
   {
     num: '02',
-    title: 'Security & CCTV Systems',
+    title: 'CCTV Installation',
     description:
-      'Advanced surveillance, smart alerts, and 24/7 remote monitoring for complete peace of mind.',
+      'Wired cameras, wireless cameras, solar-powered cameras, battery-operated cameras, NVR setup, mobile viewing, and complete surveillance solutions.',
     media: { type: 'video' as const, src: '/videos/cctv.mp4' },
   },
   {
     num: '03',
-    title: 'Access Control & Intercom',
+    title: 'Wi-Fi & Networking Solutions',
     description:
-      'Smart locks, video intercoms, and secure visitor management for homes and offices.',
-    media: { type: 'video' as const, src: '/videos/access-intercom.mp4' },
+      'Access points, routers, structured cabling, data points, network cabinets, full villa Wi-Fi coverage, and office network setup.',
+    media: { type: 'video' as const, src: '/videos/wifi.mp4' },
   },
   {
     num: '04',
-    title: 'Networking Solutions',
+    title: 'Intercom Systems',
     description:
-      'Structured cabling, enterprise Wi-Fi, access points, and network racks built for reliability.',
-    media: { type: 'video' as const, src: '/videos/networking.mp4' },
+      'Video intercom, audio intercom, indoor monitor installation, outdoor station setup, mobile app integration, and door/gate release control.',
+    media: { type: 'video' as const, src: '/videos/intercom.mp4' },
   },
   {
     num: '05',
-    title: 'Audio, Video & Home Cinema',
+    title: 'Access Control Systems',
     description:
-      'Immersive home cinemas, multi-room audio, and conference room AV systems.',
-    media: { type: 'video' as const, src: '/videos/cinema.mp4' },
+      'Fingerprint access, card access, keypad access, magnetic locks, door controllers, gym access systems, and office entry control.',
+    media: { type: 'video' as const, src: '/videos/Access-Control-Systems.mp4' },
   },
   {
     num: '06',
-    title: 'Lighting & ELV Solutions',
+    title: 'Indoor Lighting Solutions',
     description:
-      'Indoor, outdoor, and garden lighting with complete ELV infrastructure design.',
+      'Professional indoor lighting solutions for villas, apartments, offices, and commercial spaces. We provide ceiling lights, spotlights, chandeliers, LED strip lights, cove lighting, decorative lighting, smart lighting control, and lighting maintenance.',
     media: { type: 'video' as const, src: '/videos/lighting.mp4' },
+  },
+  {
+    num: '07',
+    title: 'Outdoor Lighting Solutions',
+    description:
+      'Outdoor lighting solutions for villas, gardens, landscapes, building façades, pathways, pool areas, and parking areas. We provide garden lights, wall lights, façade lighting, landscape lighting, waterproof LED strips, and outdoor smart lighting control.',
+    media: { type: 'video' as const, src: '/videos/outdoor-lighting.mp4' },
+  },
+  {
+    num: '08',
+    title: 'Indoor Screens & Video Walls',
+    description:
+      'Indoor display solutions for offices, meeting rooms, control rooms, shops, showrooms, and entertainment areas. We provide LED screens, LCD video walls, digital signage, meeting room displays, and control room screen solutions.',
+    media: { type: 'video' as const, src: '/videos/Indoor-Screens-Video-Walls.mp4' },
+  },
+  {
+    num: '09',
+    title: 'Outdoor LED Screens',
+    description:
+      'Outdoor LED screen solutions for villas, pool areas, gardens, restaurants, cafés, events, and commercial spaces. We provide weather-resistant LED screens, outdoor display installation, structure support, controllers, cabling, and media input setup.',
+    media: { type: 'video' as const, src: '/videos/Outdoor-LED-Screens.mp4' },
+  },
+  {
+    num: '10',
+    title: 'Home Cinema Solutions',
+    description:
+      'Complete home cinema setup including projector installation, screen installation, AV receiver setup, surround sound speakers, acoustic planning, Apple TV/media setup and smart remote control.',
+    media: { type: 'video' as const, src: '/videos/cinema.mp4' },
+  },
+  {
+    num: '11',
+    title: 'Indoor & Outdoor Audio',
+    description:
+      'Audio solutions for living rooms, majlis areas, gardens, pool areas, restaurants, and commercial spaces. We provide ceiling speakers, outdoor speakers, amplifiers, multi-room audio, and music control systems.',
+    media: { type: 'video' as const, src: '/videos/Indoor-&-Outdoor-Audio.mp4' },
+  },
+  {
+    num: '12',
+    title: 'Electrical Works',
+    description:
+      'Electrical installation, maintenance, and repair services including lighting points, power sockets, DB panel works, wiring, load checking, fault finding, and general electrical maintenance.',
+    media: { type: 'video' as const, src: '/videos/Electrical-Works.mp4' },
+  },
+  {
+    num: '13',
+    title: 'AC Installation & Maintenance',
+    description:
+      'AC installation, servicing, repair and control solutions for residential and commercial spaces, including thermostat replacement and smart AC control integration.',
+    media: { type: 'video' as const, src: '/videos/AC-Installation-Maintenance.mp4' },
+  },
+  {
+    num: '14',
+    title: 'MEP Solutions',
+    description:
+      'Complete MEP support including electrical works, AC systems, pump room works, lighting, low-current systems and building support services.',
+    media: { type: 'video' as const, src: '/videos/MEP-Solutions.mp4' },
+  },
+  {
+    num: '15',
+    title: 'Building Automation & Control Systems',
+    description:
+      'Automation solutions for villas, offices and commercial buildings, including lighting control, AC control, sensor-based control, energy-saving automation and centralized system management.',
+    media: { type: 'video' as const, src: '/videos/Building-Automation-Control-Systems.mp4' },
+  },
+  {
+    num: '16',
+    title: 'Fire Alarm & Safety Systems',
+    description:
+      'Fire alarm system installation and support, including smoke detectors, heat detectors, manual call points, sounders and basic system maintenance.',
+    media: { type: 'video' as const, src: '/videos/fire-alams-system.mp4' },
+  },
+  {
+    num: '17',
+    title: 'IT Support & AMC Services',
+    description:
+      'IT support and annual maintenance services for offices and businesses, including network support, Wi-Fi troubleshooting, CCTV support, system maintenance and technical assistance.',
+    media: { type: 'video' as const, src: '/videos/IT-Support-AMC-Services.mp4' },
   },
 ]
 
