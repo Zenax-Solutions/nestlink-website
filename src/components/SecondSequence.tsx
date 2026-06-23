@@ -241,7 +241,7 @@ export default function SecondSequence() {
           <div className="w-full max-w-5xl">
             <div className="mb-6 text-center md:mb-10">
               <span className="inline-block rounded-full border border-white/20 bg-white/10 px-4 py-1.5 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md md:px-5 md:py-2 md:text-xs">
-                Why Choose Us
+                Why Choose NestLink Technologies?
               </span>
               <h2 className="mx-auto mt-4 max-w-2xl font-sans text-2xl font-bold leading-[1.08] tracking-tight text-white md:mt-5 md:text-3xl lg:text-4xl">
                 Built for the way<br />you live

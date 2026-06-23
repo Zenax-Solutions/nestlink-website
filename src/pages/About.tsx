@@ -36,10 +36,7 @@ export default function About() {
               your space<span className="text-[#0000FF]">.</span>
             </h1>
             <p className="mt-6 max-w-2xl font-sans text-base leading-relaxed text-white/70 md:text-lg">
-              NestLink Technologies is a Dubai-based technology solutions provider
-              specializing in smart home automation, ELV systems, networking,
-              security, lighting, and audio-visual integration for villas, homes,
-              offices, retail spaces, and commercial projects.
+              NestLink Technologies is a Dubai-based technology and building solutions company, providing comprehensive Smart Home, ELV, CCTV, Wi-Fi, Lighting, Audio, Home Cinema, Electrical, and MEP services for villas, offices, retail spaces, and commercial projects across the UAE.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link

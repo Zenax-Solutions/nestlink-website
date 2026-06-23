@@ -191,8 +191,8 @@ export default function ScrollContent() {
       <section className="py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-6 md:px-12">
           <AnimatedSection className="text-center">
-            <span className="inline-block rounded-full border border-black/10 bg-white px-4 py-1.5 font-sans text-[11px] font-bold uppercase tracking-[0.15em] text-black/70">
-              Why Choose Us
+            <span className="inline-block rounded-full border border-black/10 bg-white px-4 py-1.5 font-sans text-[11px] font-bold uppercase tracking-[0.15em] text-black">
+              Why Choose NestLink Technologies?
             </span>
             <h2 className="mt-5 font-sans text-3xl font-bold leading-[1.1] tracking-tight text-black md:text-4xl">
               Built for the way you live
