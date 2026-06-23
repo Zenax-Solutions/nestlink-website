@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Target, Eye, Lightbulb, Heart, Shield, Users, CheckCircle } from 'lucide-react'
+import { ArrowRight, Target, Eye, Lightbulb, Heart, Shield, Users, CheckCircle, Home, Camera, Wifi, Phone, Sun, Monitor, Tv, Film, Music, Zap, Thermometer, Building, Cpu, Flame } from 'lucide-react'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../components/AnimatedSection'
 
@@ -93,18 +93,14 @@ export default function About() {
                 </div>
                 <h2 className="font-sans text-2xl font-bold text-black md:text-3xl">Our Mission</h2>
                 <p className="mt-4 font-sans text-base leading-relaxed text-black/60">
-                  To design, supply, install, and support intelligent technology
-                  systems that make spaces smarter, safer, more connected, and
-                  easier to manage.
+                  Our mission is to provide reliable, affordable, and high-quality Smart Home, ELV, MEP, and technology solutions for residential and commercial clients across the UAE.
                 </p>
-                <ul className="mt-6 space-y-3">
-                  {['Practical engineering', 'Clean installation', 'Trusted products', 'Responsive support'].map((item) => (
-                    <li key={item} className="flex items-center gap-3">
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#0000FF]" />
-                      <span className="font-sans text-sm text-black/70">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                <p className="mt-4 font-sans text-base leading-relaxed text-black/60">
+                  We aim to make every project simple, secure, and future-ready by offering professional consultation, proper installation, trusted products, and dependable after-sales support.
+                </p>
+                <p className="mt-4 font-sans text-base leading-relaxed text-black/60">
+                  Our goal is to help customers enjoy better security, comfort, connectivity, and control through smart and practical technology solutions.
+                </p>
               </div>
             </AnimatedSection>
 
@@ -115,10 +111,13 @@ export default function About() {
                 </div>
                 <h2 className="font-sans text-2xl font-bold text-black md:text-3xl">Our Vision</h2>
                 <p className="mt-4 font-sans text-base leading-relaxed text-black/60">
-                  To become a trusted technology partner in the UAE for smart home
-                  automation, ELV, security, networking, and AV integration —
-                  recognized for professional design, quality workmanship,
-                  dependable after-sales service, and modern solutions.
+                  Our vision is to become a trusted technology and MEP solutions provider in the UAE, recognized for quality work, honest service, and customer satisfaction.
+                </p>
+                <p className="mt-4 font-sans text-base leading-relaxed text-black/60">
+                  We aim to support the growing demand for smart villas, connected offices, secure buildings, and modern lifestyle solutions by delivering innovative, reliable, and cost-effective systems.
+                </p>
+                <p className="mt-4 font-sans text-base leading-relaxed text-black/60">
+                  NestLink Technologies is committed to building long-term relationships with clients by providing solutions that are not only modern but also easy to use, easy to maintain, and suitable for the UAE market.
                 </p>
               </div>
             </AnimatedSection>
@@ -160,33 +159,44 @@ export default function About() {
         </div>
       </section>
 
-      {/* Field Objectives */}
+      {/* Services */}
       <section className="bg-[#f2f2f2] py-24">
         <div className="mx-auto max-w-7xl px-6 md:px-12">
           <AnimatedSection className="mb-14 text-center">
             <span className="rounded-full border border-black/10 bg-white px-4 py-1.5 font-sans text-[11px] font-bold uppercase tracking-[0.15em] text-black/70">
-              Field Objectives
+              What We Do
             </span>
             <h2 className="mt-5 font-sans text-3xl font-bold leading-[1.1] text-black md:text-4xl">
-              Built around what matters most
+              Our Services
             </h2>
           </AnimatedSection>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[
-              { icon: Lightbulb, title: 'Comfort & Control', text: 'App-based control of lighting, curtains, climate, scenes, and daily routines.' },
-              { icon: Shield, title: 'Security & Safety', text: 'CCTV, access control, intercom, smart locks, and real-time alerts.' },
-              { icon: Users, title: 'Connectivity First', text: 'Reliable Wi-Fi, structured cabling, and organized network racks.' },
-              { icon: Target, title: 'Premium AV Experience', text: 'Home cinema, multi-room audio, video walls, and entertainment systems.' },
-              { icon: Heart, title: 'Energy Efficiency', text: 'Sensors, smart lighting, and climate control that reduce waste.' },
-              { icon: CheckCircle, title: 'Long-Term Support', text: 'Maintenance, upgrades, and troubleshooting whenever you need help.' },
+              { icon: Home, title: 'Smart Home Automation', text: 'Smart lighting, curtain control, AC control, smart switches, mobile app control, voice control, and customized automation scenes for villas, apartments, and offices.' },
+              { icon: Camera, title: 'CCTV Installation', text: 'Wired cameras, wireless cameras, solar-powered cameras, battery-operated cameras, NVR setup, mobile viewing, and complete surveillance solutions.' },
+              { icon: Wifi, title: 'Wi-Fi & Networking Solutions', text: 'Access points, routers, structured cabling, data points, network cabinets, full villa Wi-Fi coverage, and office network setup.' },
+              { icon: Phone, title: 'Intercom Systems', text: 'Video intercom, audio intercom, indoor monitor installation, outdoor station setup, mobile app integration, and door/gate release control.' },
+              { icon: Shield, title: 'Access Control Systems', text: 'Fingerprint access, card access, keypad access, magnetic locks, door controllers, gym access systems, and office entry control.' },
+              { icon: Lightbulb, title: 'Indoor Lighting Solutions', text: 'Professional indoor lighting for villas, apartments, offices, and commercial spaces — ceiling lights, spotlights, chandeliers, LED strip lights, cove lighting, decorative lighting, smart lighting control, and maintenance.' },
+              { icon: Sun, title: 'Outdoor Lighting Solutions', text: 'Outdoor lighting for villas, gardens, landscapes, building façades, pathways, pool areas, and parking — garden lights, wall lights, façade lighting, landscape lighting, waterproof LED strips, and outdoor smart lighting control.' },
+              { icon: Monitor, title: 'Indoor Screens & Video Walls', text: 'Indoor display solutions for offices, meeting rooms, control rooms, shops, showrooms, and entertainment — LED screens, LCD video walls, digital signage, meeting room displays, and control room solutions.' },
+              { icon: Tv, title: 'Outdoor LED Screens', text: 'Outdoor LED screen solutions for villas, pool areas, gardens, restaurants, cafés, events, and commercial spaces — weather-resistant LED screens, outdoor display installation, structure support, controllers, cabling, and media input setup.' },
+              { icon: Film, title: 'Home Cinema Solutions', text: 'Complete home cinema setup including projector installation, screen installation, AV receiver setup, surround sound speakers, acoustic planning, Apple TV/media setup, and smart remote control.' },
+              { icon: Music, title: 'Indoor & Outdoor Audio', text: 'Audio solutions for living rooms, majlis areas, gardens, pool areas, restaurants, and commercial spaces — ceiling speakers, outdoor speakers, amplifiers, multi-room audio, and music control systems.' },
+              { icon: Zap, title: 'Electrical Works', text: 'Electrical installation, maintenance, and repair services including lighting points, power sockets, DB panel works, wiring, load checking, fault finding, and general electrical maintenance.' },
+              { icon: Thermometer, title: 'AC Installation & Maintenance', text: 'AC installation, servicing, repair and control solutions for residential and commercial spaces, including thermostat replacement and smart AC control integration.' },
+              { icon: Building, title: 'MEP Solutions', text: 'Complete MEP support including electrical works, AC systems, pump room works, lighting, low-current systems, and building support services.' },
+              { icon: Cpu, title: 'Building Automation & Control Systems', text: 'Automation solutions for villas, offices and commercial buildings — lighting control, AC control, sensor-based control, energy-saving automation, and centralized system management.' },
+              { icon: Flame, title: 'Fire Alarm & Safety Systems', text: 'Fire alarm system installation and support — smoke detectors, heat detectors, manual call points, sounders, and basic system maintenance.' },
+              { icon: Monitor, title: 'IT Support & AMC Services', text: 'IT support and annual maintenance services for offices and businesses — network support, Wi-Fi troubleshooting, CCTV support, system maintenance, and technical assistance.' },
             ].map((obj, i) => (
               <motion.div
                 key={obj.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
+                transition={{ duration: 0.4, delay: i * 0.05 }}
                 className="flex h-full gap-5 rounded-2xl border border-black/10 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
               >
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#0000FF]/10 text-[#0000FF]">

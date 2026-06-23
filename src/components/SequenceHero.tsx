@@ -183,7 +183,7 @@ const overlays = [
           </h1>
 
           <p className="mt-4 max-w-xl font-sans text-sm leading-relaxed text-white/80 md:text-base md:text-lg md:mt-5">
-            We engineer intelligent spaces where technology disappears into the background, so you can live, work, and relax with effortless control, security, and comfort.
+            NestLink Technologies provides smart home, ELV, CCTV, Wi-Fi, lighting, audio, home cinema, electrical and MEP solutions across Dubai, UAE. We deliver reliable installation, professional service and affordable technology solutions for villas, offices and commercial spaces.
           </p>
 
           <div className="mt-6 flex flex-col gap-3 md:mt-8 md:flex-row md:items-center md:gap-4">

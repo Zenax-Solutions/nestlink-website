@@ -58,28 +58,41 @@ export default function WhatWeDo() {
     if (!sectionRef.current || !trackRef.current) return
 
     const track = trackRef.current
-    const totalScroll = track.scrollWidth - window.innerWidth
+    const ctx = gsap.context(() => {
+      const getScrollAmount = () => track.scrollWidth - window.innerWidth
 
-    const tween = gsap.to(track, {
-      x: -totalScroll,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top top',
-        end: () => `+=${totalScroll}`,
-        pin: true,
-        scrub: 1,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-      },
-    })
+      const tween = gsap.to(track, {
+        x: () => -getScrollAmount(),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top top',
+          end: () => `+=${getScrollAmount()}`,
+          pin: true,
+          scrub: 1.2,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          fastScrollEnd: true,
+          preventOverlaps: true,
+        },
+      })
 
-    if (tween.scrollTrigger) {
-      triggersRef.current.push(tween.scrollTrigger)
-    }
+      if (tween.scrollTrigger) {
+        triggersRef.current.push(tween.scrollTrigger)
+      }
+    }, sectionRef)
+
+    const refreshTimeout = setTimeout(() => {
+      ScrollTrigger.refresh()
+    }, 300)
+
+    const handleResize = () => ScrollTrigger.refresh()
+    window.addEventListener('resize', handleResize)
 
     return () => {
-      triggersRef.current.forEach((st) => st.kill())
+      ctx.revert()
+      clearTimeout(refreshTimeout)
+      window.removeEventListener('resize', handleResize)
       triggersRef.current = []
     }
   }, [])
@@ -103,6 +116,7 @@ export default function WhatWeDo() {
       <div
         ref={trackRef}
         className="relative z-10 flex h-[70%] items-center gap-5 px-6 md:gap-6 md:px-12"
+        style={{ willChange: 'transform' }}
       >
         {cards.map((card) => (
           <div
