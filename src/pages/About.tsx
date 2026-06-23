@@ -32,8 +32,8 @@ export default function About() {
               About Us
             </span>
             <h1 className="mt-6 max-w-3xl font-sans text-4xl font-bold leading-[1.05] tracking-tight text-white md:text-5xl lg:text-6xl">
-              Technology that fits<br />
-              your space<span className="text-[#0000FF]">.</span>
+              Dubai's Trusted Smart Home<br />
+              & ELV Technology Partner<span className="text-[#0000FF]">.</span>
             </h1>
             <p className="mt-6 max-w-2xl font-sans text-base leading-relaxed text-white/70 md:text-lg">
               NestLink Technologies is a Dubai-based technology and building solutions company, providing comprehensive Smart Home, ELV, CCTV, Wi-Fi, Lighting, Audio, Home Cinema, Electrical, and MEP services for villas, offices, retail spaces, and commercial projects across the UAE.
@@ -52,7 +52,7 @@ export default function About() {
                 to="/services"
                 className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-8 py-4 font-sans text-sm font-bold text-white backdrop-blur-sm transition-all hover:border-white/40"
               >
-                Our Services
+                Our Services in Dubai
               </Link>
             </div>
           </AnimatedSection>
@@ -161,7 +161,7 @@ export default function About() {
         <div className="mx-auto max-w-7xl px-6 md:px-12">
           <AnimatedSection className="mb-14 text-center">
             <span className="rounded-full border border-black/10 bg-white px-4 py-1.5 font-sans text-[11px] font-bold uppercase tracking-[0.15em] text-black/70">
-              What We Do
+              What We Do in Dubai
             </span>
             <h2 className="mt-5 font-sans text-3xl font-bold leading-[1.1] text-black md:text-4xl">
               Our Services

@@ -117,12 +117,13 @@ export default function Services() {
               Our Services
             </span>
             <h1 className="mt-6 max-w-3xl font-sans text-4xl font-bold leading-[1.05] tracking-tight text-white md:text-5xl lg:text-6xl">
-              Complete smart technology solutions<span className="text-[#0000FF]">.</span>
+              Smart Home & Technology Solutions<br />
+              Across Dubai<span className="text-[#0000FF]">.</span>
             </h1>
             <p className="mt-6 max-w-2xl font-sans text-base leading-relaxed text-white/70 md:text-lg">
-              From smart homes to commercial buildings, NestLink Technologies
+              From smart villas in Emirates Hills to offices in Dubai Marina, NestLink Technologies
               delivers integrated automation, security, networking, and AV
-              systems tailored to your space.
+              systems tailored to your space across the UAE.
             </p>
           </AnimatedSection>
         </div>
@@ -189,7 +190,7 @@ export default function Services() {
               Specialty Solutions
             </span>
             <h2 className="mt-5 font-sans text-3xl font-bold leading-[1.1] text-white md:text-4xl">
-              Smart automation, security & AV
+              Smart home automation, security & AV solutions in Dubai
             </h2>
           </AnimatedSection>
 
@@ -220,7 +221,7 @@ export default function Services() {
               Technology Platforms
             </span>
             <h2 className="mt-5 font-sans text-3xl font-bold leading-[1.1] text-black md:text-4xl">
-              Trusted brands we work with
+              Trusted brands we work with across Dubai
             </h2>
           </AnimatedSection>
 

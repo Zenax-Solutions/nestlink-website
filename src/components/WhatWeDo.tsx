@@ -185,7 +185,7 @@ export default function WhatWeDo() {
           Our Value
         </span>
         <h2 className="mt-5 max-w-3xl font-sans text-3xl font-bold leading-[1.1] tracking-tight text-black md:text-5xl">
-          Modern Solutions & Lasting Benefits For Your Space
+          Dubai's Smart Home & ELV Services All Under One Roof
         </h2>
       </div>
 

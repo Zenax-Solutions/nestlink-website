@@ -24,14 +24,15 @@ export default function Process() {
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-28 md:px-12">
           <AnimatedSection>
             <span className="rounded-full border border-white/20 bg-white/10 px-4 py-1.5 font-sans text-[11px] font-bold uppercase tracking-[0.15em] text-white/80 backdrop-blur-sm">
-              How We Work
+              Our Smart Home Process in Dubai
             </span>
             <h1 className="mt-6 max-w-3xl font-sans text-4xl font-bold leading-[1.05] tracking-tight text-white md:text-5xl lg:text-6xl">
-              From concept to completion<span className="text-[#0000FF]">.</span>
+              Smart Home Project Delivery<br />
+              Across Dubai<span className="text-[#0000FF]">.</span>
             </h1>
             <p className="mt-6 max-w-2xl font-sans text-base leading-relaxed text-white/70 md:text-lg">
-              Our proven project delivery process ensures every system is
-              designed, installed, tested, and supported with precision.
+              Our proven project delivery process ensures every smart home, security, and ELV system is
+              designed, installed, tested, and supported with precision across Dubai and the UAE.
             </p>
           </AnimatedSection>
         </div>
@@ -70,7 +71,7 @@ export default function Process() {
               Simple Workflow
             </span>
             <h2 className="mt-5 font-sans text-3xl font-bold leading-[1.1] text-white md:text-4xl">
-              Five stages. One seamless experience.
+              Five stages. One seamless smart home experience in Dubai.
             </h2>
           </AnimatedSection>
 
@@ -103,7 +104,7 @@ export default function Process() {
                 After-Sales Support
               </span>
               <h2 className="mt-5 font-sans text-3xl font-bold leading-[1.1] text-black md:text-4xl">
-                We stay with you after handover
+                We stay with you after handover — Dubai's trusted support team
               </h2>
               <p className="mt-5 font-sans text-base leading-relaxed text-black/60">
                 Technology should keep working. Our team provides dependable

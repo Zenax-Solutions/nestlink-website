@@ -113,7 +113,7 @@ export default function ScrollContent() {
               Our Impact
             </span>
             <h2 className="mt-5 font-sans text-3xl font-bold leading-[1.1] tracking-tight text-black md:text-4xl">
-              Numbers that speak for themselves
+              Trusted by clients across Dubai
             </h2>
           </AnimatedSection>
 
@@ -145,7 +145,7 @@ export default function ScrollContent() {
           <div className="grid gap-12 lg:grid-cols-[1fr_1.5fr] lg:gap-20">
             <AnimatedSection>
               <span className="inline-block rounded-full border border-black/10 bg-white px-4 py-1.5 font-sans text-[11px] font-bold uppercase tracking-[0.15em] text-black/70">
-                How We Work
+                How We Work in Dubai
               </span>
               <h2 className="mt-5 font-sans text-3xl font-bold leading-[1.1] tracking-tight text-black md:text-4xl">
                 A proven process from concept to completion
@@ -195,7 +195,7 @@ export default function ScrollContent() {
               Why Choose NestLink Technologies?
             </span>
             <h2 className="mt-5 font-sans text-3xl font-bold leading-[1.1] tracking-tight text-black md:text-4xl">
-              Built for the way you live
+              Why Dubai trusts NestLink Technologies
             </h2>
           </AnimatedSection>
 

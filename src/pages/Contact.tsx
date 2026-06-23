@@ -31,10 +31,11 @@ export default function Contact() {
               Contact Us
             </span>
             <h1 className="mt-6 max-w-3xl font-sans text-4xl font-bold leading-[1.05] tracking-tight text-white md:text-5xl lg:text-6xl">
-              Let's build something smart<span className="text-[#0000FF]">.</span>
+              Get Your Free Smart Home<br />
+              Consultation in Dubai<span className="text-[#0000FF]">.</span>
             </h1>
             <p className="mt-6 max-w-2xl font-sans text-base leading-relaxed text-white/70 md:text-lg">
-              Ready to upgrade your space? Get in touch for a free consultation
+              Ready to upgrade your Dubai villa, office, or commercial space? Get in touch for a free consultation
               and discover how NestLink Technologies can help.
             </p>
           </AnimatedSection>

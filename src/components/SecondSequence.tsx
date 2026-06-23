@@ -213,9 +213,9 @@ export default function SecondSequence() {
             <span className="inline-block rounded-full border border-white/20 bg-white/10 px-5 py-2 font-sans text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md">
               Our Impact
             </span>
-            <h2 className="mx-auto mt-4 max-w-3xl font-sans text-3xl font-bold leading-[1.08] tracking-tight text-white md:mt-6 md:text-4xl lg:text-6xl">
-              Numbers that speak<br />for themselves
-            </h2>
+              <h2 className="mx-auto mt-4 max-w-3xl font-sans text-3xl font-bold leading-[1.08] tracking-tight text-white md:mt-6 md:text-4xl lg:text-6xl">
+                Trusted by clients<br />across Dubai
+              </h2>
           </div>
           <div className="grid max-w-3xl grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
             {stats.map((stat) => (
@@ -244,7 +244,7 @@ export default function SecondSequence() {
                 Why Choose NestLink Technologies?
               </span>
               <h2 className="mx-auto mt-4 max-w-2xl font-sans text-2xl font-bold leading-[1.08] tracking-tight text-white md:mt-5 md:text-3xl lg:text-4xl">
-                Built for the way<br />you live
+                Why Dubai chooses<br />NestLink
               </h2>
             </div>
 

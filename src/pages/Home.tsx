@@ -69,15 +69,15 @@ export default function Home() {
 
             <AnimatedSection delay={0.15}>
               <span className="inline-block rounded-full border border-black/10 bg-white px-4 py-1.5 font-sans text-[11px] font-bold uppercase tracking-[0.15em] text-black/70">
-                Space by space
+                Dubai's Smart Home Experts
               </span>
               <h2 className="mt-5 font-sans text-3xl font-bold leading-[1.1] tracking-tight text-black md:text-4xl lg:text-5xl">
-                Smart Technology Built Around Your Lifestyle
+                Smart Home Solutions Designed for Dubai Living
               </h2>
               <p className="mt-5 max-w-lg font-sans text-base leading-relaxed text-black/70 md:text-lg">
                 We don't just install devices — we create connected environments
                 where comfort, security, and control work together seamlessly.
-                From villas to offices, every solution is tailored to how you live
+                From villas in Palm Jumeirah to offices in DIFC, every solution is tailored to how you live
                 and work.
               </p>
 
@@ -213,11 +213,11 @@ export default function Home() {
         <div className="mx-auto max-w-4xl px-6 text-center md:px-12">
           <AnimatedSection>
             <h2 className="font-sans text-3xl font-bold leading-tight text-white md:text-4xl lg:text-5xl">
-              Ready to make your space smarter?
+              Ready to make your Dubai property smarter?
             </h2>
             <p className="mx-auto mt-5 max-w-2xl font-sans text-base text-white/60">
               Get a free consultation and discover how NestLink Technologies can
-              transform your villa, home, office, or commercial property.
+              transform your villa, home, office, or commercial property across Dubai and the UAE.
             </p>
             <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
               <Link
