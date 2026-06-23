@@ -9,6 +9,9 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    const { name, email, phone, service, message } = formData
+    const text = `*New Inquiry from NestLink Website*%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Email:* ${encodeURIComponent(email)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Service:* ${encodeURIComponent(service)}%0A*Message:* ${encodeURIComponent(message)}`
+    window.open(`https://wa.me/971504429734?text=${text}`, '_blank')
     setSubmitted(true)
     setTimeout(() => setSubmitted(false), 4000)
     setFormData({ name: '', email: '', phone: '', service: '', message: '' })
@@ -171,25 +174,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Map */}
-      <section className="bg-[#f2f2f2] pb-24">
-        <div className="mx-auto max-w-7xl px-6 md:px-12">
-          <AnimatedSection className="overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm">
-            <div className="relative h-[320px] w-full overflow-hidden md:h-[400px]">
-              <iframe
-                src="https://www.openstreetmap.org/export/embed.html?bbox=55.1%2C25.0%2C55.45%2C25.35&layer=mapnik&marker=25.2048%2C55.2708"
-                width="100%"
-                height="100%"
-                style={{ border: 0, marginTop: -20, height: 'calc(100% + 40px)' }}
-                className="pointer-events-none"
-                loading="lazy"
-                title="Dubai Map"
-              />
-              <div className="pointer-events-none absolute inset-0 z-10" />
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+
     </div>
   )
 }
