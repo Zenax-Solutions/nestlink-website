@@ -143,19 +143,11 @@ export default function Services() {
                 className="group relative h-full overflow-hidden rounded-3xl bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
               >
                 <div className="relative h-64 overflow-hidden">
-                  {service.video ? (
-                    <video
-                      src={service.video}
-                      autoPlay muted loop playsInline
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  ) : (
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  )}
+                  <video
+                    src={service.video}
+                    autoPlay muted loop playsInline
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-5 left-6 inline-flex items-center gap-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/20 text-white backdrop-blur-sm">

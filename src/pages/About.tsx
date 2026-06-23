@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Target, Eye, Lightbulb, Heart, Shield, Users, CheckCircle, Home, Camera, Wifi, Phone, Sun, Monitor, Tv, Film, Music, Zap, Thermometer, Building, Cpu, Flame } from 'lucide-react'
+import { ArrowRight, Target, Eye, Lightbulb, Heart, Shield, Users, Home, Camera, Wifi, Phone, Sun, Monitor, Tv, Film, Music, Zap, Thermometer, Building, Cpu, Flame } from 'lucide-react'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../components/AnimatedSection'
 
