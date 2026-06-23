@@ -12,7 +12,7 @@ const values = [
 
 const stats = [
   { value: '10+', label: 'Years Experience' },
-  { value: '500+', label: 'Projects Delivered' },
+  { value: '200+', label: 'Projects Delivered' },
   { value: '100%', label: 'Client Satisfaction' },
   { value: '24/7', label: 'Support Available' },
 ]

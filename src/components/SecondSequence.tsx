@@ -49,18 +49,6 @@ const features = [
   { icon: Headphones, title: 'After-Sales Support', desc: 'We support our clients even after installation to make sure the system runs smoothly.' },
 ]
 
-function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(false)
-  useEffect(() => {
-    const mql = window.matchMedia('(max-width: 767px)')
-    setIsMobile(mql.matches)
-    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches)
-    mql.addEventListener('change', handler)
-    return () => mql.removeEventListener('change', handler)
-  }, [])
-  return isMobile
-}
-
 export default function SecondSequence() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const pinRef = useRef<HTMLDivElement>(null)
@@ -68,12 +56,11 @@ export default function SecondSequence() {
   const imagesRef = useRef<HTMLImageElement[]>([])
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null)
   const [ready, setReady] = useState(false)
-  const isMobile = useIsMobile()
 
   // Content overlay refs
   const impactRef = useRef<HTMLDivElement>(null)
   const featuresRef = useRef<HTMLDivElement>(null)
-  const featureCardsRef = useRef<HTMLDivElement[]>([])
+  const featuresTrackRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const imgs: HTMLImageElement[] = []
@@ -162,37 +149,32 @@ export default function SecondSequence() {
           impactRef.current.style.transform = `translateY(${(1 - op) * 30}px)`
         }
 
-        // Features: show 52%–92%
-        if (featuresRef.current) {
+        // Features overlay: show 52%–90%, carousel scrolls horizontally
+        if (featuresRef.current && featuresTrackRef.current) {
           let op = 0
-          if (p > 0.50 && p < 0.94) {
-            op = p < 0.60 ? (p - 0.50) / 0.10 : p > 0.86 ? 1 - (p - 0.86) / 0.08 : 1
+          if (p > 0.50 && p < 0.92) {
+            op = p < 0.60 ? (p - 0.50) / 0.10 : p > 0.84 ? 1 - (p - 0.84) / 0.08 : 1
           }
           featuresRef.current.style.opacity = String(op)
 
-          // Mobile: stagger cards vertically
-          if (isMobile) {
-            featuresRef.current.style.transform = `translateY(${(1 - op) * 40}px)`
-            featureCardsRef.current.forEach((card, i) => {
-              if (!card) return
-              const cardStart = 0.54 + i * 0.055
-              const cardEnd = cardStart + 0.14
-              let cardOp = 0
-              if (p > cardStart && p < cardEnd + 0.1) {
-                cardOp = p < cardStart + 0.07 ? (p - cardStart) / 0.07 : p > cardEnd ? 1 - (p - cardEnd) / 0.1 : 1
-              }
-              card.style.opacity = String(cardOp)
-              card.style.transform = `translateY(${(1 - cardOp) * 50}px)`
-            })
-          } else {
-            featuresRef.current.style.transform = `translateY(${(1 - op) * 40}px)`
+          // Carousel horizontal scroll: 55%–90%
+          if (p > 0.52 && p < 0.92) {
+            const trackWidth = featuresTrackRef.current.scrollWidth - window.innerWidth
+            const scrollProgress = (p - 0.52) / 0.40
+            const offset = -scrollProgress * trackWidth
+            featuresTrackRef.current.style.transform = `translateX(${Math.max(-trackWidth, Math.min(0, offset))}px)`
+          } else if (p <= 0.52) {
+            featuresTrackRef.current.style.transform = 'translateX(0px)'
+          } else if (p >= 0.92) {
+            const trackWidth = featuresTrackRef.current.scrollWidth - window.innerWidth
+            featuresTrackRef.current.style.transform = `translateX(${-trackWidth}px)`
           }
         }
       },
     })
 
     return () => { tl.kill() }
-  }, [ready, isMobile])
+  }, [ready])
 
   return (
     <section ref={sectionRef} className="relative w-full bg-[#070b0a]" style={{ height: `${SECTION_VH}vh` }}>
@@ -206,7 +188,7 @@ export default function SecondSequence() {
         {/* Impact Header + Cards combined */}
         <div
           ref={impactRef}
-          className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-6 px-6 text-center opacity-0 md:gap-10 md:px-12"
+          className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-6 px-6 pt-28 pb-12 text-center opacity-0 md:gap-10 md:px-12"
           style={{ willChange: 'transform, opacity' }}
         >
           <div>
@@ -232,63 +214,47 @@ export default function SecondSequence() {
           </div>
         </div>
 
-        {/* Features */}
+        {/* Features overlay - Carousel */}
         <div
           ref={featuresRef}
-          className="absolute inset-0 z-10 flex flex-col items-center justify-center px-4 opacity-0 md:px-12"
+          className="absolute inset-0 z-10 flex flex-col opacity-0"
           style={{ willChange: 'transform, opacity' }}
         >
-          <div className="w-full max-w-5xl">
-            <div className="mb-6 text-center md:mb-10">
-              <span className="inline-block rounded-full border border-white/20 bg-white/10 px-4 py-1.5 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md md:px-5 md:py-2 md:text-xs">
-                Why Choose NestLink Technologies?
-              </span>
-              <h2 className="mx-auto mt-4 max-w-2xl font-sans text-2xl font-bold leading-[1.08] tracking-tight text-white md:mt-5 md:text-3xl lg:text-4xl">
-                Why Dubai chooses<br />NestLink
-              </h2>
-            </div>
+          {/* Header */}
+          <div className="flex flex-col items-center justify-center px-4 pt-28 pb-6 text-center md:px-12">
+            <span className="inline-block rounded-full border border-white/20 bg-white/10 px-4 py-1.5 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md md:px-5 md:py-2 md:text-xs">
+              Why Choose NestLink Technologies?
+            </span>
+            <h2 className="mx-auto mt-4 max-w-xl font-sans text-3xl font-bold leading-[1.08] tracking-tight text-white md:mt-5 md:text-4xl lg:text-5xl">
+              Why Dubai chooses NestLink
+            </h2>
+          </div>
 
-            {isMobile ? (
-              <div className="flex flex-col gap-3">
-                {features.map((feat, i) => {
-                  const Icon = feat.icon
-                  return (
-                    <div
-                      key={feat.title}
-                      ref={(el) => { featureCardsRef.current[i] = el! }}
-                      className="flex items-start gap-4 rounded-2xl border border-white/15 bg-white/[0.12] p-4 backdrop-blur-xl"
-                      style={{ opacity: 0 }}
-                    >
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.12] text-white">
-                        <Icon size={20} />
-                      </div>
-                      <div>
-                        <h4 className="font-sans text-sm font-bold text-white">{feat.title}</h4>
-                        <p className="mt-1 font-sans text-xs leading-relaxed text-white/70">{feat.desc}</p>
-                      </div>
+          {/* Carousel track */}
+          <div className="flex h-[60%] items-center overflow-hidden px-6 md:px-12">
+            <div
+              ref={featuresTrackRef}
+              className="flex items-center gap-5 md:gap-6"
+              style={{ willChange: 'transform' }}
+            >
+              {features.map((feat) => {
+                const Icon = feat.icon
+                return (
+                  <div
+                    key={feat.title}
+                    className="flex h-[48vh] w-[78vw] flex-shrink-0 flex-col justify-center rounded-3xl border border-white/15 bg-white/[0.06] p-8 backdrop-blur-xl transition-colors hover:border-[#0000FF]/30 md:w-[36vw] md:p-10 lg:w-[24vw]"
+                  >
+                    <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/[0.12] text-white">
+                      <Icon size={28} />
                     </div>
-                  )
-                })}
-              </div>
-            ) : (
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {features.map((feat) => {
-                  const Icon = feat.icon
-                  return (
-                    <div
-                      key={feat.title}
-                      className="rounded-3xl border border-white/15 bg-white/[0.12] p-7 backdrop-blur-xl transition-all hover:bg-white/[0.18]"
-                    >
-                      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.12] text-white">
-                        <Icon size={24} />
-                      </div>
-                      <h4 className="font-sans text-lg font-bold text-white">{feat.title}</h4>
-                      <p className="mt-2 font-sans text-sm leading-relaxed text-white/70">{feat.desc}</p>
-                    </div>
-                  )
-                })}
-              </div>
-            )}
+                    <h3 className="font-sans text-xl font-bold text-white md:text-2xl">{feat.title}</h3>
+                    <p className="mt-4 max-w-sm font-sans text-sm leading-relaxed text-white/60 md:text-base">{feat.desc}</p>
+                  </div>
+                )
+              })}
+              {/* End spacer */}
+              <div className="h-[48vh] w-6 flex-shrink-0 md:w-8 lg:w-6" />
+            </div>
           </div>
         </div>
       </div>
