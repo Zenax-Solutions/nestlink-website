@@ -231,6 +231,14 @@ export default function Services() {
               { name: 'Home Assistant', logo: '/brand-logos/home-assistant-logo-new.png' },
               { name: 'Apple HomeKit', logo: '/brand-logos/ios-badge-works-with-apple-homekit-e1433344613575.png' },
               { name: 'Tuya', logo: '/brand-logos/TUYA_BIG-c185e3f1.png' },
+              { name: 'Amazon Alexa', logo: '/brand-logos/Amazon_Alexa_Logo_2024.svg.png' },
+              { name: 'Ring', logo: '/brand-logos/Ring-Emblem.png' },
+              { name: 'Hikvision', logo: '/brand-logos/Hikvision_logo.svg.png' },
+              { name: 'D-Link', logo: '/brand-logos/D-Link-Logo.png' },
+              { name: 'EZVIZ', logo: '/brand-logos/ezviz-logo_brandlogos.net_z9wlt.png' },
+              { name: 'Denon', logo: '/brand-logos/Denon_(logo).svg.png' },
+              { name: 'KEF', logo: '/brand-logos/KEF_(logo).svg.png' },
+              { name: 'GVS', logo: '/brand-logos/gvs.png' },
             ].map((platform) => (
               <div
                 key={platform.name}
