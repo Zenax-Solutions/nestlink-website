@@ -6,8 +6,8 @@ import { Zap, Shield, Wifi, Monitor, Lightbulb, Headphones } from 'lucide-react'
 gsap.registerPlugin(ScrollTrigger)
 
 const TOTAL = 134
-const SECTION_VH = 500
-const MAX_CACHED_FRAMES = 40
+const SECTION_VH = 200
+const MAX_CACHED_FRAMES = 30
 
 function frameSrc(i: number) {
   const n = String(i + 1).padStart(3, '0')
@@ -216,7 +216,6 @@ export default function SecondSequence() {
         <div
           ref={impactRef}
           className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-6 px-6 pt-28 pb-12 text-center opacity-0 md:gap-10 md:px-12"
-          style={{ willChange: 'transform, opacity' }}
         >
           <div>
             <span className="inline-block rounded-full border border-white/20 bg-white/10 px-5 py-2 font-sans text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md">
@@ -245,7 +244,6 @@ export default function SecondSequence() {
         <div
           ref={featuresRef}
           className="absolute inset-0 z-10 flex flex-col opacity-0"
-          style={{ willChange: 'transform, opacity' }}
         >
           {/* Header */}
           <div className="flex flex-col items-center justify-center px-4 pt-28 pb-6 text-center md:px-12">
@@ -262,7 +260,6 @@ export default function SecondSequence() {
             <div
               ref={featuresTrackRef}
               className="flex items-center gap-5 md:gap-6"
-              style={{ willChange: 'transform' }}
             >
               {features.map((feat) => {
                 const Icon = feat.icon

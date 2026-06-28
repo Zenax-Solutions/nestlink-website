@@ -85,8 +85,8 @@ function Typewriter({ words }: { words: string[] }) {
 gsap.registerPlugin(ScrollTrigger)
 
 const TOTAL = 291
-const SECTION_VH = 500
-const MAX_CACHED_FRAMES = 40
+const SECTION_VH = 200
+const MAX_CACHED_FRAMES = 30
 
 function frameSrc(i: number) {
   return `/hero/ezgif-frame-${String(i + 10).padStart(3, '0')}.jpg`
