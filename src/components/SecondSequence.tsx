@@ -6,7 +6,7 @@ import { Zap, Shield, Wifi, Monitor, Lightbulb, Headphones } from 'lucide-react'
 gsap.registerPlugin(ScrollTrigger)
 
 const TOTAL = 134
-const SECTION_VH = 200
+const SECTION_VH = 500
 const MAX_CACHED_FRAMES = 30
 
 function frameSrc(i: number) {
