@@ -33,7 +33,7 @@ export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
       className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-[#0000FF]"
     >
       <div className="flex flex-col items-center">
-        <img src="/logo/NestLink-logo-transparent-white.png" alt="NestLink" className="h-14 w-auto" />
+        <img src="/logo/loading-screen-logo.png" alt="NestLink" className="h-14 w-auto" />
       </div>
 
       <div className="relative mt-10 h-1 w-48 overflow-hidden rounded-full bg-white/20">
