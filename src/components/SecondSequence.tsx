@@ -82,7 +82,74 @@ const features = [
   { icon: Headphones, title: 'After-Sales Support', desc: 'We support our clients even after installation to make sure the system runs smoothly.' },
 ]
 
-export default function SecondSequence() {
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+  return isMobile
+}
+
+function MobileSecondSequence() {
+  return (
+    <section className="bg-[#070b0a] py-20 md:py-28">
+      <div className="mx-auto max-w-7xl px-6 md:px-12">
+        <div className="text-center">
+          <span className="inline-block rounded-full border border-white/20 bg-white/10 px-5 py-2 font-sans text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-sm">
+            Our Impact
+          </span>
+          <h2 className="mx-auto mt-4 max-w-3xl font-sans text-3xl font-bold leading-[1.08] tracking-tight text-white md:mt-6 md:text-4xl lg:text-6xl">
+            Trusted by clients<br />across Dubai
+          </h2>
+        </div>
+        <div className="mt-10 grid max-w-3xl mx-auto grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
+          {stats.map((stat) => (
+            <div
+              key={stat.label}
+              className="rounded-3xl border border-white/15 bg-white/[0.12] px-4 py-6 text-center backdrop-blur-sm md:px-5 md:py-8"
+            >
+              <div className="font-sans text-2xl font-bold text-white md:text-3xl lg:text-4xl">
+                {stat.value}{stat.suffix}
+              </div>
+              <p className="mt-1 font-sans text-xs font-medium text-white/70 md:mt-2 md:text-sm">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-20 text-center">
+          <span className="inline-block rounded-full border border-white/20 bg-white/10 px-4 py-1.5 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-white backdrop-blur-sm md:px-5 md:py-2 md:text-xs">
+            Why Choose NestLink Technologies?
+          </span>
+          <h2 className="mx-auto mt-4 max-w-xl font-sans text-3xl font-bold leading-[1.08] tracking-tight text-white md:mt-5 md:text-4xl lg:text-5xl">
+            Why Dubai chooses NestLink
+          </h2>
+        </div>
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {features.map((feat) => {
+            const Icon = feat.icon
+            return (
+              <div
+                key={feat.title}
+                className="rounded-3xl border border-white/15 bg-white/[0.06] p-8 backdrop-blur-sm transition-colors hover:border-[#0000FF]/30"
+              >
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/[0.12] text-white">
+                  <Icon size={28} />
+                </div>
+                <h3 className="font-sans text-xl font-bold text-white md:text-2xl">{feat.title}</h3>
+                <p className="mt-4 max-w-sm font-sans text-sm leading-relaxed text-white/60 md:text-base">{feat.desc}</p>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function DesktopSecondSequence() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const pinRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -206,19 +273,14 @@ export default function SecondSequence() {
   return (
     <section ref={sectionRef} className="relative w-full bg-[#070b0a]" style={{ height: `${SECTION_VH}vh` }}>
       <div ref={pinRef} className="h-dvh w-full overflow-hidden bg-[#070b0a]" style={{ height: '100dvh' }}>
-        {/* Canvas */}
         <canvas ref={canvasRef} className="absolute inset-0 block" />
-
-        {/* Dark overlay for readability */}
         <div className="absolute inset-0 bg-black/40" />
-
-        {/* Impact Header + Cards combined */}
         <div
           ref={impactRef}
           className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-6 px-6 pt-28 pb-12 text-center opacity-0 md:gap-10 md:px-12"
         >
           <div>
-            <span className="inline-block rounded-full border border-white/20 bg-white/10 px-5 py-2 font-sans text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md">
+            <span className="inline-block rounded-full border border-white/20 bg-white/10 px-5 py-2 font-sans text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-sm">
               Our Impact
             </span>
               <h2 className="mx-auto mt-4 max-w-3xl font-sans text-3xl font-bold leading-[1.08] tracking-tight text-white md:mt-6 md:text-4xl lg:text-6xl">
@@ -229,7 +291,7 @@ export default function SecondSequence() {
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-3xl border border-white/15 bg-white/[0.12] px-4 py-6 text-center backdrop-blur-md md:px-5 md:py-8"
+                className="rounded-3xl border border-white/15 bg-white/[0.12] px-4 py-6 text-center backdrop-blur-sm md:px-5 md:py-8"
               >
                 <div className="font-sans text-2xl font-bold text-white md:text-3xl lg:text-4xl">
                   {stat.value}{stat.suffix}
@@ -239,34 +301,23 @@ export default function SecondSequence() {
             ))}
           </div>
         </div>
-
-        {/* Features overlay - Carousel */}
-        <div
-          ref={featuresRef}
-          className="absolute inset-0 z-10 flex flex-col opacity-0"
-        >
-          {/* Header */}
+        <div ref={featuresRef} className="absolute inset-0 z-10 flex flex-col opacity-0">
           <div className="flex flex-col items-center justify-center px-4 pt-28 pb-6 text-center md:px-12">
-            <span className="inline-block rounded-full border border-white/20 bg-white/10 px-4 py-1.5 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md md:px-5 md:py-2 md:text-xs">
+            <span className="inline-block rounded-full border border-white/20 bg-white/10 px-4 py-1.5 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-white backdrop-blur-sm md:px-5 md:py-2 md:text-xs">
               Why Choose NestLink Technologies?
             </span>
             <h2 className="mx-auto mt-4 max-w-xl font-sans text-3xl font-bold leading-[1.08] tracking-tight text-white md:mt-5 md:text-4xl lg:text-5xl">
               Why Dubai chooses NestLink
             </h2>
           </div>
-
-          {/* Carousel track */}
           <div className="flex h-[60%] items-center overflow-hidden px-6 md:px-12">
-            <div
-              ref={featuresTrackRef}
-              className="flex items-center gap-5 md:gap-6"
-            >
+            <div ref={featuresTrackRef} className="flex items-center gap-5 md:gap-6">
               {features.map((feat) => {
                 const Icon = feat.icon
                 return (
                   <div
                     key={feat.title}
-                    className="flex h-[48vh] w-[78vw] flex-shrink-0 flex-col justify-center rounded-3xl border border-white/15 bg-white/[0.06] p-8 backdrop-blur-md transition-colors hover:border-[#0000FF]/30 md:w-[36vw] md:p-10 lg:w-[24vw]"
+                    className="flex h-[48vh] w-[78vw] flex-shrink-0 flex-col justify-center rounded-3xl border border-white/15 bg-white/[0.06] p-8 backdrop-blur-sm transition-colors hover:border-[#0000FF]/30 md:w-[36vw] md:p-10 lg:w-[24vw]"
                   >
                     <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/[0.12] text-white">
                       <Icon size={28} />
@@ -276,7 +327,6 @@ export default function SecondSequence() {
                   </div>
                 )
               })}
-              {/* End spacer */}
               <div className="h-[48vh] w-6 flex-shrink-0 md:w-8 lg:w-6" />
             </div>
           </div>
@@ -284,4 +334,10 @@ export default function SecondSequence() {
       </div>
     </section>
   )
+}
+
+export default function SecondSequence() {
+  const isMobile = useIsMobile()
+  if (isMobile) return <MobileSecondSequence />
+  return <DesktopSecondSequence />
 }

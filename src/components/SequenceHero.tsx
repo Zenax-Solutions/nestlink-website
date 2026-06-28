@@ -302,7 +302,43 @@ function manageFrameCache(
   })
 }
 
-export default function SequenceHero() {
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+  return isMobile
+}
+
+function MobileHero() {
+  return (
+    <section className="relative h-screen w-full bg-[#070b0a]">
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover"
+        src="/hero-video.mp4"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 z-10"
+        style={{
+          background:
+            'linear-gradient(0deg, rgba(0,0,60,0.85) 0%, rgba(0,0,80,0.5) 25%, rgba(0,0,100,0.15) 50%, rgba(0,0,80,0.2) 80%, rgba(0,0,60,0.6) 100%)',
+        }}
+      />
+      <div className="absolute inset-0 z-20 flex items-center">
+        {overlays[0].content()}
+      </div>
+    </section>
+  )
+}
+
+function DesktopHero() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const pinRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -316,7 +352,6 @@ export default function SequenceHero() {
   const [canvasOpacity, setCanvasOpacity] = useState(0)
   const [scrollOpacity, setScrollOpacity] = useState(1)
 
-  // Initial load of first frames only
   useEffect(() => {
     manageFrameCache(0, frameCacheRef.current, loadQueueRef.current, MAX_CACHED_FRAMES)
     const checkReady = () => {
@@ -329,7 +364,6 @@ export default function SequenceHero() {
     checkReady()
   }, [])
 
-  // Canvas setup
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -369,7 +403,6 @@ export default function SequenceHero() {
     }
   }
 
-  // GSAP scroll animation
   useEffect(() => {
     if (!ready || !pinRef.current || !sectionRef.current) return
 
@@ -417,7 +450,6 @@ export default function SequenceHero() {
   return (
     <section ref={sectionRef} className="relative w-full bg-[#070b0a]" style={{ height: `${SECTION_VH}vh` }}>
       <div ref={pinRef} className="h-dvh w-full overflow-hidden bg-[#070b0a]" style={{ height: '100dvh' }}>
-        {/* Background video */}
         <video
           ref={videoRef}
           autoPlay
@@ -429,14 +461,12 @@ export default function SequenceHero() {
           src="/hero-video.mp4"
         />
 
-        {/* Image sequence canvas */}
         <canvas
           ref={canvasRef}
           className="absolute inset-0 block"
           style={{ opacity: canvasOpacity }}
         />
 
-        {/* Gradient overlay */}
         <div
           className="pointer-events-none absolute inset-0 z-10"
           style={{
@@ -445,7 +475,6 @@ export default function SequenceHero() {
           }}
         />
 
-        {/* Glass card overlays */}
         <div className="absolute inset-0 z-20">
           {overlays.map((o) => {
             const op = overlayOpacity(progress, o.start, o.end)
@@ -464,7 +493,6 @@ export default function SequenceHero() {
           })}
         </div>
 
-        {/* Scroll indicator */}
         <div
           className="absolute bottom-8 left-1/2 z-30 flex -translate-x-1/2 flex-col items-center gap-2 transition-opacity duration-100"
           style={{ opacity: scrollOpacity }}
@@ -479,4 +507,10 @@ export default function SequenceHero() {
       </div>
     </section>
   )
+}
+
+export default function SequenceHero() {
+  const isMobile = useIsMobile()
+  if (isMobile) return <MobileHero />
+  return <DesktopHero />
 }
