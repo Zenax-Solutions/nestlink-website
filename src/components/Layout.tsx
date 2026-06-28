@@ -29,33 +29,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <header className="fixed left-4 right-4 top-4 z-50 lg:left-10 lg:right-10 lg:top-6">
         <div className="mx-auto flex max-w-7xl items-center justify-between rounded-full bg-[#e8e8e8] px-4 py-2.5 shadow-2xl shadow-black/20 md:px-6 md:py-3.5">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2.5 text-[#070b0a] pl-1">
-            <svg
-              width="34"
-              height="34"
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M16 2L4 9V23L16 30L28 23V9L16 2Z"
-                stroke="currentColor"
-                strokeWidth="2"
-                fill="none"
-              />
-              <path
-                d="M16 10L10 14V22L16 26L22 22V14L16 10Z"
-                fill="#0000FF"
-              />
-            </svg>
-            <div className="flex flex-col">
-              <span className="font-sans text-lg font-bold leading-none tracking-tight">
-                NestLink
-              </span>
-              <span className="font-sans text-[10px] uppercase tracking-widest text-[#070b0a]/60">
-                Technologies
-              </span>
-            </div>
+          <Link to="/" className="flex items-center pl-1">
+            <img src="/logo/NestLink-logo-transparent-white.png" alt="NestLink" className="h-10 w-auto" />
           </Link>
 
           {/* Desktop menu */}

@@ -32,12 +32,8 @@ export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
       transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
       className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-[#0000FF]"
     >
-      <div className="flex flex-col items-center gap-2.5">
-        <svg width="52" height="52" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M16 2L4 9V23L16 30L28 23V9L16 2Z" stroke="white" strokeWidth="2" fill="none" />
-          <path d="M16 10L10 14V22L16 26L22 22V14L16 10Z" fill="white" />
-        </svg>
-        <span className="font-sans text-lg font-bold tracking-tight text-white">NestLink</span>
+      <div className="flex flex-col items-center">
+        <img src="/logo/NestLink-logo-transparent-white.png" alt="NestLink" className="h-14 w-auto" />
       </div>
 
       <div className="relative mt-10 h-1 w-48 overflow-hidden rounded-full bg-white/20">

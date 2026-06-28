@@ -87,27 +87,8 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12">
           {/* Brand & Newsletter */}
           <div className="lg:col-span-5">
-            <Link to="/" className="flex items-center gap-2 text-white">
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 32 32"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M16 2L4 9V23L16 30L28 23V9L16 2Z"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  fill="none"
-                />
-                <path
-                  d="M16 10L10 14V22L16 26L22 22V14L16 10Z"
-                  fill="#0000FF"
-                />
-              </svg>
-              <span className="font-sans text-xl font-bold">NestLink</span>
-              <sup className="ml-0.5 font-sans text-[10px] text-white">®</sup>
+            <Link to="/" className="flex items-center">
+              <img src="/logo/NestLink-logo-transparent-dark.png" alt="NestLink" className="h-10 w-auto" />
             </Link>
 
             <div className="mt-6 flex items-center gap-3">
