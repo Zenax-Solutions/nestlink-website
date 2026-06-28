@@ -146,7 +146,7 @@ export default function WhatWeDo() {
           start: 'top top',
           end: () => `+=${getScrollAmount()}`,
           pin: true,
-          scrub: 2.5,
+          scrub: 1,
           anticipatePin: 1,
           invalidateOnRefresh: true,
           fastScrollEnd: true,
@@ -207,6 +207,7 @@ export default function WhatWeDo() {
                 muted
                 loop
                 playsInline
+                preload="none"
                 className="absolute inset-0 h-full w-full object-cover"
               />
             ) : (

@@ -35,7 +35,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Safari-specific fixes for ScrollTrigger */
+/* Safari-specific fixes for iOS */
 @supports (-webkit-touch-callout: none) {
   .pin-spacer {
     -webkit-transform: translate3d(0, 0, 0);
@@ -47,4 +47,26 @@ body {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   }
+
+  /* Force GPU compositing on all pinned elements */
+  .h-dvh {
+    height: -webkit-fill-available;
+  }
+}
+
+/* 100dvh fallback for iOS Safari */
+@supports (height: 100dvh) {
+  .h-dvh {
+    height: 100dvh;
+  }
+}
+
+/* Prevent overscroll on pinned sections */
+.gsap-pinned-section {
+  overscroll-behavior: none;
+}
+
+/* Smooth scroll behavior fallback */
+html {
+  -webkit-overflow-scrolling: touch;
 }

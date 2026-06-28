@@ -6,11 +6,44 @@ import { Zap, Shield, Wifi, Monitor, Lightbulb, Headphones } from 'lucide-react'
 gsap.registerPlugin(ScrollTrigger)
 
 const TOTAL = 134
-const SECTION_VH = 700
+const SECTION_VH = 500
+const MAX_CACHED_FRAMES = 40
 
 function frameSrc(i: number) {
   const n = String(i + 1).padStart(3, '0')
   return `/second-sequence-images/ezgif-frame-${n}.jpg`
+}
+
+function manageFrameCache(
+  targetIdx: number,
+  cache: Map<number, HTMLImageElement>,
+  loadQueue: Set<number>,
+  maxSize: number,
+  getSrc: (i: number) => string,
+  total: number,
+) {
+  const keysToKeep = new Set<number>()
+  const half = Math.floor(maxSize / 2)
+  for (let i = Math.max(0, targetIdx - half); i <= Math.min(total - 1, targetIdx + half); i++) {
+    keysToKeep.add(i)
+  }
+  cache.forEach((_, key) => {
+    if (!keysToKeep.has(key)) {
+      cache.delete(key)
+    }
+  })
+  keysToKeep.forEach((key) => {
+    if (!cache.has(key) && !loadQueue.has(key)) {
+      loadQueue.add(key)
+      const img = new Image()
+      img.onload = () => {
+        cache.set(key, img)
+        loadQueue.delete(key)
+      }
+      img.onerror = () => { loadQueue.delete(key) }
+      img.src = getSrc(key)
+    }
+  })
 }
 
 function drawCover(ctx: CanvasRenderingContext2D, img: HTMLImageElement, cw: number, ch: number) {
@@ -53,29 +86,25 @@ export default function SecondSequence() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const pinRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const imagesRef = useRef<HTMLImageElement[]>([])
+  const frameCacheRef = useRef<Map<number, HTMLImageElement>>(new Map())
+  const loadQueueRef = useRef<Set<number>>(new Set())
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null)
   const [ready, setReady] = useState(false)
 
-  // Content overlay refs
   const impactRef = useRef<HTMLDivElement>(null)
   const featuresRef = useRef<HTMLDivElement>(null)
   const featuresTrackRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const imgs: HTMLImageElement[] = []
-    let loaded = 0
-    for (let i = 0; i < TOTAL; i++) {
-      const img = new Image()
-      img.onload = () => {
-        loaded++
-        if (loaded === 1) setReady(true)
+    manageFrameCache(0, frameCacheRef.current, loadQueueRef.current, MAX_CACHED_FRAMES, frameSrc, TOTAL)
+    const checkReady = () => {
+      if (frameCacheRef.current.has(0)) {
+        setReady(true)
+      } else {
+        setTimeout(checkReady, 50)
       }
-      img.onerror = () => { loaded++ }
-      img.src = frameSrc(i)
-      imgs.push(img)
     }
-    imagesRef.current = imgs
+    checkReady()
   }, [])
 
   useEffect(() => {
@@ -111,13 +140,12 @@ export default function SecondSequence() {
     const ctx = ctxRef.current
     if (!canvas || !ctx) return
     const idx = Math.min(Math.max(0, Math.round(index)), TOTAL - 1)
-    const img = imagesRef.current[idx]
+    const img = frameCacheRef.current.get(idx)
     if (img?.complete && img.naturalWidth > 0) {
       drawCover(ctx, img, canvas.width, canvas.height)
     }
   }
 
-  // GSAP scroll + content overlay animations
   useEffect(() => {
     if (!ready || !pinRef.current || !sectionRef.current) return
 
@@ -131,15 +159,16 @@ export default function SecondSequence() {
         start: 'top top',
         end: 'bottom bottom',
         pin: pinRef.current,
-        scrub: 1.5,
+        scrub: 1,
         anticipatePin: 1,
       },
       onUpdate: () => {
-        drawFrame(proxy.frame)
+        const idx = Math.round(proxy.frame)
+        drawFrame(idx)
+        manageFrameCache(idx, frameCacheRef.current, loadQueueRef.current, MAX_CACHED_FRAMES, frameSrc, TOTAL)
 
         const p = proxy.frame / (TOTAL - 1)
 
-        // Impact header + cards combined: show 8%–48%
         if (impactRef.current) {
           let op = 0
           if (p > 0.06 && p < 0.50) {
@@ -149,7 +178,6 @@ export default function SecondSequence() {
           impactRef.current.style.transform = `translateY(${(1 - op) * 30}px)`
         }
 
-        // Features overlay: show 52%–90%, carousel scrolls horizontally
         if (featuresRef.current && featuresTrackRef.current) {
           let op = 0
           if (p > 0.50 && p < 0.92) {
@@ -157,7 +185,6 @@ export default function SecondSequence() {
           }
           featuresRef.current.style.opacity = String(op)
 
-          // Carousel horizontal scroll: 55%–90%
           if (p > 0.52 && p < 0.92) {
             const trackWidth = featuresTrackRef.current.scrollWidth - window.innerWidth
             const scrollProgress = (p - 0.52) / 0.40
@@ -178,7 +205,7 @@ export default function SecondSequence() {
 
   return (
     <section ref={sectionRef} className="relative w-full bg-[#070b0a]" style={{ height: `${SECTION_VH}vh` }}>
-      <div ref={pinRef} className="h-screen w-full overflow-hidden bg-[#070b0a]">
+      <div ref={pinRef} className="h-dvh w-full overflow-hidden bg-[#070b0a]" style={{ height: '100dvh' }}>
         {/* Canvas */}
         <canvas ref={canvasRef} className="absolute inset-0 block" />
 
@@ -203,7 +230,7 @@ export default function SecondSequence() {
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-3xl border border-white/15 bg-white/[0.12] px-4 py-6 text-center backdrop-blur-xl md:px-5 md:py-8"
+                className="rounded-3xl border border-white/15 bg-white/[0.12] px-4 py-6 text-center backdrop-blur-md md:px-5 md:py-8"
               >
                 <div className="font-sans text-2xl font-bold text-white md:text-3xl lg:text-4xl">
                   {stat.value}{stat.suffix}
@@ -242,7 +269,7 @@ export default function SecondSequence() {
                 return (
                   <div
                     key={feat.title}
-                    className="flex h-[48vh] w-[78vw] flex-shrink-0 flex-col justify-center rounded-3xl border border-white/15 bg-white/[0.06] p-8 backdrop-blur-xl transition-colors hover:border-[#0000FF]/30 md:w-[36vw] md:p-10 lg:w-[24vw]"
+                    className="flex h-[48vh] w-[78vw] flex-shrink-0 flex-col justify-center rounded-3xl border border-white/15 bg-white/[0.06] p-8 backdrop-blur-md transition-colors hover:border-[#0000FF]/30 md:w-[36vw] md:p-10 lg:w-[24vw]"
                   >
                     <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/[0.12] text-white">
                       <Icon size={28} />

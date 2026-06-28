@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import Layout from './components/Layout'
 import LoadingScreen from './components/LoadingScreen'
@@ -44,17 +43,7 @@ function PublicLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <Layout>
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={location.pathname}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -16 }}
-          transition={{ duration: 0.35, ease: 'easeInOut' }}
-        >
-          {children}
-        </motion.div>
-      </AnimatePresence>
+      {children}
       <Footer />
     </Layout>
   )

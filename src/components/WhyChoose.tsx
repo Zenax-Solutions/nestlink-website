@@ -34,7 +34,7 @@ export default function WhyChoose() {
           start: 'top top',
           end: () => `+=${getScrollAmount()}`,
           pin: true,
-          scrub: 2.5,
+          scrub: 1,
           anticipatePin: 1,
           invalidateOnRefresh: true,
           fastScrollEnd: true,
@@ -88,7 +88,7 @@ export default function WhyChoose() {
           return (
             <div
               key={feat.title}
-              className="flex h-[50vh] w-[78vw] flex-shrink-0 flex-col justify-center rounded-3xl border border-white/15 bg-white/[0.06] p-8 backdrop-blur-xl transition-colors hover:border-[#0000FF]/30 md:w-[38vw] md:p-10 lg:w-[26vw]"
+              className="flex h-[50vh] w-[78vw] flex-shrink-0 flex-col justify-center rounded-3xl border border-white/15 bg-white/[0.06] p-8 backdrop-blur-md transition-colors hover:border-[#0000FF]/30 md:w-[38vw] md:p-10 lg:w-[26vw]"
             >
               <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/[0.12] text-white">
                 <Icon size={28} />

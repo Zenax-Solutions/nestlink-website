@@ -47,7 +47,6 @@ function Typewriter({ words }: { words: string[] }) {
               phaseRef.current = 'pausing'
             }
           } else {
-            // deleting
             charIndexRef.current = Math.max(charIndexRef.current - 1, 0)
             setDisplayText(currentWord.slice(0, charIndexRef.current))
 
@@ -86,7 +85,8 @@ function Typewriter({ words }: { words: string[] }) {
 gsap.registerPlugin(ScrollTrigger)
 
 const TOTAL = 291
-const SECTION_VH = 700
+const SECTION_VH = 500
+const MAX_CACHED_FRAMES = 40
 
 function frameSrc(i: number) {
   return `/hero/ezgif-frame-${String(i + 10).padStart(3, '0')}.jpg`
@@ -98,8 +98,8 @@ function GlassCard({ children, className = '' }: { children: ReactNode; classNam
       className={`rounded-2xl md:rounded-[1.75rem] border border-white/[0.12] p-6 md:p-7 lg:p-9 ${className}`}
       style={{
         background: 'rgba(255,255,255,0.15)',
-        backdropFilter: 'blur(40px) saturate(180%)',
-        WebkitBackdropFilter: 'blur(40px) saturate(180%)',
+        backdropFilter: 'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
         boxShadow: '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.1)',
       }}
     >
@@ -272,12 +272,43 @@ function drawCover(ctx: CanvasRenderingContext2D, img: HTMLImageElement, w: numb
   ctx.drawImage(img, sx, sy, sw, sh, 0, 0, w, h)
 }
 
+function manageFrameCache(
+  targetIdx: number,
+  cache: Map<number, HTMLImageElement>,
+  loadQueue: Set<number>,
+  maxSize: number,
+) {
+  const keysToKeep = new Set<number>()
+  const half = Math.floor(maxSize / 2)
+  for (let i = Math.max(0, targetIdx - half); i <= Math.min(TOTAL - 1, targetIdx + half); i++) {
+    keysToKeep.add(i)
+  }
+  cache.forEach((_, key) => {
+    if (!keysToKeep.has(key)) {
+      cache.delete(key)
+    }
+  })
+  keysToKeep.forEach((key) => {
+    if (!cache.has(key) && !loadQueue.has(key)) {
+      loadQueue.add(key)
+      const img = new Image()
+      img.onload = () => {
+        cache.set(key, img)
+        loadQueue.delete(key)
+      }
+      img.onerror = () => { loadQueue.delete(key) }
+      img.src = frameSrc(key)
+    }
+  })
+}
+
 export default function SequenceHero() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const pinRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
-  const imagesRef = useRef<HTMLImageElement[]>([])
+  const frameCacheRef = useRef<Map<number, HTMLImageElement>>(new Map())
+  const loadQueueRef = useRef<Set<number>>(new Set())
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null)
   const [progress, setProgress] = useState(0)
   const [ready, setReady] = useState(false)
@@ -285,21 +316,17 @@ export default function SequenceHero() {
   const [canvasOpacity, setCanvasOpacity] = useState(0)
   const [scrollOpacity, setScrollOpacity] = useState(1)
 
-  // Preload frames
+  // Initial load of first frames only
   useEffect(() => {
-    const imgs: HTMLImageElement[] = []
-    let loaded = 0
-    for (let i = 0; i < TOTAL; i++) {
-      const img = new Image()
-      img.onload = () => {
-        loaded++
-        if (loaded === 1) setReady(true)
+    manageFrameCache(0, frameCacheRef.current, loadQueueRef.current, MAX_CACHED_FRAMES)
+    const checkReady = () => {
+      if (frameCacheRef.current.has(0)) {
+        setReady(true)
+      } else {
+        setTimeout(checkReady, 50)
       }
-      img.onerror = () => { loaded++ }
-      img.src = frameSrc(i)
-      imgs.push(img)
     }
-    imagesRef.current = imgs
+    checkReady()
   }, [])
 
   // Canvas setup
@@ -336,7 +363,7 @@ export default function SequenceHero() {
     const ctx = ctxRef.current
     if (!canvas || !ctx) return
     const idx = Math.min(Math.max(0, Math.round(index)), TOTAL - 1)
-    const img = imagesRef.current[idx]
+    const img = frameCacheRef.current.get(idx)
     if (img?.complete && img.naturalWidth > 0) {
       drawCover(ctx, img, canvas.width, canvas.height)
     }
@@ -357,29 +384,27 @@ export default function SequenceHero() {
         start: 'top top',
         end: 'bottom bottom',
         pin: pinRef.current,
-        scrub: 1.5,
+        scrub: 1,
         anticipatePin: 1,
       },
       onUpdate: () => {
         const p = proxy.p
 
-        // Video fade out: 1 -> 0 over first 25% of scroll
         const vOpacity = Math.max(0, 1 - p / 0.25)
         setVideoOpacity(vOpacity)
 
-        // Canvas fade in: 0 -> 1 between 15% and 40% of scroll
         let cOpacity = 0
         if (p > 0.15) {
           cOpacity = Math.min(1, (p - 0.15) / 0.25)
         }
         setCanvasOpacity(cOpacity)
 
-        // Frames start advancing after 10% of scroll
         const frameProgress = Math.max(0, (p - 0.1) / 0.9)
         const idx = Math.min(Math.round(frameProgress * (TOTAL - 1)), TOTAL - 1)
         drawFrame(idx)
 
-        // Scroll indicator fade out over first 20%
+        manageFrameCache(idx, frameCacheRef.current, loadQueueRef.current, MAX_CACHED_FRAMES)
+
         setScrollOpacity(Math.max(0, 1 - p / 0.2))
 
         setProgress(p)
@@ -391,7 +416,7 @@ export default function SequenceHero() {
 
   return (
     <section ref={sectionRef} className="relative w-full bg-[#070b0a]" style={{ height: `${SECTION_VH}vh` }}>
-      <div ref={pinRef} className="h-screen w-full overflow-hidden bg-[#070b0a]">
+      <div ref={pinRef} className="h-dvh w-full overflow-hidden bg-[#070b0a]" style={{ height: '100dvh' }}>
         {/* Background video */}
         <video
           ref={videoRef}
