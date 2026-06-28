@@ -83,7 +83,9 @@ const features = [
 ]
 
 function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' && (window.innerWidth < 768 || 'ontouchstart' in window),
+  )
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window)
     check()

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Link } from 'react-router-dom'
@@ -303,7 +304,9 @@ function manageFrameCache(
 }
 
 function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' && (window.innerWidth < 768 || 'ontouchstart' in window),
+  )
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window)
     check()
@@ -314,27 +317,201 @@ function useIsMobile() {
 }
 
 function MobileHero() {
+  const [activeIdx, setActiveIdx] = useState(0)
+  const activeRef = useRef(0)
+  const triggerRefs = useRef<(HTMLDivElement | null)[]>([])
+  const directionRef = useRef(1)
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            const idx = Number(e.target.getAttribute('data-idx'))
+            if (idx !== activeRef.current) {
+              directionRef.current = idx > activeRef.current ? 1 : -1
+              activeRef.current = idx
+              setActiveIdx(idx)
+            }
+          }
+        }
+      },
+      { threshold: 0.4 },
+    )
+    triggerRefs.current.forEach((el) => { if (el) obs.observe(el) })
+    return () => obs.disconnect()
+  }, [])
+
+  const pages = [
+    {
+      content: () => (
+        <div className="text-center">
+          <h1 className="font-sans text-[clamp(2.5rem,10vw,4rem)] font-extrabold leading-[1.08] tracking-tight text-white">
+            Next Gen<br />Smart <Typewriter words={ROTATING_WORDS} />
+          </h1>
+          <p className="mx-auto mt-4 max-w-md font-sans text-sm leading-relaxed text-white/80">
+            NestLink Technologies provides smart home, ELV, CCTV, Wi-Fi, lighting, audio, home cinema, electrical and MEP solutions across Dubai, UAE.
+          </p>
+          <div className="mt-6 flex flex-col items-center gap-3">
+            <Link
+              to="/contact"
+              className="group inline-flex items-center justify-center gap-3 rounded-full bg-white px-7 py-4 font-sans text-sm font-bold text-[#070b0a] transition-all duration-200 hover:scale-105"
+            >
+              Start your project
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#070b0a]">
+                <ArrowRight size={15} className="text-white transition-transform duration-200 group-hover:translate-x-0.5" />
+              </span>
+            </Link>
+            <Link
+              to="/services"
+              className="font-sans text-sm font-semibold text-white underline-offset-4 transition-all hover:text-[#0000FF] hover:underline"
+            >
+              Explore services
+            </Link>
+          </div>
+        </div>
+      ),
+    },
+    {
+      content: () => (
+        <GlassCard className="w-full">
+          <div className="flex items-start justify-between gap-4">
+            <h3 className="font-sans text-xl font-medium leading-[1.05] text-white">
+              Smart Home Automation
+            </h3>
+            <ChevronUp size={20} className="shrink-0 text-white" />
+          </div>
+          <div className="my-4 h-px bg-white/20" />
+          <p className="font-sans text-base text-white">Intelligence woven into every room.</p>
+          <div className="my-4 h-px bg-white/20" />
+          <p className="font-sans text-sm leading-relaxed text-white/95">
+            Seamless app-based and voice-controlled automation for lighting, climate, curtains, and daily routines. Compatible with Alexa, Google Assistant, and Apple HomeKit.
+          </p>
+          <div className="my-4 h-px bg-white/20" />
+          <Link
+            to="/services"
+            className="group inline-flex items-center gap-2 font-sans text-sm font-semibold text-white transition-opacity hover:opacity-80"
+          >
+            Learn More
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white">
+              <ArrowUpRight size="14" className="text-[#070b0a]" />
+            </span>
+          </Link>
+        </GlassCard>
+      ),
+    },
+    {
+      content: () => (
+        <GlassCard className="w-full">
+          <div className="flex items-start justify-between gap-4">
+            <h3 className="font-sans text-xl font-medium leading-[1.05] text-white">
+              Security & Infrastructure
+            </h3>
+            <ChevronUp size={20} className="shrink-0 text-white" />
+          </div>
+          <div className="my-4 h-px bg-white/20" />
+          <p className="font-sans text-base text-white">Fortified. Connected. Intelligent.</p>
+          <div className="my-4 h-px bg-white/20" />
+          <p className="font-sans text-sm leading-relaxed text-white/95">
+            Advanced CCTV, smart locks, video intercoms, and visitor management backed by enterprise-grade networking.
+          </p>
+          <div className="my-4 h-px bg-white/20" />
+          <Link
+            to="/services"
+            className="group inline-flex items-center gap-2 font-sans text-sm font-semibold text-white transition-opacity hover:opacity-80"
+          >
+            Learn More
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white">
+              <ArrowUpRight size="14" className="text-[#070b0a]" />
+            </span>
+          </Link>
+        </GlassCard>
+      ),
+    },
+    {
+      content: () => (
+        <GlassCard className="w-full">
+          <div className="flex items-start justify-between gap-4">
+            <h3 className="font-sans text-xl font-medium leading-[1.05] text-white">
+              End-to-End Service
+            </h3>
+            <ChevronUp size={20} className="shrink-0 text-white" />
+          </div>
+          <div className="my-4 h-px bg-white/20" />
+          <p className="font-sans text-base text-white">From vision to lifelong support.</p>
+          <div className="my-4 h-px bg-white/20" />
+          <p className="font-sans text-sm leading-relaxed text-white/95">
+            Consultation, design, installation, testing, handover, and ongoing support — all under one team.
+          </p>
+          <div className="my-4 h-px bg-white/20" />
+          <Link
+            to="/contact"
+            className="group inline-flex items-center gap-2 font-sans text-sm font-semibold text-white transition-opacity hover:opacity-80"
+          >
+            Start Your Project
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white">
+              <ArrowUpRight size="14" className="text-[#070b0a]" />
+            </span>
+          </Link>
+        </GlassCard>
+      ),
+    },
+  ]
+
+  const variants = {
+    enter: (dir: number) => ({ x: dir * 280, rotate: dir * 20, opacity: 0 }),
+    center: { x: 0, rotate: 0, opacity: 1 },
+    exit: (dir: number) => ({ x: dir * -280, rotate: dir * -20, opacity: 0 }),
+  }
+
   return (
-    <section className="relative h-screen w-full bg-[#070b0a]">
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 h-full w-full object-cover"
-        src="/hero-video.mp4"
-      />
-      <div
-        className="pointer-events-none absolute inset-0 z-10"
-        style={{
-          background:
-            'linear-gradient(0deg, rgba(0,0,60,0.85) 0%, rgba(0,0,80,0.5) 25%, rgba(0,0,100,0.15) 50%, rgba(0,0,80,0.2) 80%, rgba(0,0,60,0.6) 100%)',
-        }}
-      />
-      <div className="absolute inset-0 z-20 flex items-center">
-        {overlays[0].content()}
+    <div className="relative">
+      <div className="sticky top-0 z-10 h-screen w-full overflow-hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover"
+          src="/hero-video.mp4"
+        />
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(0deg, rgba(0,0,60,0.85) 0%, rgba(0,0,80,0.5) 25%, rgba(0,0,100,0.15) 50%, rgba(0,0,80,0.2) 80%, rgba(0,0,60,0.6) 100%)',
+          }}
+        />
+        <div className="absolute inset-0 flex items-center justify-center px-5">
+          <AnimatePresence mode="wait" custom={directionRef.current}>
+            <motion.div
+              key={activeIdx}
+              custom={directionRef.current}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              className="flex w-full items-center justify-center"
+            >
+              <div className="w-full max-w-sm">
+                {pages[activeIdx]?.content()}
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
-    </section>
+      <div className="relative">
+        {pages.map((_, i) => (
+          <div
+            key={i}
+            ref={(el) => { triggerRefs.current[i] = el }}
+            data-idx={i}
+            className="h-screen"
+          />
+        ))}
+      </div>
+    </div>
   )
 }
 
