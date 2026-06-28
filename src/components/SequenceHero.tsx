@@ -473,7 +473,7 @@ function MobileHero() {
           loop
           playsInline
           className="absolute inset-0 h-full w-full object-cover"
-          src="/hero-video.mp4"
+          src="/hero-video.webm"
         />
         <div
           className="pointer-events-none absolute inset-0"
@@ -635,7 +635,7 @@ function DesktopHero() {
           playsInline
           className="absolute inset-0 h-full w-full object-cover"
           style={{ opacity: videoOpacity }}
-          src="/hero-video.mp4"
+          src="/hero-video.webm"
         />
 
         <canvas
