@@ -140,57 +140,99 @@ function useIsMobile() {
 }
 
 function MobileWhatWeDo() {
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
+  const [sectionH, setSectionH] = useState('200vh')
+
+  useEffect(() => {
+    const update = () => {
+      if (trackRef.current) {
+        const d = trackRef.current.scrollWidth - window.innerWidth
+        setSectionH(`${d + window.innerHeight}px`)
+      }
+    }
+    update()
+    window.addEventListener('resize', update)
+    return () => window.removeEventListener('resize', update)
+  }, [])
+
+  useEffect(() => {
+    const track = trackRef.current
+    const section = sectionRef.current
+    if (!track || !section) return
+
+    const ctx = gsap.context(() => {
+      gsap.to(track, {
+        x: () => -(track.scrollWidth - window.innerWidth),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: () => `+=${track.scrollWidth - window.innerWidth}`,
+          scrub: 1,
+          invalidateOnRefresh: true,
+        },
+      })
+    })
+    ScrollTrigger.refresh()
+    return () => ctx.revert()
+  }, [sectionH])
+
   return (
-    <section className="bg-[#f2f2f2] py-16 md:py-20">
-      <div className="mx-auto max-w-7xl px-6 text-center md:px-12">
-        <span className="rounded-full border border-black/10 bg-white px-4 py-1.5 font-sans text-[11px] font-bold uppercase tracking-[0.15em] text-black/70">
-          Our Value
-        </span>
-        <h2 className="mt-5 font-sans text-3xl font-bold leading-[1.1] tracking-tight text-black md:text-5xl">
-          Dubai's Smart Home & ELV Services All Under One Roof
-        </h2>
-      </div>
-      <div className="mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-4 md:px-12 [&::-webkit-scrollbar]:hidden">
-        {cards.map((card) => (
-          <div
-            key={card.num}
-            className="relative h-[55vh] w-[80vw] shrink-0 snap-center overflow-hidden rounded-3xl"
-          >
-            {card.media.type === 'video' ? (
-              <video
-                src={card.media.src}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="none"
-                className="absolute inset-0 h-full w-full object-cover"
-              />
-            ) : (
-              <img
-                src={card.media.src}
-                alt={card.title}
-                className="absolute inset-0 h-full w-full object-cover"
-                loading="lazy"
-              />
-            )}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10" />
-            <div className="relative z-10 flex h-full flex-col justify-between p-6">
-              <div className="flex items-start gap-3">
-                <span className="font-sans text-2xl font-bold leading-none text-white">
-                  {card.num}
-                  <sup className="ml-0.5 text-[9px] font-medium text-white/70">No</sup>
-                </span>
-                <h3 className="flex-1 pt-0.5 font-sans text-base font-semibold leading-tight text-white">
-                  {card.title}
-                </h3>
-              </div>
-              <p className="max-w-xs font-sans text-xs leading-relaxed text-white/80">
-                {card.description}
-              </p>
-            </div>
+    <section ref={sectionRef} className="relative bg-[#f2f2f2]" style={{ height: sectionH }}>
+      <div className="sticky top-0 z-10 h-screen w-full overflow-hidden">
+        <div className="flex h-[30%] items-center justify-center px-6 text-center">
+          <div>
+            <span className="rounded-full border border-black/10 bg-white px-4 py-1.5 font-sans text-[11px] font-bold uppercase tracking-[0.15em] text-black/70">
+              Our Value
+            </span>
+            <h2 className="mt-5 font-sans text-3xl font-bold leading-[1.1] tracking-tight text-black md:text-5xl">
+              Dubai's Smart Home & ELV Services All Under One Roof
+            </h2>
           </div>
-        ))}
+        </div>
+        <div ref={trackRef} className="flex h-[70%] items-center gap-4 px-6">
+          {cards.map((card) => (
+            <div
+              key={card.num}
+              className="relative h-[55vh] w-[80vw] shrink-0 overflow-hidden rounded-3xl"
+            >
+              {card.media.type === 'video' ? (
+                <video
+                  src={card.media.src}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="none"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              ) : (
+                <img
+                  src={card.media.src}
+                  alt={card.title}
+                  className="absolute inset-0 h-full w-full object-cover"
+                  loading="lazy"
+                />
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10" />
+              <div className="relative z-10 flex h-full flex-col justify-between p-6">
+                <div className="flex items-start gap-3">
+                  <span className="font-sans text-2xl font-bold leading-none text-white">
+                    {card.num}
+                    <sup className="ml-0.5 text-[9px] font-medium text-white/70">No</sup>
+                  </span>
+                  <h3 className="flex-1 pt-0.5 font-sans text-base font-semibold leading-tight text-white">
+                    {card.title}
+                  </h3>
+                </div>
+                <p className="max-w-xs font-sans text-xs leading-relaxed text-white/80">
+                  {card.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
