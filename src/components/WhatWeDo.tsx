@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -126,7 +126,77 @@ const cards = [
   },
 ]
 
-export default function WhatWeDo() {
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' && (window.innerWidth < 768 || 'ontouchstart' in window),
+  )
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+  return isMobile
+}
+
+function MobileWhatWeDo() {
+  return (
+    <section className="bg-[#f2f2f2] py-16 md:py-20">
+      <div className="mx-auto max-w-7xl px-6 text-center md:px-12">
+        <span className="rounded-full border border-black/10 bg-white px-4 py-1.5 font-sans text-[11px] font-bold uppercase tracking-[0.15em] text-black/70">
+          Our Value
+        </span>
+        <h2 className="mt-5 font-sans text-3xl font-bold leading-[1.1] tracking-tight text-black md:text-5xl">
+          Dubai's Smart Home & ELV Services All Under One Roof
+        </h2>
+      </div>
+      <div className="mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-4 md:px-12 [&::-webkit-scrollbar]:hidden">
+        {cards.map((card) => (
+          <div
+            key={card.num}
+            className="relative h-[55vh] w-[80vw] shrink-0 snap-center overflow-hidden rounded-3xl"
+          >
+            {card.media.type === 'video' ? (
+              <video
+                src={card.media.src}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="none"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            ) : (
+              <img
+                src={card.media.src}
+                alt={card.title}
+                className="absolute inset-0 h-full w-full object-cover"
+                loading="lazy"
+              />
+            )}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10" />
+            <div className="relative z-10 flex h-full flex-col justify-between p-6">
+              <div className="flex items-start gap-3">
+                <span className="font-sans text-2xl font-bold leading-none text-white">
+                  {card.num}
+                  <sup className="ml-0.5 text-[9px] font-medium text-white/70">No</sup>
+                </span>
+                <h3 className="flex-1 pt-0.5 font-sans text-base font-semibold leading-tight text-white">
+                  {card.title}
+                </h3>
+              </div>
+              <p className="max-w-xs font-sans text-xs leading-relaxed text-white/80">
+                {card.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function DesktopWhatWeDo() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
   const triggersRef = useRef<ScrollTrigger[]>([])
@@ -179,7 +249,6 @@ export default function WhatWeDo() {
       ref={sectionRef}
       className="relative h-screen w-full overflow-hidden bg-[#f2f2f2]"
     >
-      {/* Header */}
       <div className="relative z-10 mx-auto flex h-[30%] max-w-7xl flex-col items-center justify-center px-6 text-center md:px-12">
         <span className="rounded-full border border-black/10 bg-white px-4 py-1.5 font-sans text-[11px] font-bold uppercase tracking-[0.15em] text-black/70">
           Our Value
@@ -189,11 +258,9 @@ export default function WhatWeDo() {
         </h2>
       </div>
 
-      {/* Carousel track */}
       <div
         ref={trackRef}
         className="relative z-10 flex h-[70%] items-center gap-5 px-6 md:gap-6 md:px-12"
-        style={{ willChange: 'transform' }}
       >
         {cards.map((card) => (
           <div
@@ -240,9 +307,14 @@ export default function WhatWeDo() {
           </div>
         ))}
 
-        {/* End spacer so the last card scrolls fully into view */}
         <div className="h-[62vh] w-6 flex-shrink-0 md:w-8 lg:w-6" />
       </div>
     </section>
   )
+}
+
+export default function WhatWeDo() {
+  const isMobile = useIsMobile()
+  if (isMobile) return <MobileWhatWeDo />
+  return <DesktopWhatWeDo />
 }
