@@ -62,12 +62,12 @@ async function seed() {
   `)
 
   // Seed admin user
-  const hashedPassword = await bcrypt.hash('admin123', 10)
+  const hashedPassword = await bcrypt.hash('@@NestLink@@2026#', 10)
   await conn.query(
     `INSERT IGNORE INTO users (username, email, password) VALUES (?, ?, ?)`,
     ['admin', 'admin@nestlink.ae', hashedPassword],
   )
-  console.log('✓ Admin user seeded (username: admin, password: admin123)')
+  console.log('✓ Admin user seeded (username: admin, password: @@NestLink@@2026#)')
 
   // Seed blogs
   const blogs = [
@@ -152,7 +152,7 @@ async function seed() {
 
   await conn.end()
   console.log('\n✅ Database seeded successfully!')
-  console.log('   Login: admin / admin123')
+   console.log('   Login: admin / @@NestLink@@2026#')
 }
 
 seed().catch((err) => {
