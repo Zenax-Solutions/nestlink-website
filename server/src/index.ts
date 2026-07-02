@@ -7,6 +7,8 @@ import authRoutes from './routes/auth.js'
 import blogRoutes from './routes/blogs.js'
 import portfolioRoutes from './routes/portfolio.js'
 import uploadRoutes from './routes/upload.js'
+import emailRoutes from './routes/emails.js'
+import settingsRoutes from './routes/settings.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -34,6 +36,8 @@ app.use('/api/auth', authRoutes)
 app.use('/api/blogs', blogRoutes)
 app.use('/api/portfolio', portfolioRoutes)
 app.use('/api/upload', uploadRoutes)
+app.use('/api/emails', emailRoutes)
+app.use('/api/settings', settingsRoutes)
 
 // SPA fallback — serve index.html for all non-API routes
 app.get('*', (_req, res) => {

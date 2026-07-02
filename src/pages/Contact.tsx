@@ -1,20 +1,29 @@
 import { useState } from 'react'
-import { Phone, MapPin, Mail, Clock, Send, CheckCircle } from 'lucide-react'
+import { Phone, MapPin, Mail, Clock, Send, CheckCircle, Loader2 } from 'lucide-react'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../components/AnimatedSection'
+import { emails } from '../api'
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState('')
+  const [sending, setSending] = useState(false)
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', service: '', message: '' })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const { name, email, phone, service, message } = formData
-    const text = `*New Inquiry from NestLink Website*%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Email:* ${encodeURIComponent(email)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Service:* ${encodeURIComponent(service)}%0A*Message:* ${encodeURIComponent(message)}`
-    window.open(`https://wa.me/971504429734?text=${text}`, '_blank')
-    setSubmitted(true)
-    setTimeout(() => setSubmitted(false), 4000)
-    setFormData({ name: '', email: '', phone: '', service: '', message: '' })
+    setSending(true)
+    setError('')
+    try {
+      await emails.submit(formData)
+      setSubmitted(true)
+      setTimeout(() => setSubmitted(false), 4000)
+      setFormData({ name: '', email: '', phone: '', service: '', message: '' })
+    } catch {
+      setError('Failed to send. Please try again later.')
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -71,7 +80,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <span className="font-sans text-xs uppercase tracking-wider text-black/50">Email</span>
-                      <a href="mailto:info@nestlink.ae" className="mt-1 block font-sans text-base font-semibold text-black transition-colors hover:text-[#0000FF]">info@nestlink.ae</a>
+                      <a href="mailto:info@nest-links.com" className="mt-1 block font-sans text-base font-semibold text-black transition-colors hover:text-[#0000FF]">info@nest-links.com</a>
                     </div>
                   </li>
                   <li className="flex items-start gap-4">
@@ -89,7 +98,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <span className="font-sans text-xs uppercase tracking-wider text-black/50">Working Hours</span>
-                      <span className="mt-1 block font-sans text-base font-semibold text-black">Sun - Sat: 9:00 AM - 7:00 PM</span>
+                      <span className="mt-1 block font-sans text-base font-semibold text-black">Mon - Sat: 9:00 AM - 7:00 PM</span>
                     </div>
                   </li>
                 </ul>
@@ -162,10 +171,13 @@ export default function Contact() {
                         className="w-full resize-none rounded-xl border border-black/10 bg-white/5 px-4 py-3 font-sans text-sm text-black placeholder-black/30 outline-none transition-colors focus:border-[#0000FF]/50"
                         placeholder="Tell us about your project..." />
                     </div>
-                    <button type="submit"
-                      className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#0000FF] px-8 py-4 font-sans text-sm font-bold text-white transition-all hover:scale-[1.02] md:w-auto">
-                      Send Message
-                      <Send size={16} className="transition-transform duration-200 group-hover:translate-x-1" />
+                    {error && (
+                      <p className="font-sans text-sm text-red-500">{error}</p>
+                    )}
+                    <button type="submit" disabled={sending}
+                      className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#0000FF] px-8 py-4 font-sans text-sm font-bold text-white transition-all hover:scale-[1.02] disabled:opacity-60 md:w-auto">
+                      {sending ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} className="transition-transform duration-200 group-hover:translate-x-1" />}
+                      {sending ? 'Sending...' : 'Send Message'}
                     </button>
                   </form>
                 )}

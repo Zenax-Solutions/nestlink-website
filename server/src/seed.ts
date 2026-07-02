@@ -61,6 +61,35 @@ async function seed() {
     )
   `)
 
+  await conn.query(`
+    CREATE TABLE IF NOT EXISTS email_submissions (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      name VARCHAR(255) NOT NULL,
+      email VARCHAR(255) NOT NULL,
+      phone VARCHAR(100) NOT NULL,
+      service VARCHAR(255) DEFAULT '',
+      message TEXT NOT NULL,
+      is_read TINYINT(1) DEFAULT 0,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+  `)
+
+  await conn.query(`
+    CREATE TABLE IF NOT EXISTS email_settings (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      smtp_host VARCHAR(255) DEFAULT '',
+      smtp_port INT DEFAULT 587,
+      smtp_user VARCHAR(255) DEFAULT '',
+      smtp_pass VARCHAR(255) DEFAULT '',
+      from_email VARCHAR(255) DEFAULT '',
+      from_name VARCHAR(255) DEFAULT 'NestLink Website',
+      admin_emails JSON,
+      forwarding_enabled TINYINT(1) DEFAULT 0,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    )
+  `)
+
   // Seed admin user
   const hashedPassword = await bcrypt.hash('@@NestLink@@2026#', 10)
   await conn.query(

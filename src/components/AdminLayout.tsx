@@ -1,12 +1,14 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { LayoutDashboard, FileText, Image, LogOut, Menu, X } from 'lucide-react'
+import { LayoutDashboard, FileText, Image, Mail, Settings, LogOut, Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { useAuth } from './AuthContext'
 
 const navItems = [
   { label: 'Dashboard', path: '/admin/dashboard', icon: LayoutDashboard },
+  { label: 'Emails', path: '/admin/emails', icon: Mail },
   { label: 'Blogs', path: '/admin/blogs', icon: FileText },
   { label: 'Portfolio', path: '/admin/portfolio', icon: Image },
+  { label: 'Email Settings', path: '/admin/email-settings', icon: Settings },
 ]
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {

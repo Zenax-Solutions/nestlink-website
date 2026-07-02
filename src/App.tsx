@@ -23,6 +23,8 @@ import BlogList from './pages/admin/BlogList'
 import BlogForm from './pages/admin/BlogForm'
 import PortfolioList from './pages/admin/PortfolioList'
 import PortfolioForm from './pages/admin/PortfolioForm'
+import EmailList from './pages/admin/EmailList'
+import EmailSettings from './pages/admin/EmailSettings'
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated } = useAuth()
@@ -82,6 +84,8 @@ function App() {
           <Route path="/admin/portfolio" element={<AdminPage><PortfolioList /></AdminPage>} />
           <Route path="/admin/portfolio/new" element={<AdminPage><PortfolioForm /></AdminPage>} />
           <Route path="/admin/portfolio/edit/:id" element={<AdminPage><PortfolioForm /></AdminPage>} />
+          <Route path="/admin/emails" element={<AdminPage><EmailList /></AdminPage>} />
+          <Route path="/admin/email-settings" element={<AdminPage><EmailSettings /></AdminPage>} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

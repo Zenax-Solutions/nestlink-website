@@ -104,6 +104,99 @@ export const portfolio = {
     }),
 }
 
+// Emails
+export interface EmailSubmission {
+  id: number
+  name: string
+  email: string
+  phone: string
+  service: string
+  message: string
+  is_read: number
+  created_at: string
+}
+
+export interface EmailListResponse {
+  data: EmailSubmission[]
+  total: number
+  page: number
+  limit: number
+  totalPages: number
+}
+
+export const emails = {
+  submit: (data: { name: string; email: string; phone: string; service: string; message: string }) =>
+    request<{ id: number; success: boolean }>('/emails', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
+  list: (page = 1, limit = 20, search?: string) => {
+    const params = new URLSearchParams({ page: String(page), limit: String(limit) })
+    if (search) params.set('search', search)
+    return request<EmailListResponse>(`/emails?${params}`, { headers: authHeaders() })
+  },
+  get: (id: number) =>
+    request<EmailSubmission>(`/emails/${id}`, { headers: authHeaders() }),
+  updateStatus: (id: number, is_read: boolean) =>
+    request<{ success: boolean }>(`/emails/${id}/status`, {
+      method: 'PUT',
+      headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+      body: JSON.stringify({ is_read }),
+    }),
+  delete: (id: number) =>
+    request<{ success: boolean }>(`/emails/${id}`, {
+      method: 'DELETE',
+      headers: authHeaders(),
+    }),
+  exportXlsx: async () => {
+    const baseUrl = import.meta.env.VITE_API_URL || '/api'
+    const res = await fetch(`${baseUrl}/emails/export/xlsx`, {
+      headers: authHeaders(),
+    })
+    if (!res.ok) throw new Error('Export failed')
+    const blob = await res.blob()
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `emails-${Date.now()}.xlsx`
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
+  },
+  stats: () =>
+    request<{ total: number; unread: number }>('/emails/stats/summary', { headers: authHeaders() }),
+}
+
+// Settings
+export interface EmailConfig {
+  smtp_host: string
+  smtp_port: number
+  smtp_user: string
+  smtp_pass: string
+  from_email: string
+  from_name: string
+  admin_emails: string[]
+  forwarding_enabled: boolean
+}
+
+export const settings = {
+  getEmailConfig: () =>
+    request<EmailConfig>('/settings/email-config', { headers: authHeaders() }),
+  updateEmailConfig: (data: Partial<EmailConfig>) =>
+    request<{ success: boolean }>('/settings/email-config', {
+      method: 'PUT',
+      headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    }),
+  testEmail: (to: string) =>
+    request<{ success: boolean; message: string }>('/settings/test-email', {
+      method: 'POST',
+      headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+      body: JSON.stringify({ to }),
+    }),
+}
+
 // Upload
 export async function uploadFile(file: File): Promise<string> {
   const formData = new FormData()
